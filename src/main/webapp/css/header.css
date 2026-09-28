@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+header {
+  width: 100%;
+}
+
+.navbar {
+  min-height: 70px;
+}
+ 
+header .dropdown-toggle::after {
+  display: none;
+}
+
+.navbar-brand {
+  min-width: 180px;
+}
+
+@media (max-width: 768px) {
+  .navbar-brand {
+    min-width: auto;
+  }
+}
+.navbar-nav .dropdown {
+    position: relative;
+}
+
+.navbar-nav .dropdown-menu {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dropdown-item {
+    text-align: center;
+}
+
+.navbar-nav .dropdown:hover > .dropdown-menu {
+    display: block;
+}
