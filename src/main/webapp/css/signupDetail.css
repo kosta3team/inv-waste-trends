@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+.signupDetail-table-area {
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.signupDetail-table-area th {
+    width: 180px;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.signupDetail-table-area td {
+    vertical-align: middle;
+}
+
+.signupDetail-table-area textarea {
+    resize: none;
+}
