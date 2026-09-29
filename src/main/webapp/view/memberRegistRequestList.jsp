@@ -52,7 +52,7 @@
 
 					<tr>
 						<td>1</td>
-						<td>2026.9.21</td>
+						<td>2026-09-21</td>
 						<td>노종과수원</td>
 						<td>노종현</td>
 						<td>대기중</td>
@@ -60,7 +60,7 @@
 
 					<tr>
 						<td>2</td>
-						<td>2026.9.19</td>
+						<td>2026-09-19</td>
 						<td>진과수원</td>
 						<td>허진수</td>
 						<td>거절</td>
@@ -68,7 +68,7 @@
 
 					<tr>
 						<td>3</td>
-						<td>2026.9.18</td>
+						<td>2026-09-18</td>
 						<td></td>
 						<td>정다영</td>
 						<td>승인</td>
@@ -82,8 +82,37 @@
 		</div>
 
 	</main>
+	<!-- 페이지네이션 -->
+	<div class="pagination-area">
+
+		<nav>
+			<ul class="pagination">
+
+				<li class="page-item disabled"><a class="page-link" href="#">
+						<i class="bi bi-chevron-left"></i>
+				</a></li>
+
+				<li class="page-item active"><a class="page-link" href="#">1</a>
+				</li>
+
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+
+				<li class="page-item"><a class="page-link" href="#">4</a></li>
+
+				<li class="page-item"><a class="page-link" href="#">5</a></li>
+
+				<li class="page-item"><a class="page-link" href="#"> <i
+						class="bi bi-chevron-right"></i>
+				</a></li>
+			</ul>
+		</nav>
+	</div>
 
 
-<%@ include file="footer.jsp"%>
+	<%@ include file="footer.jsp"%>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet">
 </body>
 </html>

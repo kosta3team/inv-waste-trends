@@ -23,12 +23,12 @@
 							<th>품목코드</th>
 							<th>품목</th>
 							<th>품종</th>
-							<th>주소</th>
+							<th>원산지</th>
 							<th>상품명</th>
 							<th>단가(1box)</th>
 							<th>중량(1box)</th>
-							<th>입고수량(1box)</th>
-							<th>재고수량(1box)</th>
+							<th>입고수량(box)</th>
+							<th>재고수량(box)</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -92,16 +92,12 @@
 							<td id="detailDisposeReason"></td>
 							<td id="detailPrecipitation"></td>
 							<td id="detailHighestTemp"></td>
-							<td id="detailmeanTemp"></td>
+							<td id="detailAverageTemp"></td>
 							<td id="detailLowestTemp"></td>
 						</tr>
 					</tbody>
 				</table>
 
-			</div>
-
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
 			</div>
 
 		</div>

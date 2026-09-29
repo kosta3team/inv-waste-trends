@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>입고요청 목록 조회(관리자)</title>
+<title>입고요청 목록 조회(조합원)</title>
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -24,7 +24,7 @@
 
 		<!-- 제목 -->
 		<div class="mb-4">
-			<h3 class="fw-bold mb-1">입고요청 목록 조회(관리자)</h3>
+			<h3 class="fw-bold mb-1">입고요청 목록 조회(조합원)</h3>
 		</div>
 
 
@@ -40,8 +40,9 @@
 			</button>
 
 		</div><hr>
-		<input type="checkbox">대기만보기
-
+		<div style="text-align: right";>
+			<input type="checkbox">대기만보기
+		</div>
 
 		<!-- 재고 목록 나중에 db에서 불러오는 값 넣을겁니다~ -->
 		<div class="inventory-table-area">
@@ -73,8 +74,8 @@
 						<td>50</td>
 						<td>30,000원</td>
 						<td>1,500,000원</td>
-						<td>2026.09.21</td>
-						<td>2026.09.23</td>
+						<td>2026-09-21</td>
+						<td>2026-09-23</td>
 						<td>승인</td>
 					</tr>
 
@@ -85,8 +86,8 @@
 						<td>30</td>
 						<td>20,000원</td>
 						<td>600,000원</td>
-						<td>2026.09.10</td>
-						<td>2026.09.10</td>
+						<td>2026-09-10</td>
+						<td>2026-09-10</td>
 						<td>거절</td>
 					</tr>
 
@@ -97,7 +98,7 @@
 						<td>25</td>
 						<td>10,000원</td>
 						<td>250,000원</td>
-						<td>2026.09.22</td>
+						<td>2026-09-22</td>
 						<td></td>
 						<td>대기</td>
 					</tr>
@@ -110,8 +111,37 @@
 		</div>
 
 	</main>
+	<!-- 페이지네이션 -->
+	<div class="pagination-area">
+
+		<nav>
+			<ul class="pagination">
+
+				<li class="page-item disabled"><a class="page-link" href="#">
+						<i class="bi bi-chevron-left"></i>
+				</a></li>
+
+				<li class="page-item active"><a class="page-link" href="#">1</a>
+				</li>
+
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+
+				<li class="page-item"><a class="page-link" href="#">4</a></li>
+
+				<li class="page-item"><a class="page-link" href="#">5</a></li>
+
+				<li class="page-item"><a class="page-link" href="#"> <i
+						class="bi bi-chevron-right"></i>
+				</a></li>
+			</ul>
+		</nav>
+	</div>
 
 
-<%@ include file="footer.jsp"%>
+	<%@ include file="footer.jsp"%>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet">
 </body>
 </html>

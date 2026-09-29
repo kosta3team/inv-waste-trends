@@ -39,7 +39,7 @@
 						</select>
 
 						<!-- 검색어 -->
-						<input type="text" class="form-control" placeholder="검색어 입력">
+						<input type="text" class="form-control" placeholder="검색어 입력" style="max-width: 500px";>
 
 						<!-- 검색 버튼 -->
 						<button class="btn btn-dark">
@@ -47,8 +47,10 @@
 						</button>
 
 		</div><hr>
-		<input type="checkbox">판매중인재고<input type="checkbox">폐기요청된재고<input type="checkbox">폐기된재고
-
+		<div style="text-align: right";>
+			<input type="checkbox">판매중인재고 <input type="checkbox">폐기요청된재고
+			<input type="checkbox">폐기된재고
+		</div>
 
 		<!-- 재고 목록 나중에 db에서 불러오는 값 넣을겁니다~ -->
 		<div class="inventory-table-area">
@@ -61,8 +63,8 @@
 						<th>순번</th>
 						<th>재고일련번호</th>
 						<th>상품명</th>
-						<th>재고수량</th>
-						<th>단가</th>
+						<th>재고수량(box)</th>
+						<th>단가(1box)</th>
 						<th>보관일자</th>
 						<th>폐기일자</th>
 						<th>폐기사유</th>
@@ -80,7 +82,7 @@
 						<td>설향딸기</td>
 						<td>16</td>
 						<td>13,000원</td>
-						<td>2026.09.22</td>
+						<td>2026-09-22</td>
 						<td>-</td>
 						<td>-</td>
 						<td>-</td>
@@ -93,10 +95,10 @@
 						<td>맛있는 딸기</td>
 						<td>7</td>
 						<td>12,000원</td>
-						<td>2026.09.24</td>
+						<td>2026-09-24</td>
 						<td>-</td>
 						<td>제품하자발견</td>
-						<td>2026.09.22</td>
+						<td>2026-09-22</td>
 						<td>폐기대기</td>
 					</tr>
 
@@ -106,8 +108,8 @@
 						<td>복숭아</td>
 						<td>3</td>
 						<td>14,000원</td>
-						<td>2026.09.27</td>
-						<td>2026.09.22</td>
+						<td>2026-09-27</td>
+						<td>2026-09-22</td>
 						<td>관리부재</td>
 						<td>-</td>
 						<td>폐기완료</td>
@@ -119,10 +121,10 @@
 						<td>바나나</td>
 						<td>7</td>
 						<td>12,000원</td>
-						<td>2026.09.29</td>
-						<td>2026.09.22</td>
+						<td>2026-09-29</td>
+						<td>2026-09-22</td>
 						<td>제품하자</td>
-						<td>2026.09.21</td>
+						<td>2026-09-21</td>
 						<td>폐기완료</td>
 					</tr>
 				
@@ -134,9 +136,41 @@
 		</div>
 
 	</main>
+	<!-- 페이지네이션 -->
+		<div class="pagination-area">
+
+			<nav>
+				<ul class="pagination">
+
+					<li class="page-item disabled"><a class="page-link" href="#">
+							<i class="bi bi-chevron-left"></i>
+					</a></li>
+
+					<li class="page-item active"><a class="page-link" href="#">1</a>
+					</li>
+
+					<li class="page-item"><a class="page-link" href="#">2</a></li>
+
+					<li class="page-item"><a class="page-link" href="#">3</a></li>
+
+					<li class="page-item"><a class="page-link" href="#">4</a></li>
+
+					<li class="page-item"><a class="page-link" href="#">5</a></li>
+
+					<li class="page-item"><a class="page-link" href="#"> <i
+							class="bi bi-chevron-right"></i>
+					</a></li>
+				</ul>
+			</nav>
+		</div>
+
+
+<%@ include file="footer.jsp"%>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet">
 
 <%@ include file="disposalRequestModal.jsp" %>
-<%@ include file="footer.jsp"%>
+
 
 <script>
 function openDisposeModal(inventoryId) {

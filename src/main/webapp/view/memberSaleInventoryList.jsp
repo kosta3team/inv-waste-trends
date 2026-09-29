@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>폐기 요청 목록 조회</title>
+<title>판매 목록 조회</title>
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -16,7 +16,6 @@
 <link rel="stylesheet" href="css/inventoryList.css">
 
 
-
 </head>
 <body>
 <%@ include file="adminHeader.jsp"%>
@@ -24,15 +23,23 @@
 
 		<!-- 제목 -->
 		<div class="mb-4">
-			<h3 class="fw-bold mb-1">폐기 요청 목록 조회</h3>
+			<h3 class="fw-bold mb-1">판매 기록 조회</h3>
 		</div>
 
 
 		<!-- 검색 영역 -->
-		<div style="text-align: right";>
-			<input type="checkbox">대기만보기
+		<div class="input-group justify-content-center align-items-center">
+
+			<!-- 검색 조건 -->
+			기간 : <input type="date">~<input type="date">
+			<hr>
+			<!-- 검색 버튼 -->
+			<button class="btn btn-dark">
+				<i class="bi bi-search"></i>
+			</button>
+
 		</div>
-			
+
 
 
 		<!-- 재고 목록 나중에 db에서 불러오는 값 넣을겁니다~ -->
@@ -44,11 +51,13 @@
 
 					<tr>
 						<th>순번</th>
-						<th>폐기요청일련번호</th>
-						<th>폐기요청일자</th>
-						<th>조합원명</th>
-						<th>이름</th>
-						<th>폐기요청상태</th>
+						<th>재고일련번호</th>
+						<th>판매일련번호</th>
+						<th>상품명</th>
+						<th>판매수량(box)</th>
+						<th>단가(1box)</th>
+						<th>판매금액</th>
+						<th>판매일자</th>
 					</tr>
 
 				</thead>
@@ -57,42 +66,60 @@
 
 					<tr>
 						<td>1</td>
-						<td>DP001</td>
-						<td>2026-09-21</td>
-						<td>노종과수원</td>
-						<td>노종현</td>
-						<td>대기중</td>
+						<td>AP09123</td>
+						<td>20260922-002</td>
+						<td>아오리사과</td>
+						<td>10</td>
+						<td>16,000원</td>
+						<td>160,000원</td>
+						<td>2026-09-22</td>
 					</tr>
+
 
 					<tr>
 						<td>2</td>
-						<td>DP002</td>
-						<td>2026-09-19</td>
-						<td>진농원</td>
-						<td>허진수</td>
-						<td>거절</td>
+						<td>WA09472</td>
+						<td>20260922-001</td>
+						<td>꿀수박</td>
+						<td>6</td>
+						<td>32,000원</td>
+						<td>192,000원</td>
+						<td>2026-10-15</td>
 					</tr>
+
+
 
 					<tr>
 						<td>3</td>
-						<td>DP003</td>
-						<td>2026-09-18</td>
-						<td>-</td>
-						<td>정다영</td>
-						<td>승인</td>
+						<td>PE07423</td>
+						<td>20260921-001</td>
+						<td>복숭아</td>
+						<td>16</td>
+						<td>16,000원</td>
+						<td>265,000원</td>
+						<td>2026-10-03</td>
 					</tr>
-				
+					
+					<tr>
+						<td><td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>총판매금액 : 2,226,000원</td>
+						<td></td>
+						<td></td>
+					
+					</tr>
+
 
 				</tbody>
-				
 
 			</table>
 
 		</div>
 
-	</main>
-
-	<!-- 페이지네이션 -->
+		<!-- 페이지네이션 -->
 		<div class="pagination-area">
 
 			<nav>
@@ -119,10 +146,12 @@
 				</ul>
 			</nav>
 		</div>
-
-
+	</main>
+	<%@ include file="inventoryDetailModal.jsp" %>
 	<%@ include file="footer.jsp"%>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet">
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
+
 </body>
 </html>

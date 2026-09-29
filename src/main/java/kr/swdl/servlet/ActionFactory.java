@@ -18,6 +18,9 @@ public class ActionFactory {
 		case "saleInventoryList":
 			a=new saleInventoryList();
 			break;
+		case "memberSaleInventoryList":
+			a=new memberSaleInventoryList();
+			break;
 		case "memberRegistRequestList":
 			a=new memberRegistRequestList();
 			break;

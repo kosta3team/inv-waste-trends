@@ -99,14 +99,14 @@
 
 					<tr onclick="showInventoryDetail(this)"
 						data-serial="SH260923001" data-item-code="IC-1001"
-						data-category="딸기" data-variety="설향" data-origin="국내산(논산)"
+						data-category="딸기" data-variety="설향" data-origin="논산"
 						data-product-name="설향딸기" data-unit-price="32,000원"
-						data-weight="2kg" data-quantity="25box" data-remain-quantity="5box" data-coop-name="과일아삭"
-						data-requester="김민수" data-registrant="박관리자"
-						data-received-date="2026-09-10" data-storage-deadline="2026.09.30" data-requset-date="2026-09-27"
-						data-dispose-registrant="노종현" data-dispose-requester="최다니엘"
+						data-weight="2kg" data-quantity="25" data-remain-quantity="5" data-coop-name="과일아삭"
+						data-requester="김민수(조합원)" data-registrant="박관리자(관리자)"
+						data-received-date="2026-09-10" data-storage-deadline="2026-09-30" data-request-date="2026-09-27"
+						data-dispose-registrant="노종현(관리자)" data-dispose-requester="최다니엘(조합원)"
 						data-dispose-date="2026-09-28" data-dispose-reason="상품문제(과일손상)"
-						data-precipitation="10mm" data-highest-temp="28도" data-mean-temp="25도" data-lowest-temp="22도">
+						data-precipitation="10mm" data-highest-temp="28°C" data-average-temp="25°C" data-lowest-temp="22°C">
 						<td>1</td>
 						<td>SH260923001</td>
 						<td>설향딸기</td>

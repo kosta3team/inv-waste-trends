@@ -40,7 +40,7 @@ function showInventoryDetail(row) {
 	document.getElementById("detailDisposeReason").textContent = d.disposeReason;
 	document.getElementById("detailPrecipitation").textContent = d.precipitation;
 	document.getElementById("detailHighestTemp").textContent = d.highestTemp;
-	document.getElementById("detailMeanTemp").textContent = d.meanTemp;
+	document.getElementById("detailAverageTemp").textContent = d.averageTemp;
 	document.getElementById("detailLowestTemp").textContent = d.lowestTemp;
 
 

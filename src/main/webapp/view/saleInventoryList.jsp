@@ -18,7 +18,7 @@
 
 </head>
 <body>
-<%@ include file="memberHeader.jsp"%>
+<%@ include file="adminHeader.jsp"%>
 <main class="inventory-page">
 
 		<!-- 제목 -->
@@ -53,6 +53,7 @@
 						<th>순번</th>
 						<th>재고일련번호</th>
 						<th>판매일련번호</th>
+						<th>협동조합원명</th>
 						<th>상품명</th>
 						<th>판매수량(box)</th>
 						<th>단가(1box)</th>
@@ -68,6 +69,7 @@
 						<td>1</td>
 						<td>AP09123</td>
 						<td>20260922-002</td>
+						<td>진농원</td>
 						<td>아오리사과</td>
 						<td>10</td>
 						<td>16,000원</td>
@@ -80,6 +82,7 @@
 						<td>2</td>
 						<td>WA09472</td>
 						<td>20260922-001</td>
+						<td>진과수원</td>
 						<td>꿀수박</td>
 						<td>6</td>
 						<td>32,000원</td>
@@ -93,6 +96,7 @@
 						<td>3</td>
 						<td>PE07423</td>
 						<td>20260921-001</td>
+						<td>종현농원</td>
 						<td>복숭아</td>
 						<td>16</td>
 						<td>16,000원</td>
@@ -106,8 +110,8 @@
 						<td></td>
 						<td></td>
 						<td></td>
-						<td>총판매금액 : 2,226,000원</td>
 						<td></td>
+						<td>총판매금액 : 2,226,000원</td>
 						<td></td>
 					
 					</tr>

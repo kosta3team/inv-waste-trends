@@ -40,8 +40,9 @@
 			</button>
 
 		</div><hr>
-		<input type="checkbox">대기만보기
-
+		<div style="text-align: right";>
+			<input type="checkbox">대기만보기
+		</div>
 
 		<!-- 재고 목록 나중에 db에서 불러오는 값 넣을겁니다~ -->
 		<div class="inventory-table-area">
@@ -77,8 +78,8 @@
 						<td>1,500,000원</td>
 						<td>진농원</td>
 						<td>허진</td>
-						<td>2026.09.21</td>
-						<td>2026.09.23</td>
+						<td>2026-09-21</td>
+						<td>2026-09-23</td>
 						<td>승인</td>
 					</tr>
 
@@ -91,8 +92,8 @@
 						<td>600,000원</td>
 						<td>허농원</td>
 						<td>정다영</td>
-						<td>2026.09.10</td>
-						<td>2026.09.10</td>
+						<td>2026-09-10</td>
+						<td>2026-09-10</td>
 						<td>거절</td>
 					</tr>
 
@@ -105,7 +106,7 @@
 						<td>250,000원</td>
 						<td></td>
 						<td>최다니엘</td>
-						<td>2026.09.22</td>
+						<td>2026-09-22</td>
 						<td></td>
 						<td>대기</td>
 					</tr>
@@ -118,8 +119,37 @@
 		</div>
 
 	</main>
+	<!-- 페이지네이션 -->
+	<div class="pagination-area">
+
+		<nav>
+			<ul class="pagination">
+
+				<li class="page-item disabled"><a class="page-link" href="#">
+						<i class="bi bi-chevron-left"></i>
+				</a></li>
+
+				<li class="page-item active"><a class="page-link" href="#">1</a>
+				</li>
+
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+
+				<li class="page-item"><a class="page-link" href="#">4</a></li>
+
+				<li class="page-item"><a class="page-link" href="#">5</a></li>
+
+				<li class="page-item"><a class="page-link" href="#"> <i
+						class="bi bi-chevron-right"></i>
+				</a></li>
+			</ul>
+		</nav>
+	</div>
 
 
-<%@ include file="footer.jsp"%>
+	<%@ include file="footer.jsp"%>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet">
 </body>
 </html>
