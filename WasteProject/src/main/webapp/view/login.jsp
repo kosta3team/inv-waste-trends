@@ -59,5 +59,13 @@
             </div>
         </form>
     </div>
+    
+    <!-- 문의처 시작 -->
+    <div class="text-center pb-4 pt-3">
+        <span class="text-secondary small">문의: </span>
+        <a href="tel:010-1234-1234" class="text-decoration-none text-secondary fw-bold small">010-1234-1234</a>
+    </div>
+    <!-- 문의처 끝 -->
+    <%@ include file="footer.jsp"%>
 </body>
 </html>
