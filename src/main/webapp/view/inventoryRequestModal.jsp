@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div class="modal fade" id="inventoryDetailModal" tabindex="-1"
-	aria-labelledby="inventoryDetailModalTitle" aria-hidden="true">
+<div class="modal fade" id="inventoryRequestModal" tabindex="-1"
+	aria-labelledby="inventoryRequestModalTitle" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-xl">
 		<div class="modal-content">
 
 			<div class="modal-header">
 				<div>
-					<h5 class="modal-title mb-1" id="inventoryDetailModalTitle">재고일련번호() 상세정보</h5>
-					<p class="text-muted mb-0 small" id="inventoryDetailStorageDeadline">보관일자 : </p>
+					<h5 class="modal-title mb-1" id="inventoryRequestModalTitle">재고일련번호() 상세정보</h5>
+					<p class="text-muted mb-0 small" id="inventoryRequestStorageDeadline">보관일자 : </p>
 				</div>
 				<button type="button" class="btn-close" data-bs-dismiss="modal"
 					aria-label="Close"></button>
@@ -41,13 +41,13 @@
 							<td id="detailUnitPrice"></td>
 							<td id="detailWeight"></td>
 							<td id="detailQuantity"></td>
-							<td id="detailRemainQuantity">25box</td>
+							<td id="detailRemainQuantity"></td>
 						</tr>
 					</tbody>
 				</table>
 
-				<!-- 입고정보 -->
-				<h6 class="fw-bold section-title">입고 정보</h6>
+				<!-- 조합원 정보 -->
+				<h6 class="fw-bold section-title">조합원 정보</h6>
 				<table class="table table-bordered align-middle mb-4">
 					<tbody>
 						<tr>
@@ -67,36 +67,6 @@
 					</tbody>
 				</table>
 
-				<!-- 폐기정보 -->
-				<h6 class="fw-bold section-title text-danger">폐기 정보</h6>
-				<table class="table table-bordered text-center align-middle mb-0">
-					<thead class="table-light">
-						<tr>
-							<th>폐기등록자</th>
-							<th>폐기요청자</th>
-							<th>요청일자</th>
-							<th>처리일자</th>
-							<th>폐기사유</th>
-							<th>일강수량</th>
-							<th>최고기온</th>
-							<th>평균기온</th>
-							<th>최저기온</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td id="detailDisposeRegistrant"></td>
-							<td id="detailDisposeRequester"></td>
-							<td id="detailRequestDate"></td>
-							<td id="detailDisposeDate"></td>
-							<td id="detailDisposeReason"></td>
-							<td id="detailPrecipitation"></td>
-							<td id="detailHighestTemp"></td>
-							<td id="detailmeanTemp"></td>
-							<td id="detailLowestTemp"></td>
-						</tr>
-					</tbody>
-				</table>
 
 			</div>
 

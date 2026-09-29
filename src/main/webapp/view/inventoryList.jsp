@@ -88,7 +88,7 @@
 						<th>재고수량(box)</th>
 						<th>단가(1box)</th>
 						<th>협동조합원명</th>
-						<th>보관기간</th>
+						<th>보관일자</th>
 						<th>폐기일자</th>
 						<th>폐기사유</th>
 					</tr>
@@ -101,11 +101,12 @@
 						data-serial="SH260923001" data-item-code="IC-1001"
 						data-category="딸기" data-variety="설향" data-origin="국내산(논산)"
 						data-product-name="설향딸기" data-unit-price="32,000원"
-						data-weight="2kg" data-quantity="25box" data-coop-name="과일아삭"
+						data-weight="2kg" data-quantity="25box" data-remain-quantity="5box" data-coop-name="과일아삭"
 						data-requester="김민수" data-registrant="박관리자"
-						data-received-date="2026-09-10" data-storage-deadline="2026.09.30"
-						data-dispose-registrant="-" data-dispose-requester="-"
-						data-dispose-date="-" data-dispose-reason="-">
+						data-received-date="2026-09-10" data-storage-deadline="2026.09.30" data-requset-date="2026-09-27"
+						data-dispose-registrant="노종현" data-dispose-requester="최다니엘"
+						data-dispose-date="2026-09-28" data-dispose-reason="상품문제(과일손상)"
+						data-precipitation="10mm" data-highest-temp="28도" data-mean-temp="25도" data-lowest-temp="22도">
 						<td>1</td>
 						<td>SH260923001</td>
 						<td>설향딸기</td>

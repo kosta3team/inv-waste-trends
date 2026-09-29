@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<footer class="py-3 bg-white border-top">
+<footer class="fixed-bottom py-3 bg-white border-top">
 
 	<div class="container-fluid px-4">
 
