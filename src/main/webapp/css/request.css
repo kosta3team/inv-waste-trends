@@ -1,0 +1,5 @@
+@charset "UTF-8";
+.readonly-field { background-color: #e9ecef; pointer-events: none; }
+.cursor-pointer { cursor: pointer; }
+/* 검색 결과 행 마우스 오버 효과 */
+.search-row:hover { background-color: #f8f9fa; cursor: pointer; }
