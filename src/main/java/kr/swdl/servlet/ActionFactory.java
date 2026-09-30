@@ -15,6 +15,8 @@ public class ActionFactory {
 		case "memberInventoryList":
 			a=new memberInventoryList();
 			break;
+		case "login":
+			a=new LoginAction();
 		default :
 			a= new MainUIAction();
 		}
