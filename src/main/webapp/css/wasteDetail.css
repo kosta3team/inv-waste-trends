@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+
+.fixed-table{
+    table-layout: fixed;
+    width:100%;
+}
+
+.fixed-table th{
+    width:120px;
+    white-space:nowrap;
+}
