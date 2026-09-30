@@ -13,7 +13,7 @@ function showInventoryDetail(row) {
 	const d = row.dataset;
 
 	document.getElementById("inventoryDetailModalTitle").textContent =
-		`재고일련번호(${d.serial}) 상세정보`;
+		`과일상품일련번호(${d.serial}) 상세정보`;
 	document.getElementById("inventoryDetailStorageDeadline").textContent =
 		`보관 일자 : ${d.storageDeadline}`;
 
@@ -35,6 +35,7 @@ function showInventoryDetail(row) {
 
 	document.getElementById("detailDisposeRegistrant").textContent = d.disposeRegistrant;
 	document.getElementById("detailDisposeRequester").textContent = d.disposeRequester;
+	document.getElementById("detailDisposeAmount").textContent = d.disposeAmount;
 	document.getElementById("detailRequestDate").textContent = d.requestDate;
 	document.getElementById("detailDisposeDate").textContent = d.disposeDate;
 	document.getElementById("detailDisposeReason").textContent = d.disposeReason;

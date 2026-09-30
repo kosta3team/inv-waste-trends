@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>재고 폐기 요청</title>
+<title>과일상품정보 폐기 요청 조회</title>
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -24,7 +24,7 @@
 
 		<!-- 제목 -->
 		<div class="mb-4">
-			<h3 class="fw-bold mb-1">재고 폐기 요청</h3>
+			<h3 class="fw-bold mb-1">과일상품정보 폐기 요청 조회</h3>
 		</div>
 
 
@@ -47,12 +47,7 @@
 						</button>
 
 		</div><hr>
-		<div style="text-align: right";>
-			<input type="checkbox">판매중인재고 <input type="checkbox">폐기요청된재고
-			<input type="checkbox">폐기된재고
-		</div>
-
-		<!-- 재고 목록 나중에 db에서 불러오는 값 넣을겁니다~ -->
+			<!-- 재고 목록 나중에 db에서 불러오는 값 넣을겁니다~ -->
 		<div class="inventory-table-area">
 
 			<table class="table table-hover inventory-table">
@@ -61,11 +56,13 @@
 
 					<tr>
 						<th>순번</th>
-						<th>재고일련번호</th>
+						<th>과일상품정보일련번호</th>
 						<th>상품명</th>
 						<th>재고수량(box)</th>
 						<th>단가(1box)</th>
 						<th>보관일자</th>
+						<th>협동조합명</th>
+						<th>이름</th>
 						<th>폐기일자</th>
 						<th>폐기사유</th>
 						<th>폐기요청일자</th>
@@ -78,24 +75,13 @@
 
 					<tr>
 						<td>1</td>
-						<td>ST17802</td>
-						<td>설향딸기</td>
-						<td>16</td>
-						<td>13,000원</td>
-						<td>2026-09-22</td>
-						<td>-</td>
-						<td>-</td>
-						<td>-</td>
-						<td><button type="button" class="btn btn-sm btn-danger" onclick="openDisposeModal('1042')">폐기요청</button></td>
-					</tr>
-
-					<tr>
-						<td>2</td>
 						<td>ST17803</td>
 						<td>맛있는 딸기</td>
 						<td>7</td>
 						<td>12,000원</td>
 						<td>2026-09-24</td>
+						<td>아주농장</td>
+						<td>김미원</td>
 						<td>-</td>
 						<td>제품하자발견</td>
 						<td>2026-09-22</td>
@@ -103,12 +89,14 @@
 					</tr>
 
 					<tr>
-						<td>3</td>
+						<td>2</td>
 						<td>p2123</td>
 						<td>복숭아</td>
 						<td>3</td>
 						<td>14,000원</td>
 						<td>2026-09-27</td>
+						<td>황금농원</td>
+						<td>박재현</td>
 						<td>2026-09-22</td>
 						<td>관리부재</td>
 						<td>-</td>
@@ -116,12 +104,14 @@
 					</tr>
 					
 					<tr>
-						<td>4</td>
+						<td>3</td>
 						<td>B234</td>
 						<td>바나나</td>
 						<td>7</td>
 						<td>12,000원</td>
 						<td>2026-09-29</td>
+						<td>진농원</td>
+						<td>허진수</td>
 						<td>2026-09-22</td>
 						<td>제품하자</td>
 						<td>2026-09-21</td>
@@ -172,18 +162,5 @@
 <%@ include file="disposalRequestModal.jsp" %>
 
 
-<script>
-function openDisposeModal(inventoryId) {
-	// 1. 넘겨받은 ID 값을 모달 안의 hidden input에 삽입 (서버 전송용)
-    document.getElementById('targetInventoryId').value = inventoryId;
-    
-    // 2. 모달 HTML 요소를 가져와서 부트스트랩 모달 객체로 변환
-    var modalElement = document.getElementById('disposalRequestModal');
-    var modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
-    
-    modalInstance.show();
-}
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -18,7 +18,7 @@
 
 </head>
 <body>
-<%@ include file="adminHeader.jsp"%>
+<%@ include file="memberHeader.jsp"%>
 <main class="inventory-page">
 
 		<!-- 제목 -->
@@ -31,8 +31,38 @@
 		<div class="input-group justify-content-center align-items-center">
 
 			<!-- 검색 조건 -->
-			기간 : <input type="date">~<input type="date">
-			<hr>
+			<label class="form-label mb-0 fw-bold">기간 : </label>
+			<div class="d-flex align-items-center">
+				<select class="form-select" id="start" name="startYear" style="width: 100px";>
+					<option >2026</option>
+					<option >2025</option>
+				</select> 
+				<select class="form-select"
+					id="month" name="startmonth">
+					<option  selected>09</option>
+					<option >08</option>
+				</select>
+				<select class="form-select"
+					id="date" name="startdate">
+					<option  selected>22</option>
+					<option >23</option>
+				</select>
+				~
+				<select class="form-select" id="end" name="endYear" style="width: 100px";>
+					<option >2026</option>
+					<option >2025</option>
+				</select> 
+				<select class="form-select"
+					id="month" name="endmonth">
+					<option selected>10</option>
+					<option >09</option>
+				</select>
+				<select class="form-select"
+					id="date" name="enddate">
+					<option  selected>15</option>
+					<option >14</option>
+				</select>
+			</div>
 			<!-- 검색 버튼 -->
 			<button class="btn btn-dark">
 				<i class="bi bi-search"></i>
@@ -51,7 +81,7 @@
 
 					<tr>
 						<th>순번</th>
-						<th>재고일련번호</th>
+						<th>과일상품일련번호</th>
 						<th>판매일련번호</th>
 						<th>협동조합원명</th>
 						<th>상품명</th>

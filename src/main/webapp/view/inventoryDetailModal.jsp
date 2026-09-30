@@ -6,7 +6,7 @@
 
 			<div class="modal-header">
 				<div>
-					<h5 class="modal-title mb-1" id="inventoryDetailModalTitle">재고일련번호() 상세정보</h5>
+					<h5 class="modal-title mb-1" id="inventoryDetailModalTitle">과일상품일련번호() 상세정보</h5>
 					<p class="text-muted mb-0 small" id="inventoryDetailStorageDeadline">보관일자 : </p>
 				</div>
 				<button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -68,12 +68,14 @@
 				</table>
 
 				<!-- 폐기정보 -->
+				
 				<h6 class="fw-bold section-title text-danger">폐기 정보</h6>
 				<table class="table table-bordered text-center align-middle mb-0">
 					<thead class="table-light">
 						<tr>
 							<th>폐기등록자</th>
 							<th>폐기요청자</th>
+							<th>폐기수량(box)</th>
 							<th>요청일자</th>
 							<th>처리일자</th>
 							<th>폐기사유</th>
@@ -87,6 +89,7 @@
 						<tr>
 							<td id="detailDisposeRegistrant"></td>
 							<td id="detailDisposeRequester"></td>
+							<td id="detailDisposeAmount"></td>
 							<td id="detailRequestDate"></td>
 							<td id="detailDisposeDate"></td>
 							<td id="detailDisposeReason"></td>
@@ -97,7 +100,7 @@
 						</tr>
 					</tbody>
 				</table>
-
+			
 			</div>
 
 		</div>

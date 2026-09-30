@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>재고 목록 조회</title>
+<title>과일상품정보 목록 조회</title>
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -26,7 +26,7 @@
 
 		<!-- 제목 -->
 		<div class="mb-4">
-			<h3 class="fw-bold mb-1">재고 목록 조회</h3>
+			<h3 class="fw-bold mb-1">과일상품정보 목록 조회</h3>
 		</div>
 
 
@@ -83,7 +83,7 @@
 
 					<tr>
 						<th>순번</th>
-						<th>재고일련번호</th>
+						<th>과일상품일련번호</th>
 						<th>상품명</th>
 						<th>재고수량(box)</th>
 						<th>단가(1box)</th>
@@ -99,12 +99,13 @@
 
 					<tr onclick="showInventoryDetail(this)"
 						data-serial="SH260923001" data-item-code="IC-1001"
-						data-category="딸기" data-variety="설향" data-origin="논산"
+						data-category="딸기" data-variety="설향" data-origin="충남 논산"
 						data-product-name="설향딸기" data-unit-price="32,000원"
 						data-weight="2kg" data-quantity="25" data-remain-quantity="5" data-coop-name="과일아삭"
 						data-requester="김민수(조합원)" data-registrant="박관리자(관리자)"
 						data-received-date="2026-09-10" data-storage-deadline="2026-09-30" data-request-date="2026-09-27"
 						data-dispose-registrant="노종현(관리자)" data-dispose-requester="최다니엘(조합원)"
+						data-dispose-amount="20"
 						data-dispose-date="2026-09-28" data-dispose-reason="상품문제(과일손상)"
 						data-precipitation="10mm" data-highest-temp="28°C" data-average-temp="25°C" data-lowest-temp="22°C">
 						<td>1</td>

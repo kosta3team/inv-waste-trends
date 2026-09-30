@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>재고 목록 조회</title>
+<title>과일상품정보 목록 조회</title>
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -24,7 +24,7 @@
 
 		<!-- 제목 -->
 		<div class="mb-4">
-			<h3 class="fw-bold mb-1">재고 목록 조회</h3>
+			<h3 class="fw-bold mb-1">과일상품정보 목록 조회</h3>
 		</div>
 
 
@@ -80,7 +80,7 @@
 
 					<tr>
 						<th>순번</th>
-						<th>재고일련번호</th>
+						<th>과일상품일련번호</th>
 						<th>상품명</th>
 						<th>재고수량(box)</th>
 						<th>단가(1box)</th>
