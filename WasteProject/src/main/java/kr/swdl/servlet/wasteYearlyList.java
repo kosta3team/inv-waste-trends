@@ -9,7 +9,7 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
-public class wasteYearlyList implements Action{
+public class WasteYearlyList implements Action{
 	
 	@Override
 	public String execute(HttpServletRequest request) throws ServletException, IOException{

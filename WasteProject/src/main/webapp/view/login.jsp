@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="css/wasteTrends.css">
 </head>
 <body>
-    <!-- 상단 헤더 -->
-    <%@ include file="adminHeader.jsp"%>
+    <!-- 상단 헤더 없앰.-->
+    
     
     <!-- 부트스트랩 Container로 폼 중앙 배치 및 크기 제한 -->
     <div class="container mt-5" style="max-width: 450px;">

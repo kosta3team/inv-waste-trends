@@ -5,7 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
-public class wasteList implements Action {
+public class WasteList implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request) throws ServletException, IOException {

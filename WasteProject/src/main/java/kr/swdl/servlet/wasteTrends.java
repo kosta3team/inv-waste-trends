@@ -7,7 +7,8 @@ import java.time.YearMonth;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
-public class wasteTrends implements Action {
+public class WasteTrends implements Action {
+	
 
     @Override
     public String execute(HttpServletRequest request) throws ServletException, IOException {

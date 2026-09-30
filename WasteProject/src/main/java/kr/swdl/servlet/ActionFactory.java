@@ -8,22 +8,22 @@ public class ActionFactory {
 		switch(cmd) {
 		
 		case "inventoryList":
-			a=new inventoryList();
+			a=new InventoryList();
 			break;
 		case "memberInventoryList":
-			a=new memberInventoryList();
+			a=new MemberInventoryList();
 			break;		
 		case "wasteTrends":
-			a=new wasteTrends();
+			a=new WasteTrends();
 			break;
 		case "wasteYearlyList":
-			a = new wasteYearlyList();
+			a = new WasteYearlyList();
 			break;
 		case "wasteLunarTrends":
-			a = new wasteLunarTrends();
+			a = new WasteLunarTrends();
 			break;
 		case "wasteYearlyCompare":
-			a = new wasteYearlyCompare();
+			a = new WasteYearlyCompare();
 			break;
 		case "login":
 			a = new LoginAction();
@@ -31,7 +31,9 @@ public class ActionFactory {
 		case "inventoryRequest":
 			a = new InventoryRequestAction();
 			break;
-			
+		case "wasteTemperatureCompare":
+			a = new WasteTemperatureCompare();
+			break;
 		default :
 			a= new MainUIAction();
 		}
