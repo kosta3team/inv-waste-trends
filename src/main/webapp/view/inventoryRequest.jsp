@@ -26,27 +26,38 @@
     			
     			<div class="card-body">
     				<!-- 품목 검색 영역 시작 -->
-    				<div class="row align-items-center mb-3">
+    				<div class="row align-items-end mb-3">
     					<label class="col-sm-2 col-form-label fw-bold">품목 선택</label>
     					
     					<!-- 품목 코드 -->
-    					<div class="col-sm-3">
-    						<input type="text" class="form-control" id="itemCode" name="itemCode" placeholder="예: 1" oninput="applyByCode(this.value)" autocomplete="off">
+    					<div class="col-sm-2">
+    						<label for="itemCode" class="form-label small text-secondary fw-semibold mb-1">품목코드</label>
+    						<input type="text" class="form-control" id="itemCode" name="itemCode" placeholder="예: 1" oninput="applyByCode(this)" onblur="formatCodeOnBlur(this)" autocomplete="off">
     					</div>
     					
     					<!-- 품목명 -->
-    					<div class="col-sm-3 position-relative">
+    					<div class="col-sm-2 position-relative">
+    						<label for="itemName" class="form-label small text-secondary fw-semibold mb-1">품목</label>
     						<input type="text" class="form-control" id="itemName" name="itemName" placeholder="예: 딸기" oninput="handleItemNameInput()" autocomplete="off">
     						
-    						<!-- 드롭다운 -->
+    						<!-- 드롭다운 -->    			
     						<div id="autocompleteResults" class="list-group position-absolute w-100 shadow-sm" style="display:none; z-index: 1050; max-height: 200px; overflow-y: auto; top:100%;">
     						</div>
     					</div>
     					
     					<!-- 품종 -->
-    					<div class="col-sm-4">
-    						<select class="form-select" id="itemVariety" name="itemVariety" onchange="applyVarietyCode()" disabled>
+    					<div class="col-sm-3">
+    						<label for="itemVariety" class="form-label small text-secondary fw-semibold mb-1">품종</label>
+    						<select class="form-select" id="itemVariety" name="itemVariety" onchange="handleVarietyChange()" disabled>
     							<option value="">품목을 먼저 검색하세요.</option>
+    						</select>
+    					</div>
+    					
+    					<!-- 원산지 -->
+    					<div class="col-sm-3">
+    						<label for="itemOrigin" class="form-label small text-secondary fw-semibold mb-1">원산지</label>
+    						<select class="form-select" id="itemOrigin" onchange="applyOriginCode()" disabled>
+    							<option value="">품종을 먼저 선택하세요</option>
     						</select>
     					</div>
     				</div>
@@ -151,22 +162,119 @@
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     
     <script>
-    	const kamisDB = [
-    		{code: '001', name: '딸기', variety: '설향'},
-    		{code: '002', name: '딸기', variety: '매향'},
-    		{code: '003', name: '딸기', variety: '죽향'},
-    		{code: '004', name: '사과', variety: '부사'},
-    		{code: '005', name: '사과', variety: '홍로'},
-    		{code: '006', name: '포도', variety: '샤인머스캣'}
-    	];
+	    const kamisDB = [
+			// 1. 사과
+			{code: '1', name: '사과', variety: '후지(부사)', origin: '경기'},
+			{code: '2', name: '사과', variety: '후지(부사)', origin: '강원'},
+			{code: '3', name: '사과', variety: '후지(부사)', origin: '충북'},
+			{code: '4', name: '사과', variety: '후지(부사)', origin: '충남'},
+			{code: '5', name: '사과', variety: '후지(부사)', origin: '경북'},
+			{code: '6', name: '사과', variety: '후지(부사)', origin: '경남'},
+			{code: '7', name: '사과', variety: '후지(부사)', origin: '전북'},
+			{code: '8', name: '사과', variety: '홍로', origin: '강원'},
+			{code: '9', name: '사과', variety: '홍로', origin: '충북'},
+			{code: '10', name: '사과', variety: '홍로', origin: '경북'},
+			{code: '11', name: '사과', variety: '홍로', origin: '전북'},
+			{code: '12', name: '사과', variety: '쓰가루(아오리)', origin: '경북'},
+			{code: '13', name: '사과', variety: '쓰가루(아오리)', origin: '경남'},
+			{code: '14', name: '사과', variety: '감홍', origin: '강원'},
+			{code: '15', name: '사과', variety: '감홍', origin: '경북'},
+	
+			// 2. 배
+			{code: '16', name: '배', variety: '신고', origin: '서울'},
+			{code: '17', name: '배', variety: '신고', origin: '경기'},
+			{code: '18', name: '배', variety: '신고', origin: '충남'},
+			{code: '19', name: '배', variety: '신고', origin: '경북'},
+			{code: '20', name: '배', variety: '신고', origin: '전남'},
+			{code: '21', name: '배', variety: '원황', origin: '경기'},
+			{code: '22', name: '배', variety: '원황', origin: '충남'},
+			{code: '23', name: '배', variety: '원황', origin: '전남'},
+			{code: '24', name: '배', variety: '화산', origin: '충남'},
+			{code: '25', name: '배', variety: '화산', origin: '전남'},
+	
+			// 3. 복숭아
+			{code: '26', name: '복숭아', variety: '백도', origin: '경기'},
+			{code: '27', name: '복숭아', variety: '백도', origin: '강원'},
+			{code: '28', name: '복숭아', variety: '백도', origin: '충북'},
+			{code: '29', name: '복숭아', variety: '백도', origin: '경북'},
+			{code: '30', name: '복숭아', variety: '백도', origin: '전북'},
+			{code: '31', name: '복숭아', variety: '황도', origin: '경기'},
+			{code: '32', name: '복숭아', variety: '황도', origin: '충북'},
+			{code: '33', name: '복숭아', variety: '황도', origin: '경북'},
+			{code: '34', name: '복숭아', variety: '천중도', origin: '충북'},
+			{code: '35', name: '복숭아', variety: '천중도', origin: '경북'},
+	
+			// 4. 포도
+			{code: '36', name: '포도', variety: '샤인머스캣', origin: '경기'},
+			{code: '37', name: '포도', variety: '샤인머스캣', origin: '충북'},
+			{code: '38', name: '포도', variety: '샤인머스캣', origin: '충남'},
+			{code: '39', name: '포도', variety: '샤인머스캣', origin: '경북'},
+			{code: '40', name: '포도', variety: '캠벨얼리', origin: '경기'},
+			{code: '41', name: '포도', variety: '캠벨얼리', origin: '충북'},
+			{code: '42', name: '포도', variety: '캠벨얼리', origin: '경북'},
+			{code: '43', name: '포도', variety: '거봉', origin: '경기'},
+			{code: '44', name: '포도', variety: '거봉', origin: '충남'},
+			{code: '45', name: '포도', variety: '거봉', origin: '경북'},
+	
+			// 5. 감귤
+			{code: '46', name: '감귤', variety: '노지감귤', origin: '제주'},
+			{code: '47', name: '감귤', variety: '시설감귤', origin: '제주'},
+			{code: '48', name: '감귤', variety: '한라봉', origin: '전남'},
+			{code: '49', name: '감귤', variety: '한라봉', origin: '제주'},
+			{code: '50', name: '감귤', variety: '천혜향', origin: '전남'},
+			{code: '51', name: '감귤', variety: '천혜향', origin: '제주'},
+			{code: '52', name: '감귤', variety: '레드향', origin: '제주'},
+	
+			// 6. 단감
+			{code: '53', name: '단감', variety: '부유', origin: '경북'},
+			{code: '54', name: '단감', variety: '부유', origin: '경남'},
+			{code: '55', name: '단감', variety: '부유', origin: '전남'},
+			{code: '56', name: '단감', variety: '태추', origin: '경남'},
+			{code: '57', name: '단감', variety: '태추', origin: '전남'},
+	
+			// 7. 참다래(키위)
+			{code: '58', name: '참다래', variety: '헤이워드(그린)', origin: '경남'},
+			{code: '59', name: '참다래', variety: '헤이워드(그린)', origin: '전남'},
+			{code: '60', name: '참다래', variety: '헤이워드(그린)', origin: '제주'},
+			{code: '61', name: '참다래', variety: '해금(골드)', origin: '전남'},
+			{code: '62', name: '참다래', variety: '해금(골드)', origin: '제주'},
+	
+			// 8. 딸기
+			{code: '63', name: '딸기', variety: '설향', origin: '서울'},
+			{code: '64', name: '딸기', variety: '설향', origin: '경기'},
+			{code: '65', name: '딸기', variety: '설향', origin: '충남'},
+			{code: '66', name: '딸기', variety: '설향', origin: '경남'},
+			{code: '67', name: '딸기', variety: '설향', origin: '전북'},
+			{code: '68', name: '딸기', variety: '설향', origin: '전남'},
+			{code: '69', name: '딸기', variety: '매향', origin: '충남'},
+			{code: '70', name: '딸기', variety: '매향', origin: '경남'},
+			{code: '71', name: '딸기', variety: '죽향', origin: '전남'},
+			{code: '72', name: '딸기', variety: '킹스베리', origin: '충남'},
+	
+			// 9. 방울토마토
+			{code: '73', name: '방울토마토', variety: '원형방울토마토', origin: '경기'},
+			{code: '74', name: '방울토마토', variety: '원형방울토마토', origin: '충남'},
+			{code: '75', name: '방울토마토', variety: '원형방울토마토', origin: '전남'},
+			{code: '76', name: '방울토마토', variety: '대추방울토마토', origin: '강원'},
+			{code: '77', name: '방울토마토', variety: '대추방울토마토', origin: '충남'},
+			{code: '78', name: '방울토마토', variety: '대추방울토마토', origin: '경남'},
+			{code: '79', name: '방울토마토', variety: '대추방울토마토', origin: '전북'},
+	
+			// 10. 수박 & 참외
+			{code: '80', name: '수박', variety: '흑미수박', origin: '충북'},
+			{code: '81', name: '수박', variety: '흑미수박', origin: '전북'},
+			{code: '82', name: '수박', variety: '복수박', origin: '충남'},
+			{code: '83', name: '수박', variety: '복수박', origin: '경남'},
+			{code: '84', name: '참외', variety: '금싸라기', origin: '경북'}
+		];
     	
     	function handleItemNameInput(){
     		let inputName = document.getElementById('itemName').value.trim();
-    		let resultBox = document.getElementById('autocompleteResults'); // 오타 수정됨
+    		let resultBox = document.getElementById('autocompleteResults');
     		
     		if (!inputName){
     			resultBox.style.display = 'none';
-    			resetVarietyAndCode(); // 오타 수정됨
+    			resetVarietyOriginAndCode(true);
     			return;
     		}
     		
@@ -192,22 +300,36 @@
     			resultBox.style.display = 'block'; 
     		} else{
     			resultBox.style.display = 'none'; 
-    			resetVarietyAndCode();
+    			resetVarietyOriginAndCode(true);
     		}
     	}
     	
     	
+    	// 품목명 선택
     	function selectItemName(selectedName){
     		document.getElementById('itemName').value = selectedName;
     		document.getElementById('autocompleteResults').style.display = 'none';
     		populateVarietyDropdown(selectedName);
+    		resetOriginAndCode(true);
     	}
     	
-    	function resetVarietyAndCode(){
+    	// clearCodeInput 파라미터를 통해 직접 입력중일때 코드창 보호
+    	function resetVarietyOriginAndCode(clearCodeInput = true){
     		let varietySelect = document.getElementById('itemVariety');
     		varietySelect.innerHTML = '<option value="">품목을 먼저 검색하세요</option>';
     		varietySelect.disabled = true;
-    		document.getElementById('itemCode').value = '';
+    		
+    		resetOriginAndCode(clearCodeInput);
+    	}
+    	
+    	function resetOriginAndCode(clearCodeInput = true){
+    		let originSelect = document.getElementById('itemOrigin');
+    		originSelect.innerHTML = '<option value="">품종을 먼저 선택하세요.</option>';
+    		originSelect.disabled = true;
+    		
+    		if (clearCodeInput){
+    			document.getElementById('itemCode').value = '';	
+    		}
     	}
     	
     	document.addEventListener('click', function(e){
@@ -218,48 +340,105 @@
     		}
     	});
     	
+    	// 품종 드롭다운 옵션 함수
     	function populateVarietyDropdown(itemName){
     		let varietySelect = document.getElementById('itemVariety');
-    		varietySelect.innerHTML = '<option value="">품종을 선택하세요</option>'; // 오타 수정됨
+    		varietySelect.innerHTML = '<option value="">품종을 선택하세요</option>';
     		
-    		let varieties = kamisDB.filter(item => item.name === itemName);
+    		let matchedItems = kamisDB.filter(item => item.name === itemName);
+    		let uniqueVarieties = [...new Set(matchedItems.map(item => item.variety))];
     		
-    		varieties.forEach(item => {
+    		uniqueVarieties.forEach(variety => {
     			let option = document.createElement('option');
-    			option.value = item.variety;
-    			option.text = item.variety;
-    			option.dataset.code = item.code;
+    			option.value = variety;
+    			option.text = variety;    			
     			varietySelect.appendChild(option);
     		});
     		
     		varietySelect.disabled = false;
-    		document.getElementById('itemCode').value = '';
     	}
     	
-    	function applyVarietyCode(){
-    		let varietySelect = document.getElementById('itemVariety');
-    		let selectedOption = varietySelect.options[varietySelect.selectedIndex];
+    	function handleVarietyChange(){
+    		let itemName = document.getElementById('itemName').value.trim();
+    		let selectedVariety = document.getElementById('itemVariety').value;
     		
-    		if (selectedOption.value !== ""){
+    		// 품종 선택 취소시 비활성화
+    		if (!selectedVariety){
+    			resetOriginAndCode(true);
+    			return;
+    		}
+    		
+    		populateOriginDropdown(itemName, selectedVariety);
+    		document.getElementById('itemCode').value= '';
+    	}
+    	
+    	function populateOriginDropdown (itemName, varietyName){
+    		let originSelect = document.getElementById('itemOrigin');
+    		originSelect.innerHTML = '<option value="">원산지를 선택하세요</option>';
+    		
+    		let matchedOrigins = kamisDB.filter(
+   				item => item.name === itemName && item.variety === varietyName
+			);
+    		
+    		matchedOrigins.forEach(item => {
+    			let option = document.createElement('option');
+    			option.value =  item.origin;
+    			option.text = item.origin;
+    			option.dataset.code = item.code; // 최종 단계인 원산지 옵션에 품목 코드를 매핑
+    			originSelect.appendChild(option);
+    		});
+    		
+    		originSelect.disabled = false;    		
+    	}
+    	
+    	// 원산지 선택시 최종 품목 코드 자동 세팅
+    	function applyOriginCode(){
+    		let originSelect = document.getElementById('itemOrigin');
+    		let selectedOption = originSelect.options[originSelect.selectedIndex];
+    		
+    		if (selectedOption && selectedOption.value !== ""){
     			document.getElementById('itemCode').value = selectedOption.dataset.code;
     		} else {
     			document.getElementById('itemCode').value = '';
     		}
     	}
+    	    	
     	
-    	function applyByCode(codeValue){
-    		if (!codeValue) return;
+    	// 품목코드 직접 입력시 나머지 자동완성
+    	function applyByCode(inputElement){
+    		// 숫자 이외는 입력방지
+    		let rawValue = inputElement.value.replace(/[^0-9]/g, '');
     		
-    		let formattedCode = codeValue.padStart(3, '0');
-    		let matchedItem = kamisDB.find(item => item.code === formattedCode);
+    		if (!rawValue){
+    			inputElement.value = '';
+    			document.getElementById('itemName').value = '';
+    			resetVarietyOriginAndCode(false);
+    			return;
+    		}
+    		
+    		// '001'이나 '0011'같은 형식을 입력해도 1, 11같이 변환 (10진수변환)
+    		let normalizedCode = String(parseInt(rawValue,10));
+    		inputElement.value = normalizedCode;
+    		
+    		let matchedItem = kamisDB.find(item => item.code === normalizedCode);
     		
     		if (matchedItem){
-    			document.getElementById('itemCode').value = matchedItem.code;
+    			// 품목 명 세팅
     			document.getElementById('itemName').value = matchedItem.name;
     			
+    			// 품종 목록 생성 및 선택
     			populateVarietyDropdown(matchedItem.name);
     			document.getElementById('itemVariety').value = matchedItem.variety;
+    			
+    			// 원산지 목록 생성 및 선택
+    			populateOriginDropdown(matchedItem.name, matchedItem.variety);
+    			document.getElementById('itemOrigin').value = matchedItem.origin;
+    			    			
+    			// 자동완성 창 닫기    			    			
     			document.getElementById('autocompleteResults').style.display = 'none';
+    		} else{
+    			document.getElementById('itemName').value = '';
+    			resetVarietyOriginAndCode(false);
     		}
    		}
     	
@@ -280,8 +459,7 @@
     		document.getElementById('totalPrice').value = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     	}
     	
-        
-        function removeCommasBeforeSubmit() {
+    	function removeCommasBeforeSubmit() {
             let unitPrice = document.getElementById('unitPrice');
             let totalPrice = document.getElementById('totalPrice');
             
@@ -289,42 +467,7 @@
             totalPrice.value = totalPrice.value.replace(/,/g, '');
             return true;
         }
-
-    	function formatPhoneNumber(input){
-    		let val = input.value.replace(/[^0-9]/g, '');
-    		let res = '';
-    		
-    		if (val.length < 4){
-    			res = val;
-    		} else if (val.length < 7){
-    			res = val.substr(0,3) + '-' + val.substr(3);
-    		} else if (val.length < 11){
-    			res = val.substr(0,3) + '-' + val.substr(3,3) + '-'+ val.substr(6);
-    		} else{
-    			res = val.substr(0,3) + '-' + val.substr(3,4) + '-' + val.substr(7);
-    		} input.value = res;
-    	}
-    	
-    	function execDaumPostcode(){
-    		new daum.Postcode({
-    			oncomplete: function(data){
-    				var addr = data.roadAddress;
-    				var extraAddr = '';
-    				
-    				if (data.bname != '' && /[동|로|기]$/g.test(data.bname)){
-    					extraAddr += data.bname;
-    				}
-    				if (data.buildingName !== '' && data.apartment ==='Y'){
-    					extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-    				}
-    				if (extraAddr !== ''){
-    					extraAddr = ' (' + extraAddr + ')'; // 오타 수정됨 (!== -> =)
-    				}
-    				
-                    document.getElementById("address").value = data.zonecode + " " + addr + extraAddr;
-    			}
-    		}).open();
-    	}
+        
     </script>
     <%@ include file="footer.jsp"%>
 </body>
