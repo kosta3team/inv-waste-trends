@@ -1,0 +1,10 @@
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Java complied files
+*.class
+*.jar
+*.war
+*.ear
