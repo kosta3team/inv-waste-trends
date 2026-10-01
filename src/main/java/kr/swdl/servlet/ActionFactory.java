@@ -17,6 +17,7 @@ public class ActionFactory {
 			break;
 		case "login":
 			a=new LoginAction();
+			break;
 		default :
 			a= new MainUIAction();
 		}
