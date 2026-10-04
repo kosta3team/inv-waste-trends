@@ -31,7 +31,7 @@
 		<div class="input-group justify-content-center align-items-center">
 
 			<!-- 검색 조건 -->
-			<label class="form-label mb-0 fw-bold">기간 : </label>
+			<label class="form-label mb-0 fw-bold">판매기간 : </label>
 			<div class="d-flex align-items-center">
 				<select class="form-select" id="start" name="startYear" style="width: 100px";>
 					<option >2026</option>
