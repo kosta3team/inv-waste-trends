@@ -26,12 +26,9 @@ public class SaleDAO {
 
 		List<SaleVO> list = new ArrayList<SaleVO>();
 
-		String sql = "SELECT fp.fruit_no, s.sale_no, fp.name, s.quantity, fp.price, s.quantity * fp.price AS total_price, s.sales_date "
-				+ "FROM fruit_product fp JOIN sales s ON fp.fruit_no = s.fruit_no "
-				+ "WHERE fp.member_id = ? ORDER BY s.sales_date";
-
+	
 		try {
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			PreparedStatement pstmt = conn.prepareStatement(Query.GET_MEMBER_SALES);
 			pstmt.setString(1, memberId);
 			ResultSet rs =  pstmt.executeQuery();
 			while (rs.next()) {
@@ -61,24 +58,9 @@ public class SaleDAO {
 		List<SaleVO> list = new ArrayList<SaleVO>();
 
 
-		String sql = "SELECT "
-				+ "fp.fruit_no, "		// 과일 상품 일련번호
-				+ "s.sale_no, "			// 판매 일련 번호
-				+ "fp.name, "		 	// 과일 상품명
-				+ "s.quantity, "		// 판매 수량
-				+ "fp.price, "			// 판매 가격
-				+ "s.quantity * fp.price AS total_price, " // 판매 총 가격
-				+ "s.sales_date "		// 판매 일자
-				+ "FROM fruit_product fp "
-				+ "JOIN sales s "
-				+ "    ON fp.fruit_no = s.fruit_no "
-				+ "WHERE fp.member_id = ? "
-				+ "AND s.sales_date >= ? "
-				+ "AND s.sales_date <= ? "
-				+ "ORDER BY s.sales_date";
-
+	
 		try {
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			PreparedStatement pstmt = conn.prepareStatement(Query.GET_MEMBER_SALES_BY_PERIOD);
 			pstmt.setString(1, memberId);
 			pstmt.setString(2, startDay);
 			pstmt.setString(3, endDay);
@@ -110,26 +92,11 @@ public class SaleDAO {
 	public List<SaleVO> findSalesPeriodAdmin() {
 		List<SaleVO> list = new ArrayList<SaleVO>();
 
-		String sql = "SELECT "
-				+ "fp.fruit_no, "
-				+ "s.sale_no, "
-				+ "fp.name , "
-				+ "m.member_name, "
-				+ "m.name, "
-				+ "s.quantity, "
-				+ "fp.price, "
-				+ "s.quantity * fp.price AS total_price, "
-				+ "s.sales_date "
-				+ "FROM fruit_product fp "
-				+ "JOIN sales s "
-				+ "    ON fp.fruit_no = s.fruit_no "
-				+ "JOIN member m "
-				+ "    ON fp.member_id = m.member_id "
-				+ "ORDER BY s.sales_date";
+	
 
 		try {
 			Statement stmt = conn.createStatement();	
-			ResultSet rs =  stmt.executeQuery(sql);
+			ResultSet rs =  stmt.executeQuery(Query.GET_ADMIN_SALES);
 			while (rs.next()) {
 				list.add(new SaleVO(
 						rs.getString("fruit_no"), 
@@ -157,27 +124,8 @@ public class SaleDAO {
 	public List<SaleVO> findSalesByPeriod(String startDay, String endDay) {
 		List<SaleVO> list = new ArrayList<SaleVO>();
 
-		String sql = "SELECT "
-				+ "fp.fruit_no, "
-				+ "s.sale_no, "
-				+ "fp.name , "
-				+ "m.member_name, "
-				+ "m.name, "
-				+ "s.quantity, "
-				+ "fp.price, "
-				+ "s.quantity * fp.price AS total_price, "
-				+ "s.sales_date "
-				+ "FROM fruit_product fp "
-				+ "JOIN sales s "
-				+ "    ON fp.fruit_no = s.fruit_no "
-				+ "JOIN member m "
-				+ "    ON fp.member_id = m.member_id "
-				+ "WHERE s.sales_date >= ? "
-				+ "AND s.sales_date <= ? "
-				+ "ORDER BY s.sales_date";
-
 		try {
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			PreparedStatement pstmt = conn.prepareStatement(Query.GET_ADMIN_SALES_BY_PERIOD);
 			pstmt.setString(1, startDay);
 			pstmt.setString(2, endDay);
 
@@ -208,11 +156,10 @@ public class SaleDAO {
 	 */
 	public int getSalesTotalPrice() {
 		int totalPrice = 0;
-		String sql = "SELECT SUM(s.quantity * fp.price) AS all_total_price FROM fruit_product fp JOIN sales s ON fp.fruit_no = s.fruit_no";
-
+		
 		try {
 			Statement stmt = conn.createStatement();	
-			ResultSet rs =  stmt.executeQuery(sql);
+			ResultSet rs =  stmt.executeQuery(Query.GET_ADMIN_SALES_TOTAL_PRICE);
 			rs.next();
 			totalPrice = rs.getInt("all_total_price");
 			rs.close();
@@ -229,13 +176,9 @@ public class SaleDAO {
 	 */
 	public int getSalesTotalPriceByPeriod(String startDay, String endDay) {
 		int totalPrice = 0;
-		String sql = "SELECT SUM(s.quantity * fp.price) AS all_total_price "
-				+ "FROM fruit_product fp "
-				+ "JOIN sales s ON fp.fruit_no = s.fruit_no "
-				+ "WHERE s.sales_date >= ? AND s.sales_date <= ?";
-
+		
 		try {
-			PreparedStatement pstmt = conn.prepareStatement(sql);	
+			PreparedStatement pstmt = conn.prepareStatement(Query.GET_ADMIN_SALES_TOTAL_PRICE_BY_PERIOD);	
 			pstmt.setString(1, startDay);
 			pstmt.setString(2, endDay);			
 			ResultSet rs =  pstmt .executeQuery();
@@ -255,13 +198,9 @@ public class SaleDAO {
 	 */
 	public int getSalesTotalPriceByMemberId(String memberId) {
 		int totalPrice = 0;
-		String sql = "SELECT SUM(s.quantity * fp.price) AS all_total_price "
-				+ "FROM fruit_product fp "
-				+ "JOIN sales s ON fp.fruit_no = s.fruit_no "
-				+ "WHERE fp.member_id = ?";
-
+	
 		try {
-			PreparedStatement pstmt = conn.prepareStatement(sql);	
+			PreparedStatement pstmt = conn.prepareStatement(Query.GET_MEMBER_SALES_TOTAL_PRICE);	
 			pstmt.setString(1, memberId);	
 			ResultSet rs =  pstmt .executeQuery();
 			rs.next();
@@ -277,14 +216,9 @@ public class SaleDAO {
 
 	public int getSalesTotalPriceByMemberIdByPeriod(String memberId, String startDay, String endDay) {
 		int totalPrice = 0;
-		String sql = "SELECT SUM(s.quantity * fp.price) AS all_total_price "
-				+ "FROM fruit_product fp JOIN sales s ON fp.fruit_no = s.fruit_no "
-				+ "WHERE fp.member_id = ? "
-				+ "AND s.sales_date >= ? "
-				+ "AND s.sales_date <= ?";
 
 		try {
-			PreparedStatement pstmt = conn.prepareStatement(sql);	
+			PreparedStatement pstmt = conn.prepareStatement(Query.GET_MEMBER_SALES_TOTAL_PRICE_BY_PERIOD);	
 			pstmt.setString(1, memberId);	
 			pstmt.setString(2, startDay);	
 			pstmt.setString(3, endDay);	

@@ -22,6 +22,7 @@ public class SaleDAOTest {
 	// 단위 테스트 전 사전 동작
 	@BeforeClass
 	public static void 클래스_사전동작() throws SQLException {
+		System.out.println("사ㅣ전투린");
 		conn = DBCP.getConnection();
 	}
 
@@ -33,7 +34,6 @@ public class SaleDAOTest {
 			System.out.println(VO);
 		}
 	}
-
 
 	@Test
 	public void 특정조합원_기간내_판매기록_조회() throws SQLException {
@@ -51,7 +51,6 @@ public class SaleDAOTest {
 		}
 	}
 	
-	
 	@Test
 	public void 관리자_기간내_판매기록_조회() throws SQLException {
 		List<SaleVO> list  = new SaleDAO(conn).findSalesByPeriod("2026-08-01", "2026-08-01");
@@ -59,7 +58,7 @@ public class SaleDAOTest {
 			System.out.println(VO);
 		}
 	}
-	
+
 	
 	@Test
 	public void 관리자_판매기록_금액_총합() throws SQLException {
