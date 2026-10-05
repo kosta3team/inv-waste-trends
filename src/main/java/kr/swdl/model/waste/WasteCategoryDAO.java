@@ -1,4 +1,4 @@
-package kr.swdl.model;
+package kr.swdl.model.waste;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

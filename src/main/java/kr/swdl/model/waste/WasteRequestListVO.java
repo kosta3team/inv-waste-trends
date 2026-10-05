@@ -1,4 +1,4 @@
-package kr.swdl.model;
+package kr.swdl.model.waste;
 
 public class WasteRequestListVO {
 	private String wasteNo;

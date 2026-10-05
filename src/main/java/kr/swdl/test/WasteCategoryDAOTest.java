@@ -9,8 +9,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import kr.swdl.model.DBCP;
-import kr.swdl.model.WasteCategoryDAO;
-import kr.swdl.model.WasteCategoryVO;
+import kr.swdl.model.waste.WasteCategoryDAO;
+import kr.swdl.model.waste.WasteCategoryVO;
 
 public class WasteCategoryDAOTest {
 

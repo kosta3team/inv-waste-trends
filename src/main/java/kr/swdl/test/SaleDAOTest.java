@@ -12,8 +12,8 @@ import org.junit.Test;
 
 
 import kr.swdl.model.DBCP;
-import kr.swdl.model.SaleDAO;
-import kr.swdl.model.SaleVO;
+import kr.swdl.model.sales.SaleDAO;
+import kr.swdl.model.sales.SaleVO;
 
 public class SaleDAOTest {
 

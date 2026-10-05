@@ -1,4 +1,4 @@
-package kr.swdl.model;
+package kr.swdl.model.waste;
 
 
 import java.sql.Connection;
@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import kr.swdl.model.Query;
 
 public class WasteDAO {
 

@@ -1,4 +1,4 @@
-package kr.swdl.model;
+package kr.swdl.model.sales;
 
 public class SaleVO {
 	private String fruitNo;

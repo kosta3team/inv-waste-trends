@@ -12,10 +12,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import kr.swdl.model.DBCP;
-import kr.swdl.model.WasteDAO;
-import kr.swdl.model.WasteDetailVO;
-import kr.swdl.model.WasteRequestListVO;
-import kr.swdl.model.WasteVO;
+import kr.swdl.model.waste.WasteDAO;
+import kr.swdl.model.waste.WasteDetailVO;
+import kr.swdl.model.waste.WasteRequestListVO;
+import kr.swdl.model.waste.WasteVO;
 
 public class WasteDAOTest {
 
