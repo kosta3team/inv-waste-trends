@@ -32,18 +32,82 @@ public class MemberDAO {
 		return name;
 	}
 	
-	public Object checkId() {
-	
-		return null;
-	}
-
-	public Object signUp() {
+	public String checkId(String memberId) {
 		
-		return null;
+		PreparedStatement pstmt;
+		
+		try {
+			pstmt = conn.prepareStatement(Query.GET_MEMBER_ID);
+			pstmt.setString(1, memberId);
+			ResultSet rs=pstmt.executeQuery();
+			if(rs.next()) {
+				memberId= rs.getString(1);
+				System.out.println(memberId);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return memberId;
 	}
 
-	public Object signUpBusiness(int i) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean signUp(String memberId, String pw, String name, String birth, String phone, String email, String member_file, String zip_code, String address, String detail_address) {
+		boolean result = false;
+		PreparedStatement pstmt;
+		
+		try {
+			pstmt = conn.prepareStatement(Query.ADD_MEMBER);
+			pstmt.setString(1, memberId);
+			pstmt.setString(2, pw);
+			pstmt.setString(3, name);
+			pstmt.setString(4, birth);
+			pstmt.setString(5, phone);
+			pstmt.setString(6, email);
+			pstmt.setString(7, member_file);
+			pstmt.setString(8, zip_code);
+			pstmt.setString(9, address);
+			pstmt.setString(10, detail_address);	
+			
+			result=(pstmt.executeUpdate()==1);
+			pstmt.close();
+			
+				
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	public boolean signUpBusiness(String memberId, String pw, String name, String birth, String phone, String email, String member_file, String company_file, String member_name, String zip_code, String address, String detail_address) {
+		boolean result = false;
+		PreparedStatement pstmt;
+		
+		try {
+			pstmt = conn.prepareStatement(Query.ADD_COMPANY_MEMBER);
+			pstmt.setString(1, memberId);
+			pstmt.setString(2, pw);
+			pstmt.setString(3, name);
+			pstmt.setString(4, birth);
+			pstmt.setString(5, phone);
+			pstmt.setString(6, email);
+			pstmt.setString(7, member_file);
+			pstmt.setString(8, company_file);
+			pstmt.setString(9, member_name);
+			pstmt.setString(10, zip_code);
+			pstmt.setString(11, address);
+			pstmt.setString(12, detail_address);	
+			
+			result=(pstmt.executeUpdate()==1);
+			pstmt.close();
+			
+				
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
 	}
 }
