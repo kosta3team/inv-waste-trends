@@ -13,9 +13,8 @@
 
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/inventoryList.css">
-
-
 
 </head>
 <body>
@@ -33,7 +32,11 @@
 
 			<!-- 검색 조건 -->
 			<!-- 검색 조건 -->
+<<<<<<< HEAD
+			<label class="form-label mb-0 fw-bold">요청기간 : </label>
+=======
 			<label class="form-label mb-0 fw-bold">기간 : </label>
+>>>>>>> origin/dev
 			<div class="d-flex align-items-center">
 				<select class="form-select" id="start" name="startYear" style="width: 100px";>
 					<option >2026</option>
@@ -154,7 +157,11 @@
 	<div class="pagination-area">
 
 		<nav>
+<<<<<<< HEAD
+			<ul class="pagination justify-content-center">
+=======
 			<ul class="pagination">
+>>>>>>> origin/dev
 
 				<li class="page-item disabled"><a class="page-link" href="#">
 						<i class="bi bi-chevron-left"></i>

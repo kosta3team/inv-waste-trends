@@ -26,38 +26,27 @@
     			
     			<div class="card-body">
     				<!-- 품목 검색 영역 시작 -->
-    				<div class="row align-items-end mb-3">
+    				<div class="row align-items-center mb-3">
     					<label class="col-sm-2 col-form-label fw-bold">품목 선택</label>
     					
     					<!-- 품목 코드 -->
-    					<div class="col-sm-2">
-    						<label for="itemCode" class="form-label small text-secondary fw-semibold mb-1">품목코드</label>
-    						<input type="text" class="form-control" id="itemCode" name="itemCode" placeholder="예: 1" oninput="applyByCode(this)" onblur="formatCodeOnBlur(this)" autocomplete="off">
+    					<div class="col-sm-3">
+    						<input type="text" class="form-control" id="itemCode" name="itemCode" placeholder="예: 1" oninput="applyByCode(this.value)" autocomplete="off">
     					</div>
     					
     					<!-- 품목명 -->
-    					<div class="col-sm-2 position-relative">
-    						<label for="itemName" class="form-label small text-secondary fw-semibold mb-1">품목</label>
+    					<div class="col-sm-3 position-relative">
     						<input type="text" class="form-control" id="itemName" name="itemName" placeholder="예: 딸기" oninput="handleItemNameInput()" autocomplete="off">
     						
-    						<!-- 드롭다운 -->    			
+    						<!-- 드롭다운 -->
     						<div id="autocompleteResults" class="list-group position-absolute w-100 shadow-sm" style="display:none; z-index: 1050; max-height: 200px; overflow-y: auto; top:100%;">
     						</div>
     					</div>
     					
     					<!-- 품종 -->
-    					<div class="col-sm-3">
-    						<label for="itemVariety" class="form-label small text-secondary fw-semibold mb-1">품종</label>
-    						<select class="form-select" id="itemVariety" name="itemVariety" onchange="handleVarietyChange()" disabled>
+    					<div class="col-sm-4">
+    						<select class="form-select" id="itemVariety" name="itemVariety" onchange="applyVarietyCode()" disabled>
     							<option value="">품목을 먼저 검색하세요.</option>
-    						</select>
-    					</div>
-    					
-    					<!-- 원산지 -->
-    					<div class="col-sm-3">
-    						<label for="itemOrigin" class="form-label small text-secondary fw-semibold mb-1">원산지</label>
-    						<select class="form-select" id="itemOrigin" onchange="applyOriginCode()" disabled>
-    							<option value="">품종을 먼저 선택하세요</option>
     						</select>
     					</div>
     				</div>
@@ -402,8 +391,6 @@
     			document.getElementById('itemCode').value = '';
     		}
     	}
-    	    	
-    	
     	// 품목코드 직접 입력시 나머지 자동완성
     	function applyByCode(inputElement){
     		// 숫자 이외는 입력방지
@@ -467,7 +454,6 @@
             totalPrice.value = totalPrice.value.replace(/,/g, '');
             return true;
         }
-        
     </script>
     <%@ include file="footer.jsp"%>
 </body>
