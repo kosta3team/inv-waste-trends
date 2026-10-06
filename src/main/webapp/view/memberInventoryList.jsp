@@ -102,7 +102,7 @@
 						data-requester="김민수" data-registrant="박관리자"
 						data-received-date="2026-09-10" data-storage-deadline="2026.09.30"
 						data-dispose-registrant="-" data-dispose-requester="-"
-						data-dispose-date="-" data-dispose-reason="-">>
+						data-dispose-date="-" data-dispose-reason="-">
 						<td>1</td>
 						<td>SH260923001</td>
 						<td>설향딸기</td>

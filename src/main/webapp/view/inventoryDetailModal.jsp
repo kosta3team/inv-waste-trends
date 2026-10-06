@@ -6,8 +6,8 @@
 
 			<div class="modal-header">
 				<div>
-					<h5 class="modal-title mb-1" id="inventoryDetailModalTitle">과일상품일련번호() 상세정보</h5>
-					<p class="text-muted mb-0 small" id="inventoryDetailStorageDeadline">보관일자 : </p>
+					<h5 class="modal-title mb-1" id="inventoryDetailModalTitle">재고일련번호() 상세정보</h5>
+					<p class="text-muted mb-0 small" id="inventoryDetailStorageDeadline">보관 마감날짜 : </p>
 				</div>
 				<button type="button" class="btn-close" data-bs-dismiss="modal"
 					aria-label="Close"></button>
@@ -29,6 +29,7 @@
 							<th>중량(1box)</th>
 							<th>입고수량(box)</th>
 							<th>재고수량(box)</th>
+
 						</tr>
 					</thead>
 					<tbody>
@@ -42,6 +43,7 @@
 							<td id="detailWeight"></td>
 							<td id="detailQuantity"></td>
 							<td id="detailRemainQuantity">25box</td>
+
 						</tr>
 					</tbody>
 				</table>
@@ -68,7 +70,6 @@
 				</table>
 
 				<!-- 폐기정보 -->
-				
 				<h6 class="fw-bold section-title text-danger">폐기 정보</h6>
 				<table class="table table-bordered text-center align-middle mb-0">
 					<thead class="table-light">

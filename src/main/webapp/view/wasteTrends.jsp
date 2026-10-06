@@ -7,17 +7,15 @@
 <title>최강ERP - 특정 양력 월 비교</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-<link rel="stylesheet" href="css/header.css">
-<link rel="stylesheet" href="css/wasteTrends.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/wasteTrends.css">
 </head>
 <body class="bg-light">
     <%@ include file="adminHeader.jsp" %>
     
     <div class="d-flex">
         <!-- aside -->
-        
-        <!--  <%@ include file="sidebar.jsp" %>  -->
-       
+        <%@ include file="sidebar.jsp" %>
         
         <main class="main flex-grow-1 container-fluid p-4">
 
