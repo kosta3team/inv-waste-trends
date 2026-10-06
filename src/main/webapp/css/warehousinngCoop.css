@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+.btn-approve {
+	background-color: #ced4da;
+	border-color: #ced4da;
+	color: #212529;
+	font-weight: 600;
+}
+
+.btn-approve:hover {
+	background-color: #adb5bd;
+	border-color: #adb5bd;
+	color: #212529;
+}
+
+.btn-reject {
+	background-color: #6c757d;
+	border-color: #6c757d;
+	color: white;
+	font-weight: 600;
+}
+
+.btn-reject:hover {
+	background-color: #495057;
+	border-color: #495057;
+	color: white;
+}
+
+.table th {
+	width: 180px;
+	vertical-align: middle;
+}
+
+.table td {
+	vertical-align: middle;
+}
+
+textarea {
+	resize: none;
+}
+
+.modal-body h6 {
+	margin-top: 20px;
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+
+
+
+
+
+
+

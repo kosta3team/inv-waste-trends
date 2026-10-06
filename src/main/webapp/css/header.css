@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+header {
+  width: 100%;
+}
+
+.navbar {
+  min-height: 70px;
+}
+
+.navbar-nav .dropdown {
+  position: relative;
+}
+
+.navbar-nav .dropdown:hover > .dropdown-menu {
+  display: block;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 0;
+}
+
+header .dropdown-toggle::after {
+  display: none;
+}
+
+.navbar-brand {
+  min-width: 180px;
+}
+
+@media (max-width: 768px) {
+  .navbar-brand {
+    min-width: auto;
+  }
+}

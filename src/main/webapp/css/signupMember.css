@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+.active-tab {
+    background-color: #D3D4D5 !important;
+    border-color: #D3D4D5 !important;
+    color: #212529 !important;
+}
+
+

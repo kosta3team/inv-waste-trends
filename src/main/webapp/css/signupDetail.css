@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+
+.btn-approve{
+    background:grey !important;
+    color:white !important;
+}
+
+.btn-reject{
+    background:#eeeeee !important;
+    color:black !important;
+}
+
+
