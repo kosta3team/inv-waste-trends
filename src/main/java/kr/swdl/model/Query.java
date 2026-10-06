@@ -2,6 +2,7 @@ package kr.swdl.model;
 
 public interface Query {
 
+
 	// ==================== MEMBER ====================
 
 		String GET_MEMBER_ID = "SELECT member_id FROM member WHERE member_id = ?";
@@ -276,3 +277,4 @@ public interface Query {
 			+ "WHERE waste_no = ?";
 
 }
+
