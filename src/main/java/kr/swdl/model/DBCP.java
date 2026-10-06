@@ -11,6 +11,7 @@ public class DBCP {
 	private DBCP() {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
+
 		} catch (ClassNotFoundException e) {			
 			e.printStackTrace();
 		}
@@ -28,4 +29,5 @@ public class DBCP {
 		return DriverManager.getConnection(url, "hr", "hr");
 	}
 }
+
 
