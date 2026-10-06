@@ -33,7 +33,7 @@
 
 			<!-- 검색 조건 -->
 			<!-- 검색 조건 -->
-			<label class="form-label mb-0 fw-bold">기간 : </label>
+			<label class="form-label mb-0 fw-bold">요청기간 : </label>
 			<div class="d-flex align-items-center">
 				<select class="form-select" id="start" name="startYear" style="width: 100px";>
 					<option >2026</option>
@@ -143,10 +143,10 @@
 
 	</main>
 	<!-- 페이지네이션 -->
-	<div class="pagination-area">
+	<div class="pagination-area" >
 
 		<nav>
-			<ul class="pagination">
+			<ul class="pagination justify-content-center">
 
 				<li class="page-item disabled"><a class="page-link" href="#">
 						<i class="bi bi-chevron-left"></i>

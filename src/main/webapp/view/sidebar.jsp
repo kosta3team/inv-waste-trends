@@ -5,7 +5,7 @@
 		<i class="bi bi-bar-chart-line me-2"></i><span>폐기량 분석</span>
 	</div>
 	
-	<ul class="nav flex=column mt-3">
+	<ul class="nav flex-column mt-3">
 		<!-- 특정 양력 월 비교 (막대그래프) -->
 		<li class="nav-item">
 			<a class="nav-link ${empty param.cmd || param.cmd == 'wasteTrends' ? 'active' : '' }"

@@ -130,7 +130,7 @@
 		<div class="pagination-area">
 
 			<nav>
-				<ul class="pagination">
+				<ul class="pagination justify-content-center">
 
 					<li class="page-item disabled"><a class="page-link" href="#">
 							<i class="bi bi-chevron-left"></i>
