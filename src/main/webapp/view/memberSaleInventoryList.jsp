@@ -13,7 +13,7 @@
 
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/inventoryList.css">
+<link rel="stylesheet" href="css/inventoryList.css">
 
 
 </head>
@@ -82,8 +82,6 @@
 
 					<tr>
 						<th>순번</th>
-						<th>과일상품일련번호</th>
-						<th>판매일련번호</th>
 						<th>상품명</th>
 						<th>판매수량(box)</th>
 						<th>단가(1box)</th>
@@ -97,8 +95,6 @@
 
 					<tr>
 						<td>1</td>
-						<td>AP09123</td>
-						<td>20260922-002</td>
 						<td>아오리사과</td>
 						<td>10</td>
 						<td>16,000원</td>
@@ -109,8 +105,6 @@
 
 					<tr>
 						<td>2</td>
-						<td>WA09472</td>
-						<td>20260922-001</td>
 						<td>꿀수박</td>
 						<td>6</td>
 						<td>32,000원</td>
@@ -122,8 +116,6 @@
 
 					<tr>
 						<td>3</td>
-						<td>PE07423</td>
-						<td>20260921-001</td>
 						<td>복숭아</td>
 						<td>16</td>
 						<td>16,000원</td>
@@ -133,8 +125,6 @@
 					
 					<tr>
 						<td><td>
-						<td></td>
-						<td></td>
 						<td></td>
 						<td></td>
 						<td>총판매금액 : 2,226,000원</td>
@@ -154,7 +144,7 @@
 		<div class="pagination-area">
 
 			<nav>
-				<ul class="pagination">
+				<ul class="pagination justify-content-center">
 
 					<li class="page-item disabled"><a class="page-link" href="#">
 							<i class="bi bi-chevron-left"></i>

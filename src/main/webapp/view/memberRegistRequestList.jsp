@@ -13,7 +13,7 @@
 
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/inventoryList.css">
+<link rel="stylesheet" href="css/inventoryList.css">
 
 
 
@@ -86,7 +86,7 @@
 	<div class="pagination-area">
 
 		<nav>
-			<ul class="pagination">
+			<ul class="pagination justify-content-center">
 
 				<li class="page-item disabled"><a class="page-link" href="#">
 						<i class="bi bi-chevron-left"></i>

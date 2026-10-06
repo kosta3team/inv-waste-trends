@@ -1,4 +1,8 @@
 .metadata/
 build/
+<<<<<<< HEAD
+*.class
+=======
 *.class
 
+>>>>>>> origin/dev
