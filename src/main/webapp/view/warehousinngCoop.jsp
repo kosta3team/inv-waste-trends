@@ -90,12 +90,14 @@
 							<tr>
 								<th class="table-light">상품명</th>
 								<td>설향딸기</td>
+								
+								<th class="table-light">원산지</th>
+								<td>강원도 철원</td>
 
 								<th class="table-light">단가(1Box)</th>
 								<td>30,000원</td>
 
-								<th class="table-light"></th>
-								<td></td>
+								
 							</tr>
 
 							<tr>
@@ -146,19 +148,10 @@
 						</tbody>
 					</table>
 
-					<h6></h6>
-					<table class="table table-bordered align-middle">
-						<tbody>
-						<tr>
-								<th class="table-light">거절사유</th>
-
-								<td colspan="5">평균 시세 대비 높은 금액, 재요청바람  </td>
-							</tr>
-						</tbody>
-					</table>
+				
 
 
-					<h6>입고 처리 : 박재현 관리자</h6>
+					<h6>입고 처리자 : 박재현 관리자</h6>
 
 				</div>
 

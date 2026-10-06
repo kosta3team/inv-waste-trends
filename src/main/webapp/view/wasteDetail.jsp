@@ -94,7 +94,10 @@
 
 							<tr>
 								<th class="table-light">상품명</th>
-								<td colspan="5">설향딸기</td>
+								<td colspan="2">설향딸기</td>
+								
+								<th class="table-light">원산지</th>
+								<td colspan="2">전북 남원</td>
 							</tr>
 
 							<tr>
@@ -127,26 +130,13 @@
 					</table>
 
 
-					<table class="table table-bordered align-middle">
-						<tbody>
-
-							<tr>
-								<th class="table-light" style="width: 20%;">거절사유</th>
-
-								<td colspan="3"><textarea class="form-control" rows="5"
-										placeholder="거절 시 사유를 입력하세요."></textarea></td>
-							</tr>
-
-						</tbody>
-					</table>
-
+					
 
 				</div>
 
 				<div class="modal-footer">
 
 					<button type="button" class="btn btn-approve px-4">승인</button>
-
 					<button type="button" class="btn btn-reject px-4">거절</button>
 
 				</div>
