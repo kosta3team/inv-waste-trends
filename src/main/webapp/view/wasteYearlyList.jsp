@@ -7,8 +7,8 @@
 <title>최강 ERP - 연중 폐기량 조회</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-<link rel="stylesheet" href="css/header.css">
-<link rel="stylesheet" href="css/wasteTrends.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/wasteTrends.css">
 </head>
 <body class="bg-light">
     <%@ include file="adminHeader.jsp" %>
