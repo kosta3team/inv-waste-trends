@@ -1,4 +1,4 @@
-package kr.swdl.vo;
+package kr.swdl.model.fruitcategory;
 
 public class FruitCategoryVO {
 	private String fruitCategoryNo;

@@ -1,4 +1,4 @@
-package kr.swdl.vo;
+package kr.swdl.model.admin;
 
 public class AdminVO {
 	private String adminId;

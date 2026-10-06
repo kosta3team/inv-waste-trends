@@ -1,6 +1,7 @@
-package kr.swdl.dao;
+package kr.swdl.model.fruitproduct;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,10 +10,9 @@ import java.util.List;
 
 import kr.swdl.query.FruitProductQuery;
 import kr.swdl.util.DBUtil;
-import kr.swdl.vo.AdminVO;
-import kr.swdl.vo.FruitCategoryVO;
-import kr.swdl.vo.FruitProductVO;
-import kr.swdl.vo.MemberVO;
+import kr.swdl.model.admin.AdminVO;
+import kr.swdl.model.fruitcategory.FruitCategoryVO;
+import kr.swdl.model.member.MemberVO;
 
 public class FruitProductDAO {
 	
@@ -63,7 +63,7 @@ public class FruitProductDAO {
 				vo.setPrice(rs.getInt("단가"));
 				vo.setTotalPrice(rs.getInt("총판매예상금액"));
 				
-				MemberVO mv = new MemberVO();
+				MemberVO mv = new kr.swdl.model.member.MemberVO();
 				mv.setMemberName(rs.getString("조합원명"));
 				mv.setName(rs.getString("이름"));
 				vo.setMember(mv);

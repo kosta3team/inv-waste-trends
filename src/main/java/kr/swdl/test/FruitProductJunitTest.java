@@ -1,8 +1,8 @@
-package kr.swdl.junit;
+package kr.swdl.test;
 
 import static org.junit.Assert.*;
 
-import java.sql.Date;
+//import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -10,13 +10,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import kr.swdl.dao.FruitProductDAO;
+import kr.swdl.model.fruitproduct.*;
 import kr.swdl.util.DBUtil;
-import kr.swdl.vo.FruitProductVO;
 
 public class FruitProductJunitTest {
 	
-	private FruitProductDAO dao = new FruitProductDAO();
+	private kr.swdl.model.fruitproduct.FruitProductDAO dao = new FruitProductDAO();
 	
 	@Before
 	public void setUp() throws SQLException {

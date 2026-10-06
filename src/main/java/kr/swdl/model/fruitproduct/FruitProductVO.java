@@ -1,6 +1,10 @@
-package kr.swdl.vo;
+package kr.swdl.model.fruitproduct;
 
 import java.sql.Date;
+
+import kr.swdl.model.admin.AdminVO;
+import kr.swdl.model.fruitcategory.FruitCategoryVO;
+import kr.swdl.model.member.MemberVO;
 
 public class FruitProductVO {
 	// 기본테이블 인자

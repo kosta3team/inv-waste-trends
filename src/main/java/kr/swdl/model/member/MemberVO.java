@@ -1,4 +1,4 @@
-package kr.swdl.vo;
+package kr.swdl.model.member;
 
 import java.sql.Date;
 
