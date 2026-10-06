@@ -6,6 +6,14 @@ public class ActionFactory {
 		Action a = null;
 		
 		switch(cmd) {
+		case "adminWasteRequestList":
+			a=new AdminWasteRequestListAction();
+			break;
+		case "adminGetWasteRequestList":
+			a=new AdminGetWasteRequestListAction ();
+			break;
+				
+			
 		case "wasteTrends":
 			a=new WasteTrends();
 			break;

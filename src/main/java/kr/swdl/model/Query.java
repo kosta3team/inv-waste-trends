@@ -259,22 +259,26 @@ public interface Query {
 			
 			public static final String GET_MEMBER_WASTES = "SELECT  waste_no, waste_req_date, waste_date "
 					+ "FROM waste "
-					+ "WHERE member_id = ?";
+					+ "WHERE member_id = ?"
+					+ "ORDER BY waste_req_date DESC";
 			
 			public static final String GET_MEMBER_WASTES_BY_PERIOD = "SELECT waste_no, waste_req_date, waste_req_date, waste_date "
 					+ "FROM waste WHERE member_id = ? "
 					+ "AND waste_req_date IS NOT NULL "
-					+ "AND waste_date IS NULL";
+					+ "AND waste_date IS NULL"
+					+ "ORDER BY waste_req_date DESC";
 			
 			public static final String GET_ADMIN_WASTES = "SELECT w.waste_no, w.waste_req_date, w.waste_date, m.member_name, m.name "
 					+ "FROM waste w, member m "
-					+ "WHERE w.member_id = m.member_id";
+					+ "WHERE w.member_id = m.member_id "
+					+ "ORDER BY w.waste_req_date DESC";
 
 			public static final String GET_ADMIN_WASTES_ONLY_REQUEST = "SELECT w.waste_no, w.waste_req_date, w.waste_date, m.member_name, m.name "
 					+ "FROM waste w, member m "
 					+ "WHERE w.member_id = m.member_id "
 					+ "AND  w.waste_req_date IS NOT NULL "
-					+ "AND w.waste_date IS NULL";	
+					+ "AND w.waste_date IS NULL "
+					+ "ORDER BY w.waste_req_date DESC";	
 			
 			public static final String GET_WASTE_DETAIL = "SELECT "
 					+ "w.waste_req_date, "

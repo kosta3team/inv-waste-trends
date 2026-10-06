@@ -6,6 +6,7 @@ public class WasteRequestListVO {
 	private String wasteDate;
 	private String memberName;
 	private String name;
+	private String status;
 	
 	
 	
@@ -17,6 +18,7 @@ public class WasteRequestListVO {
 		setWasteDate(wasteDate);
 		setMemberName(memberName);
 		setName(name);
+		setStatus();
 	}
 	
 	public WasteRequestListVO(String wasteNo, String wasteReqDate, String wasteDate) {
@@ -54,12 +56,23 @@ public class WasteRequestListVO {
 		this.name = name;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus() {
+		String st = "승인";
+		if (null == getWasteDate())
+			st = "대기";
+		
+		this.status = st;
+	}
+
 	@Override
 	public String toString() {
 		return "WasteRequestListVO [wasteNo=" + wasteNo + ", wasteReqDate=" + wasteReqDate + ", wasteDate=" + wasteDate
-				+ ", memberName=" + memberName + ", name=" + name + "]";
+				+ ", memberName=" + memberName + ", name=" + name + ", status=" + status + "]";
 	}
-	
-	
+
 	
 }

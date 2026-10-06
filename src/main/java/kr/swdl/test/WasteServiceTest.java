@@ -12,12 +12,12 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import kr.swdl.model.DBCP;
+import kr.swdl.model.waste.WasteDAO;
 import kr.swdl.model.waste.WasteDetailVO;
 import kr.swdl.model.waste.WasteRequestListVO;
-import kr.swdl.model.waste.WasteService;
 import kr.swdl.model.waste.WasteVO;
 
-public class WasteDAOTest {
+public class WasteServiceTest {
 
 	private static Connection conn;
 	
@@ -40,17 +40,17 @@ public class WasteDAOTest {
 
 	@Test
 	public void 조합원_폐기요청() throws SQLException {
-		assertTrue(new WasteService().addWaste("관리자의 관리부재로 처리한다.", 5, "fd0001", "member001", "wc0002"));
+		assertTrue(new WasteDAO(conn).addWaste("관리자의 관리부재로 처리한다.", 5, "fd0001", "member001", "wc0002"));
 	}
 	
 	@Test
 	public void 과일상태_폐기요청으로변경() throws SQLException {
-		assertEquals(new WasteService().updateWasteRequestStatus("fd0001", 30), true);
+		assertEquals(new WasteDAO(conn).updateWasteRequestStatus("fd0001", 30), true);
 	}
 	
 	@Test
 	public void 조합원_폐기요청목록_전체_조회() throws SQLException {
-		List<WasteRequestListVO> list = new WasteService().getMemberWasteList("member001");
+		List<WasteRequestListVO> list = new WasteDAO(conn).getMemberWasteList("member001");
 		for (WasteRequestListVO vo : list) {
 			//System.out.println(vo);
 		}
@@ -59,7 +59,7 @@ public class WasteDAOTest {
 	
 	@Test
 	public void 조합원_폐기요청목록_폐기요청대기상태_조회() throws SQLException {
-		List<WasteRequestListVO> list = new WasteService().getMemberWasteListOnlyRequest("member001");
+		List<WasteRequestListVO> list = new WasteDAO(conn).getMemberWasteListOnlyRequest("member001");
 		for (WasteRequestListVO vo : list) {
 			//System.out.println(vo);
 		}
@@ -68,7 +68,7 @@ public class WasteDAOTest {
 	
 	@Test
 	public void 관리자_폐기요청목록_폐기요청_조회() throws SQLException {
-		List<WasteRequestListVO> list = new WasteService().getWasteList();
+		List<WasteRequestListVO> list = new WasteDAO(conn).getWasteList();
 		for (WasteRequestListVO vo : list) {
 			//System.out.println(vo);
 		}
@@ -78,7 +78,7 @@ public class WasteDAOTest {
 
 	@Test
 	public void 관리자_폐기요청목록_폐기요청대기상태_조회() throws SQLException {
-		List<WasteRequestListVO> list = new WasteService().getWasteListOnlyRequest();
+		List<WasteRequestListVO> list = new WasteDAO(conn).getWasteListOnlyRequest();
 		for (WasteRequestListVO vo : list) {
 			//System.out.println(vo);
 		}
@@ -87,24 +87,24 @@ public class WasteDAOTest {
 	
 	@Test
 	public void 관리자_특정_폐기요청_상세_조회() throws SQLException {
-		WasteDetailVO vo = new WasteService().getWasteDetail("wa0001");
+		WasteDetailVO vo = new WasteDAO(conn).getWasteDetail("wa0001");
 		System.out.println(vo);
 	}
 
 	
 	@Test
 	public void 관리자_폐기요청_승인() throws SQLException {
-		assertEquals(new WasteService().updateWasteDate("admin001", "wa0001"), true);
+		assertEquals(new WasteDAO(conn).updateWasteDate("admin001", "wa0001"), true);
 	}
 	
 	@Test
 	public void 관리자_과일상품_폐기로변경() throws SQLException {
-		assertEquals(new WasteService().updateWasteStatus("fd0024"), true);
+		assertEquals(new WasteDAO(conn).updateWasteStatus("fd0024"), true);
 	}
 	
 	@Test 
 	public void 특정_폐기정보_조회() throws SQLException {
-		WasteVO v1 = new WasteService().getWaste("wa0001");
+		WasteVO v1 = new WasteDAO(conn).getWaste("wa0001");
 		WasteVO v2 =  new WasteVO("wa0001", null, "2026-08-21 00:00:00", "보관 중 부분 무름", 10, "fd0001", "member001", null, "wc0005");
 		assertEquals(v1, v2); 
 	}
