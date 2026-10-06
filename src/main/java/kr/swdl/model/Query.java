@@ -31,8 +31,8 @@ public interface Query {
 
 		// 1. 조합원 입고 요청
 		public String ADD_FRUIT_PRODUCT = 
-				"INSERT INTO fruit_product (fruit_no, name, price, weight, quantity, status, request_date, storage_date, fruit_category_no, member_id) "
-				+ "VALUES ('fd' || LPAD(seq_fruit_no.NEXTVAL, 4, '0'), ?, ?, ?, ? , '입고요청', SYSDATE, ?, ?, ?)";
+				"INSERT INTO fruit_product (fruit_no, name, price, weight, quantity, status, request_date, fruit_category_no, member_id) "
+				+ "VALUES ('fd' || LPAD(seq_fruit_no.NEXTVAL, 4, '0'), ?, ?, ?, ? , '입고요청', SYSDATE, ?, ?)";
 		
 		// 2. 관리자 기본 전체 입고요청목록 조회
 		public String GET_FRUIT_PRODUCT_REQUESTS = 
