@@ -7,13 +7,16 @@ public class ActionFactory {
 		
 		switch(cmd) {
 		case "wasteTrends":
-			a=new wasteTrends();
+			a=new WasteTrends();
 			break;
 		case "inventoryList":
-			a=new inventoryList();
+			a=new InventoryList();
 			break;
 		case "memberInventoryList":
-			a=new memberInventoryList();
+			a=new MemberInventoryList();
+			break;
+		case "login":
+			a=new LoginAction();
 			break;
 		default :
 			a= new MainUIAction();

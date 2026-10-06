@@ -1,4 +1,4 @@
-package test.kr.swdl;
+package kr.swdl.test;
 
 import static org.junit.Assert.*;
 

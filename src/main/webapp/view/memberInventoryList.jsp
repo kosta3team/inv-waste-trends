@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>재고 목록 조회</title>
+<title>과일상품정보 목록 조회</title>
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -24,7 +24,7 @@
 
 		<!-- 제목 -->
 		<div class="mb-4">
-			<h3 class="fw-bold mb-1">재고 목록 조회</h3>
+			<h3 class="fw-bold mb-1">과일상품정보 목록 조회</h3>
 		</div>
 
 
@@ -80,20 +80,29 @@
 
 					<tr>
 						<th>순번</th>
-						<th>재고일련번호</th>
+						<th>과일상품일련번호</th>
 						<th>상품명</th>
 						<th>재고수량(box)</th>
 						<th>단가(1box)</th>
-						<th>보관기간</th>
+						<th>보관일자</th>
 						<th>폐기일자</th>
 						<th>폐기사유</th>
+						<th>상태</th>
 					</tr>
 
 				</thead>
 
 				<tbody>
 
-					<tr>
+					<tr onclick="showInventoryDetail(this)"
+						data-serial="SH260923001" data-item-code="IC-1001"
+						data-category="딸기" data-variety="설향" data-origin="국내산(논산)"
+						data-product-name="설향딸기" data-unit-price="32,000원"
+						data-weight="2kg" data-quantity="25box" data-remain-quantity="5box" data-coop-name="과일아삭"
+						data-requester="김민수" data-registrant="박관리자"
+						data-received-date="2026-09-10" data-storage-deadline="2026.09.30"
+						data-dispose-registrant="-" data-dispose-requester="-"
+						data-dispose-date="-" data-dispose-reason="-">
 						<td>1</td>
 						<td>SH260923001</td>
 						<td>설향딸기</td>
@@ -102,6 +111,7 @@
 						<td>2026-09-30</td>
 						<td>-</td>
 						<td>-</td>
+						<td>정상</td>
 					</tr>
 
 
@@ -114,6 +124,7 @@
 						<td>2026-10-15</td>
 						<td>-</td>
 						<td>-</td>
+						<td>정상</td>
 					</tr>
 
 
@@ -127,6 +138,7 @@
 						<td>2026-10-03</td>
 						<td>-</td>
 						<td>-</td>
+						<td>정상</td>
 					</tr>
 
 					<tr>
@@ -138,6 +150,7 @@
 						<td>2026-09-20</td>
 						<td>2026-09-21</td>
 						<td>미판매</td>
+						<td>폐기완료</td>
 					</tr>
 
 				</tbody>
@@ -150,7 +163,7 @@
 		<div class="pagination-area">
 
 			<nav>
-				<ul class="pagination">
+				<ul class="pagination justify-content-center">
 
 					<li class="page-item disabled"><a class="page-link" href="#">
 							<i class="bi bi-chevron-left"></i>
@@ -174,6 +187,10 @@
 			</nav>
 		</div>
 	</main>
+	<%@ include file="inventoryDetailModal.jsp" %>
 	<%@ include file="footer.jsp"%>
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
 </body>
 </html>
