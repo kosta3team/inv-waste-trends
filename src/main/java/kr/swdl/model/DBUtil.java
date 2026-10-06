@@ -1,4 +1,4 @@
-package kr.swdl.util;
+package kr.swdl.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
