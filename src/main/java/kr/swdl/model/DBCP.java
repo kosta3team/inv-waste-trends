@@ -5,13 +5,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBCP {
-
 	private static DBCP dbcp;
 
 	private DBCP() {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
-
 		} catch (ClassNotFoundException e) {			
 			e.printStackTrace();
 		}
@@ -29,5 +27,3 @@ public class DBCP {
 		return DriverManager.getConnection(url, "hr", "hr");
 	}
 }
-
-

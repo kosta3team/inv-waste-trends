@@ -33,36 +33,32 @@
 				<tbody>
 
 					<tr>
-						<th width="20%" class="table-light">요청 일련번호</th>
-						<td>A00014</td>
-
-						<th width="20%" class="table-light">요청일자</th>
+				
+						<th class="table-light">요청일자</th>
 						<td>2026-09-21</td>
-					</tr>
-
-					<tr>
+						
 						<th class="table-light">이름</th>
 						<td>박재현</td>
+					</tr>
 
+					<tr>
 						<th class="table-light">생년월일</th>
 						<td>2001-02-07</td>
-					</tr>
-
-					<tr>
+						
 						<th class="table-light">전화번호</th>
 						<td>010-7413-5894</td>
-
-						<th class="table-light">이메일</th>
-						<td>rdkskj75@gmail.com</td>
 					</tr>
 
 					<tr>
+						<th class="table-light">이메일</th>
+						<td>rdkskj75@gmail.com</td>
+						
 						<th class="table-light">주소</th>
 						<td colspan="3">전남 해남군 해남읍 해리 123-55</td>
 					</tr>
-
+					
 					<tr>
-						<th class="table-light">첨부파일</th>
+						<th class="table-light">조합원증명서</th>
 						<td colspan="3">
 
 							<div class="d-flex align-items-center gap-2">
@@ -70,19 +66,13 @@
 								<i class="bi bi-file-earmark-pdf"></i> <a href="#"
 									class="text-decoration-none"> 조합원증명서.pdf </a>
 
-								<button type="button" class="btn btn-sm btn-outline-secondary">
-									다운로드</button>
 
 							</div>
 
 						</td>
 					</tr>
 
-					<tr>
-						<th class="table-light">거절사유</th>
-						<td colspan="3"><textarea class="form-control" rows="5"
-								placeholder="거절 시 사유를 입력하세요."></textarea></td>
-					</tr>
+				
 
 				</tbody>
 			</table>

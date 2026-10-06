@@ -89,12 +89,14 @@
 							<tr>
 								<th class="table-light">상품명</th>
 								<td>설향딸기</td>
+								
+								<th class="table-light">원산지</th>
+								<td>강원도 철원</td>
 
 								<th class="table-light">단가(1Box)</th>
 								<td>30,000원</td>
 
-								<th class="table-light"></th>
-								<td></td>
+								
 							</tr>
 
 							<tr>
@@ -140,17 +142,11 @@
 								<td colspan="3">sdkkj29@gmail.com</td>
 							</tr>
 
-							<tr>
-								<th class="table-light">거절사유</th>
-
-								<td colspan="3"><textarea class="form-control" rows="5"
-										placeholder="거절 시 사유를 입력하세요."></textarea></td>
-							</tr>
 
 						</tbody>
 					</table>
 
-					<h6>입고 처리 : 박재현 관리자</h6>
+					<h6>입고 처리자 : 박재현 관리자</h6>
 
 				</div>
 

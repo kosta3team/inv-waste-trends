@@ -119,15 +119,16 @@
 								<label class="form-label">주소 *</label>
 
 								<div class="input-group mb-2">
-									<input type="text" class="form-control" id="address"
-										placeholder="주소" readonly>
+									<input type="text" class="form-control" id="zipcode"
+										placeholder="우편번호" readonly>
 
 									<button type="button" id="searchAddressBtn"
 										class="btn btn-outline-secondary">주소검색</button>
 								</div>
 
-								<input type="text" class="form-control" id="detailAddress"
-									placeholder="상세주소 입력">
+								<input type="text" class="form-control mb-2" id="address"
+									placeholder="주소" readonly> <input type="text"
+									class="form-control" id="detailAddress" placeholder="상세주소 입력">
 							</div>
 
 
