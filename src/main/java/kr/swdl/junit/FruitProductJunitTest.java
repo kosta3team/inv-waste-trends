@@ -14,7 +14,7 @@ import kr.swdl.dao.FruitProductDAO;
 import kr.swdl.util.DBUtil;
 import kr.swdl.vo.FruitProductVO;
 
-public class FruitProductJunitTest2 {
+public class FruitProductJunitTest {
 	
 	private FruitProductDAO dao = new FruitProductDAO();
 	
@@ -36,7 +36,7 @@ public class FruitProductJunitTest2 {
 		vo.setPrice(30000);
 		vo.setWeight(5.0);
 		vo.setQuantity(50);
-		vo.setStorageDate(Date.valueOf("2026-10-01"));
+//		vo.setStorageDate(Date.valueOf("2026-10-01"));
 		vo.setFruitCategoryNo("fc0001");
 		vo.setMemberId("member001");
 		

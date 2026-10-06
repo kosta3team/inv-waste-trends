@@ -29,9 +29,9 @@ public class FruitProductDAO {
 			pstmt.setInt(2, vo.getPrice());
 			pstmt.setDouble(3, vo.getWeight());
 			pstmt.setInt(4, vo.getQuantity());
-			pstmt.setDate(5, vo.getStorageDate());
-			pstmt.setString(6, vo.getFruitCategoryNo());			
-			pstmt.setString(7, vo.getMemberId());
+//			pstmt.setDate(5, vo.getStorageDate());
+			pstmt.setString(5, vo.getFruitCategoryNo());			
+			pstmt.setString(6, vo.getMemberId());
 			
 			if (pstmt.executeUpdate() == 1) {
 				result = true;

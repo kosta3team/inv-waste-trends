@@ -28,7 +28,8 @@ public interface Query {
 
 		// ==================== FRUIT PRODUCT ====================
 
-		String ADD_FRUIT_PRODUCT =  "INSERT INTO fruit_product VALUES ('fd' || LPAD(seq_fruit_no.NEXTVAL, 4, '0'), ?, ?, ?, ?, '입고대기', SYSDATE, ?, ?, ?, ?, ?, ?)";
+		String ADD_FRUIT_PRODUCT =  "INSERT INTO fruit_product (fruit_no, name, price, weight, quantity, status, request_date, fruit_category_no, member_id)\r\n"
+				+ "VALUES ('fd' || LPAD(seq_fruit_no.NEXTVAL, 4, '0'), ?, ?, ?, ? , '입고요청', SYSDATE, ?, ?)";
 		
 		String GET_FRUIT_PRODUCT_REQUESTS = "SELECT fp.name AS 상품명, fp.quantity AS 입고수량, fp.price AS 단가, "
 				+ "fp.quantity * fp.price AS 판매예상금액, SUM(fp.quantity * fp.price) OVER() AS 총판매예상금액, "

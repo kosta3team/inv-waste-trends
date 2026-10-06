@@ -9,8 +9,8 @@ import java.sql.SQLException;
 public class DBUtil{
 	private static final String DRIVER = "oracle.jdbc.driver.OracleDriver";
 	private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
-	private static final String USER = "daniel";
-	private static final String PASSWORD = "1234";
+	private static final String USER = "hr"; // daniel로 로컬에서 테스트 했었음
+	private static final String PASSWORD = "hr"; // 1234로 로컬에서 테스트 했었음
 	
 	// Junit 용 테스트 커넥션
 	private static Connection testConn = null;
