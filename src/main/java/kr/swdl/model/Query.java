@@ -173,6 +173,12 @@ public interface Query {
 				+ "ON fp.member_id = m.member_id "
 				+ "WHERE fruit_no = ?";
 		
+		// 9. 관리자 입고 요청을 거절
+		public String REJECT_FRUIT_PRODUCT = "UPDATE fruit_product SET status='거절', admin_id = ?, fruit_product_date = SYSDATE WHERE  fruit_no = ?";
+		
+		// 10. 관리자 입고 요청을 승인
+		public String APPROVE_FRUIT_PRODUCT = "UPDATE fruit_product SET status='정상', admin_id = ?, fruit_product_date = SYSDATE WHERE  fruit_no = ?";
+		
 		// ==================== Sales ====================
 		public static final String GET_MEMBER_SALES = "SELECT fp.fruit_no, s.sale_no, fp.name, s.quantity, fp.price, s.quantity * fp.price AS total_price, s.sales_date "
 				+ "FROM fruit_product fp JOIN sales s ON fp.fruit_no = s.fruit_no "

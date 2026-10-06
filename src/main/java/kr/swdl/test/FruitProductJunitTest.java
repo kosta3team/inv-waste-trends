@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import kr.swdl.model.fruitproduct.*;
-import kr.swdl.model.DBUtil;
+import kr.swdl.model.DBCPTest;
 
 public class FruitProductJunitTest {
 	
@@ -19,12 +19,12 @@ public class FruitProductJunitTest {
 	
 	@Before
 	public void setUp() throws SQLException {
-		DBUtil.beginTestTransaction();
+		DBCPTest.beginTestTransaction();
 	}
 	
 	@After
 	public void testShutDown() {
-		DBUtil.rollbackTestTransaction();
+		DBCPTest.rollbackTestTransaction();
 	}
 	
 	@Test

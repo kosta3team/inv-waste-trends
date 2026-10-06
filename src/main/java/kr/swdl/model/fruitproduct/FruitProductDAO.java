@@ -8,8 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import kr.swdl.query.FruitProductQuery;
-import kr.swdl.model.DBUtil;
+import kr.swdl.model.DBCP;
+import kr.swdl.model.Query;
 import kr.swdl.model.admin.AdminVO;
 import kr.swdl.model.fruitcategory.FruitCategoryVO;
 import kr.swdl.model.member.MemberVO;
@@ -23,8 +23,8 @@ public class FruitProductDAO {
 		PreparedStatement pstmt = null;
 		
 		try {
-			conn = DBUtil.getConnection();
-			pstmt = conn.prepareStatement(FruitProductQuery.ADD_FRUIT_PRODUCT);
+			conn = DBCP.getConnection();
+			pstmt = conn.prepareStatement(Query.ADD_FRUIT_PRODUCT);
 			pstmt.setString(1, vo.getName());
 			pstmt.setInt(2, vo.getPrice());
 			pstmt.setDouble(3, vo.getWeight());
@@ -39,7 +39,7 @@ public class FruitProductDAO {
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.close(conn, pstmt);
+			DBCP.close(conn, pstmt);
 		} return result;
 	}
 	
@@ -51,8 +51,8 @@ public class FruitProductDAO {
 		ResultSet rs = null;
 		
 		try {
-			conn = DBUtil.getConnection();
-			pstmt = conn.prepareStatement(FruitProductQuery.GET_FRUIT_PRODUCT_REQUESTS);
+			conn = DBCP.getConnection();
+			pstmt = conn.prepareStatement(Query.GET_FRUIT_PRODUCT_REQUESTS);
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -77,7 +77,7 @@ public class FruitProductDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.close(conn, pstmt, rs);
+			DBCP.close(conn, pstmt, rs);
 		} return lists;
 	}
 	
@@ -90,8 +90,8 @@ public class FruitProductDAO {
 		ResultSet rs = null;
 		
 		try {
-			conn = DBUtil.getConnection();
-			pstmt = conn.prepareStatement(FruitProductQuery.GET_FRUIT_PRODUCT_REQUESTS_PERIOD);
+			conn = DBCP.getConnection();
+			pstmt = conn.prepareStatement(Query.GET_FRUIT_PRODUCT_REQUESTS_PERIOD);
 			pstmt.setString(1, startDate);
 			pstmt.setString(2, endDate);
 			rs = pstmt.executeQuery();
@@ -118,7 +118,7 @@ public class FruitProductDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.close(conn, pstmt, rs);
+			DBCP.close(conn, pstmt, rs);
 		} return lists;
 	}
 	
@@ -131,8 +131,8 @@ public class FruitProductDAO {
 		ResultSet rs = null;
 		
 		try {
-			conn = DBUtil.getConnection();
-			pstmt = conn.prepareStatement(FruitProductQuery.GET_MY_PENDING_FRUIT_PRODUCTS);
+			conn = DBCP.getConnection();
+			pstmt = conn.prepareStatement(Query.GET_MY_PENDING_FRUIT_PRODUCTS);
 			pstmt.setString(1, memberId);
 			rs = pstmt.executeQuery();
 			
@@ -153,7 +153,7 @@ public class FruitProductDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.close(conn, pstmt, rs);
+			DBCP.close(conn, pstmt, rs);
 		} return lists;
 	}
 	
@@ -166,8 +166,8 @@ public class FruitProductDAO {
 		ResultSet rs = null;
 		
 		try {
-			conn = DBUtil.getConnection();
-			pstmt = conn.prepareStatement(FruitProductQuery.GET_MY_PENDING_FRUIT_PRODUCTS_PERIOD);
+			conn = DBCP.getConnection();
+			pstmt = conn.prepareStatement(Query.GET_MY_PENDING_FRUIT_PRODUCTS_PERIOD);
 			pstmt.setString(1, memberId);
 			pstmt.setString(2, startDate);
 			pstmt.setString(3, endDate);
@@ -191,7 +191,7 @@ public class FruitProductDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.close(conn, pstmt, rs);
+			DBCP.close(conn, pstmt, rs);
 		} return lists;
 	}
 	
@@ -204,8 +204,8 @@ public class FruitProductDAO {
 		ResultSet rs = null;
 		
 		try {
-			conn = DBUtil.getConnection();
-			pstmt = conn.prepareStatement(FruitProductQuery.GET_PENDING_FRUIT_PRODUCTS);
+			conn = DBCP.getConnection();
+			pstmt = conn.prepareStatement(Query.GET_PENDING_FRUIT_PRODUCTS);
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -231,7 +231,7 @@ public class FruitProductDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.close(conn, pstmt, rs);
+			DBCP.close(conn, pstmt, rs);
 		} return lists;
 	}
 	
@@ -244,8 +244,8 @@ public class FruitProductDAO {
 		ResultSet rs = null;
 		
 		try {
-			conn = DBUtil.getConnection();
-			pstmt = conn.prepareStatement(FruitProductQuery.GET_PENDING_FRUIT_PRODUCTS_PERIOD);
+			conn = DBCP.getConnection();
+			pstmt = conn.prepareStatement(Query.GET_PENDING_FRUIT_PRODUCTS_PERIOD);
 			pstmt.setString(1, startDate);
 			pstmt.setString(2, endDate);
 			rs = pstmt.executeQuery();
@@ -274,7 +274,7 @@ public class FruitProductDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally{
-			DBUtil.close(conn, pstmt, rs);
+			DBCP.close(conn, pstmt, rs);
 		} return lists;
 	}
 	
@@ -287,8 +287,8 @@ public class FruitProductDAO {
 		ResultSet rs = null;
 		
 		try {
-			conn = DBUtil.getConnection();
-			pstmt = conn.prepareStatement(FruitProductQuery.GET_FRUIT_PRODUCT);
+			conn = DBCP.getConnection();
+			pstmt = conn.prepareStatement(Query.GET_FRUIT_PRODUCT);
 			pstmt.setString(1, fruitNo);
 			rs = pstmt.executeQuery();
 			
@@ -326,7 +326,7 @@ public class FruitProductDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.close(conn, pstmt, rs);
+			DBCP.close(conn, pstmt, rs);
 		} return vo; 
 	}
 	
@@ -337,8 +337,8 @@ public class FruitProductDAO {
 		PreparedStatement pstmt = null;
 		
 		try {
-			conn = DBUtil.getConnection();
-			pstmt = conn.prepareStatement(FruitProductQuery.REJECT_FRUIT_PRODUCT);
+			conn = DBCP.getConnection();
+			pstmt = conn.prepareStatement(Query.REJECT_FRUIT_PRODUCT);
 			pstmt.setString(1, adminId);
 			pstmt.setString(2, fruitNo);
 			
@@ -348,7 +348,7 @@ public class FruitProductDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.close(conn, pstmt);
+			DBCP.close(conn, pstmt);
 		} return result;
 	}
 	// 10. 관리자 입고 요청을 승인
@@ -358,8 +358,8 @@ public class FruitProductDAO {
 		PreparedStatement pstmt = null;
 		
 		try {
-			conn = DBUtil.getConnection();
-			pstmt = conn.prepareStatement(FruitProductQuery.APPROVE_FRUIT_PRODUCT);
+			conn = DBCP.getConnection();
+			pstmt = conn.prepareStatement(Query.APPROVE_FRUIT_PRODUCT);
 			pstmt.setString(1, adminId);
 			pstmt.setString(2, fruitNo);
 			
@@ -369,7 +369,7 @@ public class FruitProductDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.close(conn, pstmt);
+			DBCP.close(conn, pstmt);
 		} return result;
 		
 	}
