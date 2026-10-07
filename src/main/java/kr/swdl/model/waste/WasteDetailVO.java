@@ -18,10 +18,11 @@ public class WasteDetailVO {
 	private String memberGroupName;
 	private String memberName;
 	private String adminName;
+	private String fruitPorductNo;
 	
 	public WasteDetailVO(String wasteReqDate, String wasteDate, String wasteCategoryReason, String reasonDetail,
 			int quantity, int itemCode, String itemName, String kindName, String origin, String fruitProductName,
-			int price, float weight, String memberGroupName, String memberName, String adminName) {
+			int price, float weight, String memberGroupName, String memberName, String adminName, String fruitProductNo) {
 		super();
 		
 		setWasteReqDate(wasteReqDate);
@@ -39,6 +40,7 @@ public class WasteDetailVO {
 		setMemberGroupName(memberGroupName);
 		setMemberName(memberName);
 		setAdminName(adminName);
+		setFruitPorductNo(fruitProductNo);
 	}
 	
 	public String getWasteReqDate() {
@@ -131,14 +133,55 @@ public class WasteDetailVO {
 	public void setAdminName(String adminName) {
 		this.adminName = adminName;
 	}
+	public int getItemCode() {
+		return itemCode;
+	}
+	public String getFruitPorductNo() {
+		return fruitPorductNo;
+	}
+
+	public void setFruitPorductNo(String fruitPorductNo) {
+		this.fruitPorductNo = fruitPorductNo;
+	}
 
 	@Override
 	public String toString() {
-		return "WasteDetailVO [wasteReqDate=" + wasteReqDate + ", wasteDate=" + wasteDate + ", wasteCategoryReason="
-				+ wasteCategoryReason + ", reasonDetail=" + reasonDetail + ", quantity=" + quantity + ", itemCode="
-				+ itemCode + ", itemName=" + itemName + ", kindName=" + kindName + ", origin=" + origin
-				+ ", fruitProductName=" + fruitProductName + ", price=" + price + ", weight=" + weight
-				+ ", memberGroupName=" + memberGroupName + ", memberName=" + memberName + ", adminName=" + adminName
-				+ "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("WasteDetailVO [wasteReqDate=");
+		builder.append(wasteReqDate);
+		builder.append(", wasteDate=");
+		builder.append(wasteDate);
+		builder.append(", wasteCategoryReason=");
+		builder.append(wasteCategoryReason);
+		builder.append(", reasonDetail=");
+		builder.append(reasonDetail);
+		builder.append(", quantity=");
+		builder.append(quantity);
+		builder.append(", itemCode=");
+		builder.append(itemCode);
+		builder.append(", itemName=");
+		builder.append(itemName);
+		builder.append(", kindName=");
+		builder.append(kindName);
+		builder.append(", origin=");
+		builder.append(origin);
+		builder.append(", fruitProductName=");
+		builder.append(fruitProductName);
+		builder.append(", price=");
+		builder.append(price);
+		builder.append(", weight=");
+		builder.append(weight);
+		builder.append(", memberGroupName=");
+		builder.append(memberGroupName);
+		builder.append(", memberName=");
+		builder.append(memberName);
+		builder.append(", adminName=");
+		builder.append(adminName);
+		builder.append(", fruitPorductNo=");
+		builder.append(fruitPorductNo);
+		builder.append("]");
+		return builder.toString();
 	}
+
+	
 }

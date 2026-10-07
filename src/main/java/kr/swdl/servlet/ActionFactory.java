@@ -12,8 +12,9 @@ public class ActionFactory {
 		case "adminGetWasteRequestList":
 			a=new AdminGetWasteRequestListAction ();
 			break;
-				
-			
+		case "adminGetWasteRequestDetail":
+			a=new AdminGetWasteRequestDetailAction();
+			break;
 		case "wasteTrends":
 			a=new WasteTrends();
 			break;

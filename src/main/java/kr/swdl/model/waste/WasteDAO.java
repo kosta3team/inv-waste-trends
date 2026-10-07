@@ -190,7 +190,8 @@ public class WasteDAO {
 					rs.getFloat(12), 
 					rs.getString(13), 
 					rs.getString(14), 
-					rs.getString(15)
+					rs.getString(15),
+					rs.getString(16)					
 					);	
 			rs.close();
 			pstmt.close();
