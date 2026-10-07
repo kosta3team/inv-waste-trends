@@ -15,6 +15,7 @@ public class FrontControllerServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String cmd = request.getParameter("cmd");
+		   System.out.println("cmd = " + cmd);
 		Action a= ActionFactory.getAction(cmd);
 		String url = a.execute(request);
 		request.getRequestDispatcher("/"+url).forward(request, response);

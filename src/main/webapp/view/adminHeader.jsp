@@ -52,7 +52,7 @@
 
 					<li class="nav-item dropdown flex-fill text-center"><a
 						class="nav-link dropdown-toggle"
-						href="${pageContext.request.contextPath}/controller?cmd=saleInventoryListUI"
+						href="${pageContext.request.contextPath}/controller?cmd=menuSaleInventoryList"
 						role="button">판매 조회</a></li>
 				</ul>
 				<div

@@ -39,11 +39,17 @@ public class ActionFactory {
 		case "adminInventoryRequestListUI":
 			a=new AdminInventoryRequestListUIAction();
 			break;
-		case "saleInventoryListUI":
-			a = new SaleInventoryListUIAction();
+		case "saleInventoryList":
+			a=new SaleInventoryList();
 			break;
-		case "memberInventoryListUI":
-			a=new MemberInventoryList();
+		case "menuSaleInventoryList":
+			a=new MenuSaleInventoryList();
+			break;
+		case "memberSaleInventoryList":
+			a=new MemberSaleInventoryList();
+			break;
+		case "menuMemberSaleInventoryList":
+			a=new MenuMemberSaleInventoryList();
 			break;
 		case "memberMain":
 		    a = new MemberMainUIAction();
