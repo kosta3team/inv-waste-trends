@@ -6,17 +6,56 @@ public class ActionFactory {
 		Action a = null;
 		
 		switch(cmd) {
+		case "idCheck":
+			a = new IdCheckAction();
+			break;
+		case "signupMemberUI":
+			a = new SignupMemberUIAction();
+			break;
+		case "signup":
+			a = new SignupAction();
+			break;
+		case "signupListUI":
+			a= new SignupListAction();
+			break;
+		case "signupDetailPersonalUI":
+			a = new SignupDetailPersonalUIAction();
+			break;
+		case "signupDetailCoopUI":
+			a = new SignupDetailCoopUIAction();
+			break;
+		case "signupApprove":
+		    a = new SignupApproveAction();
+		    break;
+		case "signupReject":
+		    a = new SignupRejectAction();
+		    break;
 		case "wasteTrends":
-//			a=new WasteTrends();
-//			break;
-		case "inventoryList":
+			a=new WasteTrendsUIAction();
+			break;
+		case "inventoryListUI":
 			a=new InventoryList();
 			break;
-		case "memberInventoryList":
+		case "adminInventoryRequestListUI":
+			a=new AdminInventoryRequestListUIAction();
+			break;
+		case "saleInventoryListUI":
+			a = new SaleInventoryListUIAction();
+			break;
+		case "memberInventoryListUI":
 			a=new MemberInventoryList();
+			break;
+		case "memberMain":
+		    a = new MemberMainUIAction();
+		    break;
+		case "loginUI":
+			a = new LoginUIAction();
 			break;
 		case "login":
 			a=new LoginAction();
+			break;
+		case "logout":
+			a=new LogoutAction();
 			break;
 		default :
 			a= new MainUIAction();
