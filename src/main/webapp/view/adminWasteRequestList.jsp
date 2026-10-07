@@ -112,6 +112,7 @@
 					<div class="ms-auto d-flex align-items-center gap-3">
 						<h5 class="mb-0">
 							요청일자 : <span id="modalReqDate"></span>
+							처리일자 : <span id="modalApproveDate"> - </span>
 						</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 					</div>
@@ -151,6 +152,8 @@
 							<tr>
 								<th class="table-light">사유 구분</th>
 								<td id="modalReasonCategory"></td>
+								<th class="table-light">폐기 수량</th>
+								<td id="modalQuantity"></td>
 							</tr>
 							<tr>
 								<th class="table-light">상세 내용</th>
@@ -160,8 +163,7 @@
 					</table>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-approve px-4" id="btnApprove">승인</button>
-					<button type="button" class="btn btn-reject px-4" id="btnReject">거절</button>
+					<button type="button" class="btn btn-approve px-4" id="btnApprove" data-waste-no="">승인</button>
 				</div>
 			</div>
 		</div>
@@ -173,60 +175,97 @@
 		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 		rel="stylesheet">
 
-	<script>
+<script>
     document.addEventListener("DOMContentLoaded", function () {
         const modal = document.querySelector('#warehouseDetailModal');
-        var currentWasteNo = null; // 승인/거절 버튼 등에 사용할 wasteNo 저장용
+        const approveButton = document.querySelector('#btnApprove'); // 모달 내부 승인 버튼
+        var currentWasteNo = null; 
         var xhr = new XMLHttpRequest();
 
-        // 모달 내 데이터 응답 처리
+        // 모달 데이터 상세 조회 처리
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {   
             	const response = xhr.responseText.trim();
 
-                // key=value 문자열에서 값만 뽑아오는 함수
                 function getValue(key) {
-                    // key= 뒤에 오며, 쉼표(,)나 닫는 대괄호(]) 전까지의 문자열을 추출
                     const regex = new RegExp(key + '=([^,\\]]+)');
                     const match = response.match(regex);
                     return match ? match[1].trim() : '';
                 }
 
+                const wasteDate = getValue('wasteDate');
+                
                 // VO 필드명에 맞춰 모달에 데이터 바인딩
                 document.getElementById('modalReqDate').textContent = getValue('wasteReqDate');
+                document.getElementById('modalApproveDate').textContent = wasteDate;
                 document.getElementById('modalStockNo').textContent = getValue('fruitPorductNo');
                 document.getElementById('modalItemCode').textContent = getValue('itemCode');
                 document.getElementById('modalItemName').textContent = getValue('itemName');
-                document.getElementById('modalVariety').textContent = getValue('kindName');          // VO의 kindName
-                document.getElementById('modalProductName').textContent = getValue('fruitProductName'); // VO의 fruitProductName
+                document.getElementById('modalVariety').textContent = getValue('kindName');          
+                document.getElementById('modalProductName').textContent = getValue('fruitProductName'); 
                 document.getElementById('modalOrigin').textContent = getValue('origin');
-                document.getElementById('modalMemberName').textContent = getValue('memberGroupName'); // VO의 memberGroupName
-                document.getElementById('modalName').textContent = getValue('memberName');            // VO의 memberName
-                document.getElementById('modalReasonCategory').textContent = getValue('wasteCategoryReason'); // VO의 wasteCategoryReason
+                document.getElementById('modalMemberName').textContent = getValue('memberGroupName'); 
+                document.getElementById('modalName').textContent = getValue('memberName');            
+                document.getElementById('modalReasonCategory').textContent = getValue('wasteCategoryReason'); 
                 document.getElementById('modalReasonDetail').textContent = getValue('reasonDetail');
+                document.getElementById('modalQuantity').textContent = getValue('quantity');
 
-                // 승인/거절 버튼 dataset에 wasteNo 저장
-                document.getElementById('btnApprove').dataset.wasteNo = currentWasteNo;
-                document.getElementById('btnReject').dataset.wasteNo = currentWasteNo;
+                // [수정] 변수명을 approveButton으로 통일 및 조건 처리
+                if (approveButton) {
+                    if (wasteDate && wasteDate !== 'null' && wasteDate !== '') {
+                        approveButton.style.display = 'none'; // 이미 처리된 건은 승인 버튼 숨김
+                    } else {
+                        approveButton.style.display = 'inline-block'; // 미처리 건은 승인 버튼 노출
+                        approveButton.dataset.wasteNo = currentWasteNo;
+                    }
+                } 
             }
         };
 
-        // 모달이 열릴 때 버튼의 data-waste-no 값을 읽어서 XHR 요청 전송
-        modal.addEventListener('show.bs.modal', function (event) {
-            // 모달을 트리거한 버튼 요소
-            const button = event.relatedTarget;
-            
-            // data-waste-no 속성 값 가져오기
-            const wasteNo = button.getAttribute('data-waste-no');
-            currentWasteNo = wasteNo;
+        // 모달이 열릴 때 상세 정보 요청
+        if (modal) {
+            modal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const wasteNo = button.getAttribute('data-waste-no');
+                currentWasteNo = wasteNo;
 
-            // XHR 요청 보내기
-            const url = "controller?cmd=adminGetWasteRequestDetail&wasteNo=" + wasteNo;
-            xhr.open("GET", url, true);
-            xhr.send();
-        });
+                const url = "controller?cmd=adminGetWasteRequestDetail&wasteNo=" + wasteNo;
+                xhr.open("GET", url, true);
+                xhr.send();
+            });
+        }
+
+        // 승인 버튼 클릭 이벤트 정의 및 등록 (DOMContentLoaded 내부로 이동)
+        const approveButtonClickEvent = function() {
+            const wasteNo = approveButton.dataset.wasteNo;
+            
+            if (!wasteNo) {
+                return;
+            }
+
+            var approveXhr = new XMLHttpRequest();
+            approveXhr.onreadystatechange = function() {
+                if (approveXhr.readyState == 4 && approveXhr.status == 200) {
+                	var msg = "승인 완료"
+                    if (approveXhr.responseText.trim() == "false") {
+                    	msg = "승인 완료"; 
+                    }
+                    alert(msg)
+                    // 목록페이지로 이동
+                    location.href = 'controller?cmd=adminWasteRequestList';
+                }
+            };
+            
+            const url = "controller?cmd=adminApproveWaste&wasteNo=" + wasteNo;
+            approveXhr.open("get", url, true);
+            approveXhr.send();
+        };
+        
+        if (approveButton) {
+            approveButton.addEventListener('click', approveButtonClickEvent);
+        }
     });
-	</script>
+</script>
 
 
 	<script type="text/javascript"> // 필터 비동기 요청 
