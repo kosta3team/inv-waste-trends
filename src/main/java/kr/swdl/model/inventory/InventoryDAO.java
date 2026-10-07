@@ -55,7 +55,7 @@ public class InventoryDAO {
 						rs.getDouble("avg_temp"), 
 						rs.getDouble("min_temp"),  
 						rs.getString("waste_member_name"),
-						rs.getString("waste__admin_name")
+						rs.getString("waste_admin_name")
 						);
 			}
 
