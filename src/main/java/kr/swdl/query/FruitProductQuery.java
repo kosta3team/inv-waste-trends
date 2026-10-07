@@ -2,6 +2,7 @@ package kr.swdl.query;
 
 public interface FruitProductQuery {
 	// 1. 조합원 입고 요청
+	
 	public String ADD_FRUIT_PRODUCT = 
 			"INSERT INTO fruit_product (fruit_no, name, price, weight, quantity, status, request_date, storage_date, fruit_category_no, member_id) "
 			+ "VALUES ('fd' || LPAD(seq_fruit_no.NEXTVAL, 4, '0'), ?, ?, ?, ? , '입고요청', SYSDATE, ?, ?, ?)";

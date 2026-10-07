@@ -26,8 +26,9 @@ function getWasteRequestQuantity(fruitNo, modalElement) {
         if (xhr.readyState == 4 && xhr.status == 200) {
 			const maxQuantityInput = modalElement.querySelector('#disposeQuantity')
 			if (maxQuantityInput) {
-                maxQuantityInput.setAttribute('max', xhr.responseText);
-                maxQuantityInput.placeholder = `최대 ${xhr.responseText}개 가능`;
+				const maxQuantity = Number(xhr.responseText.trim());
+                maxQuantityInput.setAttribute('max', maxQuantity);
+                maxQuantityInput.placeholder = `최대 ${maxQuantity}개 가능`;
             }
         }
     };

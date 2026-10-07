@@ -273,7 +273,7 @@ public static final String GET_MEMBER_SALES = "SELECT fp.fruit_no, s.sale_no, fp
 
 	String GET_REMAIN_QUANTITY = "SELECT fp.quantity - NVL((SELECT SUM(s.quantity) FROM sales s WHERE s.fruit_no = fp.fruit_no), 0) "
 			+ "- NVL((SELECT SUM(w.quantity) FROM waste w WHERE w.fruit_no = fp.fruit_no), 0) AS remain_quantity "
-			+ "FROM fruit_product fp WHERE fp.fruit_no = '?'";
+			+ "FROM fruit_product fp WHERE fp.fruit_no = ?";
 
 	String GET_INVENTORY = "SELECT fp.fruit_no, fp.name, " + "fp.quantity "
 			+ "- NVL((SELECT SUM(s.quantity) FROM sales s WHERE s.fruit_no = fp.fruit_no), 0) "

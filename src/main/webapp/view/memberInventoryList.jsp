@@ -13,8 +13,7 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-
-<link rel="stylesheet" href="css/inventoryList.css">
+<!-- <link rel="stylesheet" href="css/inventoryList.css">  -->
 </head>
 
 <body>
@@ -126,6 +125,7 @@
 						<td>정상</td>
 						<td>정상</td>
 						<td>
+						<!-- 앞에서 얻어지는 상태에 따라 요청 버튼 활성/비활성 추가가 필요함 -->
 							<button type="button" class="btn btn-sm btn-outline-danger"
 								data-bs-toggle="modal" data-bs-target="#disposeRequestModal"
 								data-fruit-no="fd0001">폐기요청</button>

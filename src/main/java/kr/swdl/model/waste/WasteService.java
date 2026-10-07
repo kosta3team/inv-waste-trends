@@ -3,8 +3,6 @@ package kr.swdl.model.waste;
 import java.sql.SQLException;
 import java.util.List;
 import kr.swdl.model.DBCP;
-import kr.swdl.model.fruitproduct.FruitProductDAO;
-import kr.swdl.model.fruitproduct.FruitProductVO;
 
 
 public class WasteService {

@@ -74,19 +74,22 @@
 	// 요청 버튼 클릭 이벤트
 	function requestButtonClickEvent() {
 		const disposeReason = document.querySelector('#disposeReason').value;
-		const disposeQuantity = document.querySelector('#disposeQuantity').value;
 		const fruitCondition = document.querySelector('#fruitCondition').value;
 
+		const quantityInput = document.querySelector('#disposeQuantity');
+		const disposeQuantity = quantityInput.value;
+		const minQuantity = Number(quantityInput.min);
+		const maxQuantity = Number(quantityInput.max);
+		
 		// 간단한 유효성 검사
 		if (!disposeReason) {
 			alert("폐기 사유를 선택하세요.");
 			return;
 		}
-		if (!disposeQuantity || disposeQuantity <= 0) {
-			alert("올바른 수량을 입력하세요.");
+		if (disposeQuantity < minQuantity || maxQuantity < disposeQuantity) {
+			alert('폐기 수량은 ' + minQuantity + '~' + maxQuantity + '개 사이로 입력해주세요.');
 			return;
 		}
-
 		// AJAX 객체 생성
 		const xhr = new XMLHttpRequest();
 		

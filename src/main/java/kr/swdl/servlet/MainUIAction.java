@@ -11,6 +11,4 @@ public class MainUIAction implements Action {
 	public String execute(HttpServletRequest request) throws ServletException, IOException {
 		return "index.jsp";
 	}
- 
-
 }
