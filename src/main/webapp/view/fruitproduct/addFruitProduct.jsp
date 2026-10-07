@@ -1,30 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>입고요청</title>
+<title>조합원 입고요청</title>
 <!-- 부트스트랩 CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- 외부 분리된 CSS 호출 -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/request.css">
 </head>
 <body>
-    <jsp:include page="memberHeader.jsp"/>
+    <jsp:include page="/view/memberHeader.jsp"/>
     
     <!-- 컨트롤러에서 넘겨준 result -->
-    <c:if test="${not empty result }">
-    	<script>alert('${result ? "입고 요청이 성공적으로 등록 되었습니다. " : "입고 요청 등록에 실패 했습니다."}')</script>
+    <c:if test="${result != null }">
+    	<script>alert('${result == true ? "입고 요청이 성공적으로 등록 되었습니다. " : "입고 요청 등록에 실패 했습니다."}')</script>
     </c:if>
     
     <div class="container mt-5 mb-5" style="max-width: 900px;">
     	<h2 class="mb-4 pb-2 border-bottom">입고 요청</h2>
     	    	
     	<form action="${pageContext.request.contextPath}/controller" method="post" id="inventoryForm" onsubmit="return removeCommasBeforeSubmit();">
-    		<input type="hidden" name="cmd" value="addFruitProduct">
+    		<input type="hidden" name="cmd" value="addFruitProduct">    		    		
+    		<input type="hidden" name="actionType" value="submit">
     		
-    		<!-- 조합원 ID를 서버로 넘기기 위한 hidden "value값 일단은 하드코딩" -->
-    		<input type="hidden" name="memberId" value="testMember01">
+    		<input type="hidden" name="memberId" value="${empty sessionScope.loginUser.memberId ? 'member001' : sessionScope.loginUser.memberId }">
+    		
+    		<!-- 실제 서버에 올라갈 식별자. -->
+    		<input type="hidden" id="fruitCategoryNo" name="fruitCategoryNo">
+    		
     		<!-- 품목 시작 -->
     		<div class="card mb-5 shadow-sm">
     			<div class="card-header bg-light d-flex justify-content-between align-items-center">
@@ -36,7 +42,7 @@
     				<div class="row align-items-center mb-3">
     					<label class="col-sm-2 col-form-label fw-bold">품목 선택</label>
     					
-    					<!-- 품목 코드 -->
+    					<!-- 품목 코드 -->    					
     					<div class="col-sm-3">
     						<input type="text" class="form-control" id="itemCode" name="itemCode" placeholder="예: 1" oninput="applyByCode(this.value)" autocomplete="off">
     					</div>
@@ -112,12 +118,12 @@
     				<div class="row align-items-center mb-3">
     					<label class="col-sm-2 col-form-label fw-bold">조합원명</label>
     					<div class="col-sm-4">
-    						포천과수원
+    						${sessionScope.loginUser.memberName }
     					</div>
     					
     					<label class="col-sm-2 col-form-label fw-bold text-end">이름</label>
     					<div class="col-sm-4">
-    						노종현
+    						${sessionScope.loginUser.name }
     					</div>
     				</div>
     				
@@ -125,21 +131,21 @@
     				<div class="row align-items-center mb-3">
     					<label class="col-sm-2 col-form-label fw-bold">주소</label>
     					<div class="col-sm-10">
-    						경기도 포천시 초가팔리 348-26
+    						${sessionScope.loginUser.address } ${sessionScope.loginUser.detailAddress }
     					</div>
     				</div>
     				
     				<div class="row align-items-center mb-3">
     					<label class="col-sm-2 col-form-label fw-bold">휴대폰번호</label>
     					<div class="col-sm-10">
-    						010-1111-2222
+    						${sessionScope.loginUser.phone }
     					</div>
     				</div>
     				
     				<div class="row align-items-center">
     					<label class="col-sm-2 col-form-label fw-bold">이메일</label>
     					<div class="col-sm-10">
-    						nojongfruit@gmail.com
+    						${sessionScope.loginUser.email }
     					</div>
     				</div>
     			</div>
@@ -147,7 +153,7 @@
     		<!-- 조합원 종료 -->
     		
     		<div class="d-flex justify-content-center gap-2 mt-4">
-    			<button type="button" class="btn btn-primary px-4" onclick="return false;">등록</button>
+    			<button type="submit" class="btn btn-primary px-4">등록</button>
     			<button type="button" class="btn btn-secondary px-4" onclick="location.href='${pageContext.request.contextPath}/controller';">취소</button>
     		</div>
     	</form>
@@ -156,7 +162,23 @@
     <!-- 스크립트 영역 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+    	const kamisDB = [
+    		<c:if test="${not empty categoryList}">
+	    		<c:forEach var="cat" items="${categoryList}" varStatus="status">
+	    		{
+	    			categoryNo: '${cat.fruitCategoryNo}',
+	    			code: '${cat.itemCode}',
+	    			name: '${cat.itemName}',
+	    			variety: '${cat.kindName}'
+	    		}${!status.last ? ',' : ''}
+	    		</c:forEach>
+	    	</c:if>
+    	];
+    </script>
     
-    <%@ include file="footer.jsp"%>
+    <script src="${pageContext.request.contextPath }/js/addFruitProduct.js"></script>
+    
+    <%@ include file="/view/footer.jsp"%>
 </body>
 </html>

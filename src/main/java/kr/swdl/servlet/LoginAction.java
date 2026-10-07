@@ -16,7 +16,7 @@ public class LoginAction implements Action{
 		
 		// 처음 링크를 클릭해 로그인 화면으로 진입시
 		if (userId == null) {
-			return "/view/login.jsp";
+			return "view/login.jsp";
 		}
 		// DB 회원 검증 로직
 		boolean isValid = false;
@@ -37,7 +37,7 @@ public class LoginAction implements Action{
 		} else {
 			// 인증 실패
 			request.setAttribute("errorMessage", "아이디 또는 비밀번호가 일치하지 않습니다.");
-			return "/view/login.jsp";
+			return "view/login.jsp";
 		}
 			
 	}

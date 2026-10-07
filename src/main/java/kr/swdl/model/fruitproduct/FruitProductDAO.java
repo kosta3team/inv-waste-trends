@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.tomcat.dbcp.dbcp2.SQLExceptionList;
+
 import kr.swdl.model.DBCP;
 import kr.swdl.model.Query;
 import kr.swdl.model.admin.AdminVO;
@@ -34,10 +36,17 @@ public class FruitProductDAO {
 			pstmt.setString(6, vo.getMemberId());
 			
 			if (pstmt.executeUpdate() == 1) {
+				conn.commit();
 				result = true;
 			}
 		} catch(SQLException e) {
+			try {
+				if (conn != null) conn.rollback();
+			} catch (SQLException se) {
+				se.printStackTrace();
+			}
 			e.printStackTrace();
+			result = false;
 		} finally {
 			DBCP.close(conn, pstmt);
 		} return result;
@@ -298,7 +307,7 @@ public class FruitProductDAO {
 				vo.setRequestDate(rs.getDate("요청일자"));
 				
 				FruitCategoryVO fc = new FruitCategoryVO();
-				fc.setItemCode(rs.getString("품목코드"));
+				fc.setItemCode(rs.getInt("품목코드"));
 				fc.setItemName(rs.getString("품목"));
 				fc.setKindName(rs.getString("품종"));
 				vo.setName(rs.getString("상품명"));
