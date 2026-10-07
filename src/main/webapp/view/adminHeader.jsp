@@ -15,7 +15,8 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/header.css">
 
 </head>
 <body>
@@ -23,7 +24,7 @@
 		<nav class="navbar navbar-expand-lg bg-white border-bottom px-4">
 
 			<div class="container-fluid">
-				<a class="navbar-brand me-4 py-0" 
+				<a class="navbar-brand me-4 py-0"
 					href="${pageContext.request.contextPath }/controller"> <img
 					src="${pageContext.request.contextPath }/images/logo.png"
 					alt="그린매니저 ERP" class="navbar-logo">
@@ -46,8 +47,20 @@
 						</ul></li>
 
 					<li class="nav-item dropdown flex-fill text-center"><a
+						class="nav-link dropdown-toggle" href="#" role="button">입고 확인
+						</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#"></a></li>
+						</ul></li>
+					<li class="nav-item dropdown flex-fill text-center"><a
 						class="nav-link dropdown-toggle" href="#" role="button">회원가입
 							요청 조회</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#"></a></li>
+						</ul></li>
+					<li class="nav-item dropdown flex-fill text-center"><a
+						class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/controller?cmd=menuSaleInventoryList" role="button">판매기록 확인
+						</a>
 						<ul class="dropdown-menu">
 							<li><a class="dropdown-item" href="#"></a></li>
 						</ul></li>

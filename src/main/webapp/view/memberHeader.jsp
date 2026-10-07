@@ -71,7 +71,7 @@
                 <li class="nav-item dropdown flex-fill text-center">
 
                     <a class="nav-link dropdown-toggle"
-                        href="#"
+                        href="${pageContext.request.contextPath}/controller?cmd=menuMemberSaleInventoryList"
                         role="button">
 
                         판매기록확인
