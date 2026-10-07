@@ -82,14 +82,28 @@
 							</div>
 						</td>
 					</tr>
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> origin/dev
 				</tbody>
 			</table>
 
 			<div class="d-flex justify-content-center gap-3 mt-4">
-				<button type="button" class="btn btn-approve px-5">승인</button>
-				<button type="button" class="btn btn-reject px-5">거절</button>
+				<form
+					action="${pageContext.request.contextPath}/controller?cmd=signupApprove"
+					method="post">
+					<input type="hidden" name="memberId" value="${member.memberId}">
+					<button type="submit" class="btn btn-approve px-5">승인</button>
+				</form>
+				<form
+					action="${pageContext.request.contextPath}/controller?cmd=signupReject"
+					method="post">
+					
+					<input type="hidden" name="memberId" value="${member.memberId}">
+					<button type="submit" class="btn btn-reject px-5">거절</button>
+				</form>
 			</div>
 
 		</div>

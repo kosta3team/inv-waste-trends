@@ -5,12 +5,12 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
-public class MainUIAction implements Action {
+public class AdminInventoryRequestListUIAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request) throws ServletException, IOException {
-		return "index.jsp";
+		// TODO Auto-generated method stub
+		return "view/adminInventoryRequestList.jsp";
 	}
- 
 
 }

@@ -18,7 +18,7 @@
 
 </head>
 <body>
-<%@ include file="adminHeader.jsp"%>
+<%@ include file="memberHeader.jsp"%>
 <main class="inventory-page">
 
 		<!-- 제목 -->
