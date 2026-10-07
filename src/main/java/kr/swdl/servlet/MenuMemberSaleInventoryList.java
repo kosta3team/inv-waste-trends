@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import kr.swdl.model.sales.SaleService;
 import kr.swdl.model.sales.SaleVO;
@@ -13,10 +14,9 @@ public class MenuMemberSaleInventoryList implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request) throws ServletException, IOException {
+		HttpSession session = request.getSession();
 
-		//String memberId = request.getParameter("memberId");//화면에서 memberId를 세션으로 들고있어야 가져올수 있음
-		String memberId = "member001";
-		System.out.println(memberId+"!!!");//Null값이라서 출력안됨
+        String memberId = (String) session.getAttribute("memberId");
 		
 		//3. 서비스 생성
 		SaleService ss = new SaleService();

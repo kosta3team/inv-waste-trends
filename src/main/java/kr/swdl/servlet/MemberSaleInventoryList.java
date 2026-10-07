@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import kr.swdl.model.sales.SaleService;
 import kr.swdl.model.sales.SaleVO;
@@ -26,11 +27,9 @@ public class MemberSaleInventoryList implements Action {
 
 				String startday = startYear + "-" + startMonth + "-" + startDate;
 				String endday = endYear + "-" + endMonth + "-" + endDate;
-				System.out.println(startday+endday);
-				
-				String memberId = "member001";
-//				String memberId = request.getParameter("memberId");//화면에서 memberId를 세션으로 들고있어야 가져올수 있음
-				System.out.println(memberId+"!!!");//Null값이라서 출력안됨
+				HttpSession session = request.getSession();
+
+		        String memberId = (String) session.getAttribute("memberId");
 				
 				//2. 입력받은 값을 request에 다시 저장
 						request.setAttribute("startday", startday);

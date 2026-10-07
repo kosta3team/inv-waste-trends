@@ -29,7 +29,6 @@ public class SaleInventoryList implements Action {
 
 		String startday = startYear + "-" + startMonth + "-" + startDate;
 		String endday = endYear + "-" + endMonth + "-" + endDate;
-		System.out.println(startday+endday);
 		
 		//2. 입력받은 값을 request에 다시 저장
 				request.setAttribute("startday", startday);
@@ -40,7 +39,6 @@ public class SaleInventoryList implements Action {
 		
 		//4. 화면에서 입력받은 날짜는 서비스 파라미터로 전달
 		List<SaleVO> saleList = ss.findSalesByPeriod(startday, endday);
-		System.out.println("조회 건수 : " + saleList.size());
 		int sumTotalPrice = ss.getSalesTotalPriceByPeriod(startday, endday);
 		System.out.println(sumTotalPrice);
 		
@@ -48,7 +46,6 @@ public class SaleInventoryList implements Action {
 		request.setAttribute("saleList", saleList);
 		request.setAttribute("sumTotalPrice", sumTotalPrice);
 		
-		// TODO Auto-generated method stub
 		return "view/saleInventoryList.jsp";
 	}
 

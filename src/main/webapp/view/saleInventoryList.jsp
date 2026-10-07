@@ -20,8 +20,8 @@
 </head>
 
 <body>
-	<%@ include file="adminHeader.jsp"%>
-	<main class="inventory-page">
+<%@ include file="adminHeader.jsp"%>
+<main class="inventory-page">
 
 		<!-- 제목 -->
 		<div class="mb-4">
