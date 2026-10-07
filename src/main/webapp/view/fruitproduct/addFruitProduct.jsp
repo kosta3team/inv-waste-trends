@@ -16,7 +16,11 @@
     
     <!-- 컨트롤러에서 넘겨준 result -->
     <c:if test="${result != null }">
-    	<script>alert('${result == true ? "입고 요청이 성공적으로 등록 되었습니다. " : "입고 요청 등록에 실패 했습니다."}')</script>
+    	<script>
+    		alert('${result == true ? "입고 요청이 성공적으로 등록 되었습니다. " : "입고 요청 등록에 실패 했습니다."}')
+    		// 등록 완료 후 입고요청목록으로 재 이동
+    		location.href = '${pageContext.request.contextPath}/controller?cmd=addFruitProduct';
+   		</script>
     </c:if>
     
     <div class="container mt-5 mb-5" style="max-width: 900px;">
