@@ -32,6 +32,30 @@ public class FruitProductVO {
 	private FruitCategoryVO fruitCategory;
 	
 	
+	
+	public FruitProductVO(String fruitNo, String name, int price, double weight, int quantity, String status,
+			Date requestDate, Date receivedDate, Date fruitProductDate, Date storageDate, String fruitCategoryNo,
+			String adminId, String memberId, int totalPrice, MemberVO member, AdminVO admin,
+			FruitCategoryVO fruitCategory) {
+		setFruitNo(fruitNo);
+		setName(name);
+		setPrice(totalPrice);
+		setWeight(weight);
+		setQuantity(quantity);
+		setStatus(status);
+		setRequestDate(requestDate);
+		setReceivedDate(receivedDate);
+		setFruitProductDate(fruitProductDate);
+		setStorageDate(storageDate);
+		setFruitCategoryNo(fruitCategoryNo);
+		setAdminId(adminId);
+		setMemberId(memberId);
+		setTotalPrice(totalPrice);
+		setMember(member);
+		setAdmin(admin);
+		setFruitCategory(fruitCategory);
+	}
+
 	// 기본 생성자
 	public FruitProductVO() {}
 	
@@ -172,6 +196,47 @@ public class FruitProductVO {
 
 	public void setFruitCategory(FruitCategoryVO fruitCategory) {
 		this.fruitCategory = fruitCategory;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("FruitProductVO [fruitNo=");
+		builder.append(fruitNo);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", price=");
+		builder.append(price);
+		builder.append(", weight=");
+		builder.append(weight);
+		builder.append(", quantity=");
+		builder.append(quantity);
+		builder.append(", status=");
+		builder.append(status);
+		builder.append(", requestDate=");
+		builder.append(requestDate);
+		builder.append(", receivedDate=");
+		builder.append(receivedDate);
+		builder.append(", fruitProductDate=");
+		builder.append(fruitProductDate);
+		builder.append(", storageDate=");
+		builder.append(storageDate);
+		builder.append(", fruitCategoryNo=");
+		builder.append(fruitCategoryNo);
+		builder.append(", adminId=");
+		builder.append(adminId);
+		builder.append(", memberId=");
+		builder.append(memberId);
+		builder.append(", totalPrice=");
+		builder.append(totalPrice);
+		builder.append(", member=");
+		builder.append(member);
+		builder.append(", admin=");
+		builder.append(admin);
+		builder.append(", fruitCategory=");
+		builder.append(fruitCategory);
+		builder.append("]");
+		return builder.toString();
 	}
 	
 

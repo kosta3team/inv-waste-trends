@@ -94,11 +94,11 @@
 
 				<tbody>
 
-					<tr onclick="showInventoryDetail(this)"
-						data-serial="SH260923001" data-item-code="IC-1001"
-						data-category="딸기" data-variety="설향" data-origin="국내산(논산)"
-						data-product-name="설향딸기" data-unit-price="32,000원"
-						data-weight="2kg" data-quantity="25box" data-remain-quantity="5box" data-coop-name="과일아삭"
+					<tr onclick="showInventoryDetail(this)" data-serial="SH260923001"
+						data-item-code="IC-1001" data-category="딸기" data-variety="설향"
+						data-origin="국내산(논산)" data-product-name="설향딸기"
+						data-unit-price="32,000원" data-weight="2kg" data-quantity="25box"
+						data-remain-quantity="5box" data-coop-name="과일아삭"
 						data-requester="김민수" data-registrant="박관리자"
 						data-received-date="2026-09-10" data-storage-deadline="2026.09.30"
 						data-dispose-registrant="-" data-dispose-requester="-"
@@ -111,7 +111,6 @@
 						<td>2026-09-30</td>
 						<td>-</td>
 						<td>-</td>
-						<td>정상</td>
 					</tr>
 
 
@@ -125,6 +124,12 @@
 						<td>-</td>
 						<td>-</td>
 						<td>정상</td>
+						<td>정상</td>
+						<td>
+							<button type="button" class="btn btn-sm btn-outline-danger"
+								data-bs-toggle="modal" data-bs-target="#disposeRequestModal"
+								data-fruit-no="fd0001">폐기요청</button>
+						</td>
 					</tr>
 
 
@@ -187,10 +192,19 @@
 			</nav>
 		</div>
 	</main>
-	<%@ include file="inventoryDetailModal.jsp" %>
+	<%@ include file="inventoryDetailModal.jsp"%>
+
+	<%@ include file="wasteRequestModal.jsp"%>
 	<%@ include file="footer.jsp"%>
-	
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/js/wasteRequestModal.js"></script>
+
+
+
+
 </body>
 </html>

@@ -324,6 +324,7 @@ public interface Query {
 					+ "WHERE waste_no = ?";
 
 	// ==================== WASTE ====================
+			
 
 	String ADD_WASTE = "INSERT INTO waste (waste_no, waste_date, waste_req_date, reason_detail, quantity, fruit_no, member_id, admin_id, waste_category_no) "
 			+ "VALUES ('wa' || LPAD(seq_waste_no.NEXTVAL, 4, '0'), NULL, 'sysdate', ?, ?, ?, ?, NULL, ?)";
@@ -356,9 +357,10 @@ public interface Query {
 
 	// ==================== INVENTORY ====================
 
-		String GET_REMAIN_QUANTITY = "SELECT fp.quantity - NVL((SELECT SUM(s.quantity) FROM sales s WHERE s.fruit_no = fp.fruit_no), 0) "
+		String GET_REMAIN_QUANTITY = "SELECT fp.quantity "
+				+ "- NVL((SELECT SUM(s.quantity) FROM sales s WHERE s.fruit_no = fp.fruit_no), 0) "
 				+ "- NVL((SELECT SUM(w.quantity) FROM waste w WHERE w.fruit_no = fp.fruit_no), 0) AS remain_quantity "
-				+ "FROM fruit_product fp WHERE fp.fruit_no = '?'";
+				+ "FROM fruit_product fp WHERE fp.fruit_no = ?";
 
 		String GET_INVENTORY = "SELECT fp.fruit_no, fp.name, "
 				+ "fp.quantity "
@@ -466,6 +468,15 @@ public interface Query {
 				+ "LEFT JOIN admin wa"
 				+ "    ON w.admin_id = wa.admin_id  "
 				+ "WHERE fp.fruit_no = ?";			
-				
+			
+	
+	// ============= waste category =============
+	String GET_WASTE_CATEGORY = "SELECT waste_category_reason "
+			+ "FROM waste_category "
+			+ "WHERE waste_category_no = ?";
+	
+	String GET_WASTE_CATEGORY_LIST = "SELECT waste_category_no, waste_category_reason "
+			+ "FROM waste_category";
+	
 }
 

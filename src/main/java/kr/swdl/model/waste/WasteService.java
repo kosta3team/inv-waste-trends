@@ -3,15 +3,26 @@ package kr.swdl.model.waste;
 import java.sql.SQLException;
 import java.util.List;
 import kr.swdl.model.DBCP;
+import kr.swdl.model.fruitproduct.FruitProductDAO;
+import kr.swdl.model.fruitproduct.FruitProductVO;
 
 
 public class WasteService {
 
 
-
-	public boolean addWaste(String reasonDeatil, int quantity, String fruitNo, String memberId, String wasteCategoryNo) {
+	public int getRemainQuantity(String fruitNo) {
 		try {
-			return new WasteDAO(DBCP.getConnection()).addWaste(reasonDeatil, quantity, fruitNo, memberId, wasteCategoryNo);
+			return new WasteDAO(DBCP.getConnection()).getRemainQuantity(fruitNo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	public boolean addWaste(String reasonDeatil, int quantity, String fruitNo, String wasteCategoryNo) {
+		try {
+			return new WasteDAO(DBCP.getConnection()).addWaste(reasonDeatil, quantity, fruitNo, "member001", wasteCategoryNo);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
