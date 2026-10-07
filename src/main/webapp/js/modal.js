@@ -44,10 +44,6 @@ function showInventoryDetail(row) {
 	document.getElementById("detailAverageTemp").textContent = d.averageTemp;
 	document.getElementById("detailLowestTemp").textContent = d.lowestTemp;
 
-
-
-
-
 	const modal = new bootstrap.Modal(document.getElementById("inventoryDetailModal"));
 	modal.show();
 }

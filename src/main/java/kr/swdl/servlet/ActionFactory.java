@@ -4,8 +4,37 @@ public class ActionFactory {
 	public static Action getAction(String cmd) {
 		if(cmd ==null) cmd="";
 		Action a = null;
-		
+		System.out.println(cmd);
 		switch(cmd) {
+		case "adminWasteRequestList":
+			a=new AdminWasteRequestListAction();
+			break;
+		case "adminGetWasteRequestList":
+			a=new AdminGetWasteRequestListAction ();
+			break;
+		case "adminGetWasteRequestDetail":
+			a=new AdminGetWasteRequestDetailAction();
+			break;
+		case "adminApproveWaste":
+			a=new AdminApproveWasteAction();
+			break;
+		case "getWasteRequestQuantity":
+			a = new GetWasteRequestQuantityAction();
+			break;
+		case "getWasteCategoryList":
+			a = new GetWasteCategoryListAction();
+			break;
+		case "requestWaste":
+			a = new RequestWasteAction();
+			break;
+			
+			//
+		case "memberInventoryList":
+			a = new MemberInventoryList();
+			break;
+			//
+			
+			
 		case "idCheck":
 			a = new IdCheckAction();
 			break;

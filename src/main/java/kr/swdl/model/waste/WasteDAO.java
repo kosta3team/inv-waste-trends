@@ -18,6 +18,24 @@ public class WasteDAO {
 	public WasteDAO(Connection conn) {
 		this.conn = conn;
 	}
+	
+	public int getRemainQuantity(String fruitNo) {
+		int quantity = 0;
+
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(Query.GET_REMAIN_QUANTITY);
+			pstmt.setString(1, fruitNo);
+			ResultSet rs = pstmt.executeQuery();
+			rs.next(); 
+			quantity = rs.getInt(1);
+			rs.close();
+			pstmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return quantity;
+	}
 
 	public boolean addWaste(String reasonDeatil, int quantity, String fruitNo, String memberId, String wasteCategoryNo) {
 
@@ -190,7 +208,8 @@ public class WasteDAO {
 					rs.getFloat(12), 
 					rs.getString(13), 
 					rs.getString(14), 
-					rs.getString(15)
+					rs.getString(15),
+					rs.getString(16)					
 					);	
 			rs.close();
 			pstmt.close();
