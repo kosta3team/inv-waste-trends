@@ -11,7 +11,7 @@ public class MemberVO {
 	private String email;
 	private String memberFile;
 	private String companyFile;
-	private char isCompany;
+	private String isCompany;
 	private String memberName;
 	private String zipCode;
 	private String address;
@@ -22,6 +22,53 @@ public class MemberVO {
 	
 	// 기본 생성자
 	public MemberVO() {}
+
+	
+	
+	public MemberVO(String memberId, String name, String memberName, String status, Date requestDate, String isCompany) {
+		setMemberId(memberId);
+		setName(name);
+		setMemberName(memberName);
+		setStatus(status);
+		setRequestDate(requestDate);
+		setIsCompany(isCompany);
+	}
+
+	
+
+	public MemberVO(String name, Date birth, String phone, String email, String memberFile, String address,
+			String detailAddress, Date requestDate) {
+		setName(name);
+		setBirth(birth);
+		setPhone(phone);
+		setEmail(email);
+		setMemberFile(memberFile);
+		setAddress(detailAddress);
+		setRequestDate(requestDate);
+		setEmail(email);
+		setMemberFile(memberFile);
+		setAddress(detailAddress);
+		setDetailAddress(detailAddress);
+		setRequestDate(requestDate);
+	}
+
+	
+
+	public MemberVO(String name, Date birth, String phone, String email, String memberFile, String companyFile,
+			String memberName, String address, String detailAddress, Date requestDate) {
+		setName(name);
+		setBirth(birth);
+		setPhone(phone);
+		setEmail(email);
+		setMemberFile(memberFile);
+		setCompanyFile(companyFile);
+		setMemberName(memberName);
+		setAddress(address);
+		setDetailAddress(detailAddress);
+		setRequestDate(requestDate);
+	}
+
+
 
 	// getter and setter
 	public String getMemberId() {
@@ -88,12 +135,12 @@ public class MemberVO {
 		this.companyFile = companyFile;
 	}
 
-	public char getIsCompany() {
+	public String getIsCompany() {
 		return isCompany;
 	}
 
-	public void setIsCompany(char isCompany) {
-		this.isCompany = isCompany;
+	public void setIsCompany(String IsCompany) {
+		this.isCompany = IsCompany;
 	}
 
 	public String getMemberName() {

@@ -236,6 +236,9 @@ public static final String GET_MEMBER_SALES = "SELECT fp.fruit_no, s.sale_no, fp
 					+ "FROM waste "
 					+ "WHERE waste_no = ?";
 
+
+
+
 	// ==================== WASTE ====================
 	String ADD_WASTE = "INSERT INTO waste (waste_no, waste_date, waste_req_date, reason_detail, quantity, fruit_no, member_id, admin_id, waste_category_no) "
 			+ "VALUES ('wa' || LPAD(seq_waste_no.NEXTVAL, 4, '0'), NULL, 'sysdate', ?, ?, ?, ?, NULL, ?)";
@@ -327,7 +330,6 @@ public static final String GET_MEMBER_SALES = "SELECT fp.fruit_no, s.sale_no, fp
 			+ "    ON w.waste_no = ww.waste_no" + "LEFT JOIN member wm" + "    ON w.member_id = wm.member_id"
 			+ "LEFT JOIN admin wa" + "    ON w.admin_id = wa.admin_id  " + "WHERE fp.fruit_no = ?";
 
-
 	// ============= waste category =============
 	String GET_WASTE_CATEGORY = "SELECT waste_category_reason "
 			+ "FROM waste_category "
@@ -335,5 +337,4 @@ public static final String GET_MEMBER_SALES = "SELECT fp.fruit_no, s.sale_no, fp
 	
 	String GET_WASTE_CATEGORY_LIST = "SELECT waste_category_no, waste_category_reason "
 			+ "FROM waste_category";
-
 }

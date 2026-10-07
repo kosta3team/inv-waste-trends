@@ -1,5 +1,28 @@
 @charset "UTF-8";
-.readonly-field { background-color: #e9ecef; pointer-events: none; }
-.cursor-pointer { cursor: pointer; }
+
+.readonly-field {
+	background-color: #e9ecef;
+	pointer-events: none;
+}
+
+.cursor-pointer {
+	cursor: pointer;
+}
 /* 검색 결과 행 마우스 오버 효과 */
-.search-row:hover { background-color: #f8f9fa; cursor: pointer; }
+.search-row:hover {
+	background-color: #f8f9fa;
+	cursor: pointer;
+}
+
+.request-container {
+	max-width: 900px;
+}
+
+/* 품목명 자동완성 */
+.autocomplete-results {
+	display: none;
+	z-index: 1050;
+	max-height: 200px;
+	overflow-y: auto;
+	top: 100%;
+}
