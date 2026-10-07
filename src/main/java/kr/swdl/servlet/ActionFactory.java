@@ -6,6 +6,18 @@ public class ActionFactory {
 		Action a = null;
 		
 		switch(cmd) {
+		case "wasteLunarTrends":
+			a = new WasteLunarTrends();
+			break;
+		case "wasteYearlyList":
+			a = new WasteYearlyList();
+			break;
+		case "wasteYearlyCompare" :
+			a = new WasteYearlyCompare();
+			break;
+		case "wasteTemperatureCompare" :
+			a = new WasteTemperatureCompare();
+			break;
 		case "idCheck":
 			a = new IdCheckAction();
 			break;

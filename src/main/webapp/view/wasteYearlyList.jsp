@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>최강 ERP - 연중 폐기량 조회</title>
+<title>그린매니저 - 연중 폐기량 조회</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
@@ -14,9 +14,9 @@
     <%@ include file="adminHeader.jsp" %>
     <div class="d-flex">
         <%@ include file="sidebar.jsp" %>
-        <main class="main flex-grow-1 container-fluid p-4">
+        <main class="main p-3">
             <div class="mb-4">
-                <h3 class="fw-bold">연중 폐기량 조회</h3>
+                <h3 class="fw-bold ps-3">연중 폐기량 조회</h3>
                 <p class="text-muted mb-0">선택한 연도의 월별 폐기량 누적 데이터를 조회합니다.</p>
             </div>
             
@@ -44,7 +44,7 @@
                     <!-- 하단: 선 그래프 영역 -->
                     <div class="chart-section">
                         <h5 class="mb-3 fw-bold text-center" id="chartTitle">2026년 연중 폐기량 추이</h5>
-                        <div class="chart-area" style="height: 400px;">
+                        <div class="chart-area">
                             <canvas id="lineChart"></canvas>
                         </div>
                     </div>
