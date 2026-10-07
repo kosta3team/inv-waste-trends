@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import kr.swdl.model.fruitproduct.*;
-import kr.swdl.util.DBUtil;
+import kr.swdl.model.DBUtil;
 
 public class FruitProductJunitTest {
 	

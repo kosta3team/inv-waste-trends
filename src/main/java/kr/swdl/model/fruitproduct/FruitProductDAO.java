@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.swdl.query.FruitProductQuery;
-import kr.swdl.util.DBUtil;
+import kr.swdl.model.DBUtil;
 import kr.swdl.model.admin.AdminVO;
 import kr.swdl.model.fruitcategory.FruitCategoryVO;
 import kr.swdl.model.member.MemberVO;

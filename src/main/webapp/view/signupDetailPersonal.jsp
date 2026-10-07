@@ -50,9 +50,8 @@
 						<td>${member.name}</td>
 					</tr>
 
+
 					<tr>
-
-
 						<th class="table-light">생년월일</th>
 						<td>${member.birth}</td>
 						<th class="table-light">전화번호</th>
@@ -67,10 +66,9 @@
 						<th class="table-light">주소</th>
 						<td colspan="3">${member.address}</td>
 					</tr>
-
-
+					
 					<tr>
-						<th class="table-light">첨부파일</th>
+						<th class="table-light">조합원증명서</th>
 						<td colspan="3">
 
 							<div class="d-flex align-items-center gap-2">
@@ -78,14 +76,11 @@
 								<i class="bi bi-file-earmark-pdf"></i> <a href="#"
 									class="text-decoration-none"> ${member.memberFile} </a>
 
-								<button type="button" class="btn btn-sm btn-outline-secondary">
-									다운로드</button>
 
 							</div>
 
 						</td>
 					</tr>
-
 
 				</tbody>
 

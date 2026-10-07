@@ -33,18 +33,19 @@
 				<tbody>
 
 					<tr>
-
-						<th width="20%" class="table-light">요청일자</th>
+						<th class="table-light">요청일자</th>
 						<td>2026-09-20</td>
-					</tr>
-
-					<tr>
 
 						<th class="table-light">조합원명</th>
 						<td>노종과수원</td>
+					</tr>
 
+					<tr>
 						<th class="table-light">대표자 이름</th>
 						<td>노종현</td>
+
+						<th class="table-light">생년월일</th>
+						<td>2001-02-07</td>
 
 					</tr>
 
@@ -61,21 +62,31 @@
 						<td colspan="3">서울시 관악구 봉천동 55-11</td>
 					</tr>
 
+
+
+
+
 					<tr>
-						<th class="table-light">첨부파일</th>
-						<td colspan="3">
-
+						<th class="table-light">사업자등록증</th>
+						<td>
 							<div class="d-flex align-items-center gap-2">
-
 								<i class="bi bi-file-earmark-pdf"></i> <a href="#"
-									class="text-decoration-none"> 사업자등록증.pdf </a> <i
-									class="bi bi-file-earmark-pdf"></i> <a href="#"
-									class="text-decoration-none"> 조합원증명서.pdf </a>
-
+									class="text-decoration-none">사업자등록증.pdf</a>
 							</div>
-
+						</td>
+						<th class="table-light">조합원증명서</th>
+						<td>
+							<div class="d-flex align-items-center gap-2">
+								<i class="bi bi-file-earmark-pdf"></i> <a href="#"
+									class="text-decoration-none">조합원증명서.pdf</a>
+							</div>
 						</td>
 					</tr>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/dev
 				</tbody>
 			</table>
 
