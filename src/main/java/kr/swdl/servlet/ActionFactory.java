@@ -118,6 +118,16 @@ public class ActionFactory {
 		case "getDetailMyFruitProduct":
 			a = new GetDetailMyFruitProduct();
 			break;
+		
+		// 6. 관리자 입고요청 승인 처리
+		case "approveFruitProduct":
+			a = new ApproveFruitProduct();
+			break;
+			
+		// 7. 관리자 입고요청 거절 처리
+		case "rejectFruitProduct":
+			a = new RejectFruitProduct();
+			break;
 			
 		//	입고요청 업무 - 다니엘 종료
 		case "logout":

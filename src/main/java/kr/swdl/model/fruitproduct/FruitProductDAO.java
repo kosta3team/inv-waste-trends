@@ -405,6 +405,7 @@ public class FruitProductDAO {
 				av.setName(rs.getString("입고처리자"));
 				vo.setAdmin(av);
 				
+				vo.setStatus(rs.getString("요청상태"));
 			}
 			
 		} catch (SQLException e) {
@@ -458,6 +459,8 @@ public class FruitProductDAO {
 				AdminVO av = new AdminVO();
 				av.setName(rs.getString("입고처리자"));
 				vo.setAdmin(av);
+				
+				vo.setStatus(rs.getString("요청상태"));
 			}
 			
 		} catch (SQLException e) {

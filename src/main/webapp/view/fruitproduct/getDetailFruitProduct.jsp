@@ -48,18 +48,25 @@
 </div>
 
 <div class="modal-footer">
-    <!-- 상태가 '입고요청'일 때만 승인/거절 버튼 출력 -->
+    <!-- 상태가 '입고요청'일 때만 승인/거절 폼 노출 (선택사항) -->
     <c:if test="${reqDetail.status == '입고요청'}">
-        <form action="${pageContext.request.contextPath}/controller" method="post" class="m-0 d-inline">
+        
+        <!-- 1. 승인 버튼 폼 -->
+        <form action="${pageContext.request.contextPath}/controller" method="post" class="d-inline m-0 ms-2">
             <input type="hidden" name="cmd" value="approveFruitProduct">
             <input type="hidden" name="fruitNo" value="${param.fruitNo}">
             <button type="submit" class="btn btn-primary px-4">승인</button>
         </form>
-        <form action="${pageContext.request.contextPath}/controller" method="post" class="m-0 d-inline">
+
+        <!-- 2. 거절 버튼 폼 -->
+        <form action="${pageContext.request.contextPath}/controller" method="post" class="d-inline m-0 ms-2">
             <input type="hidden" name="cmd" value="rejectFruitProduct">
             <input type="hidden" name="fruitNo" value="${param.fruitNo}">
             <button type="submit" class="btn btn-danger px-4">거절</button>
         </form>
+        
     </c:if>
-    <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">닫기</button>
+
+    <!-- 3. 모달 닫기 버튼 -->
+    <button type="button" class="btn btn-secondary px-4 ms-2" data-bs-dismiss="modal">닫기</button>
 </div>
