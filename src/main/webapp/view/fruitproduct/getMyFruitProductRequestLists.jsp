@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>입고요청 목록 조회(관리자)</title>
+<title>입고요청 목록 조회(조합원)</title>
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -21,17 +21,17 @@
 
 </head>
 <body>
-	<%@ include file="../adminHeader.jsp"%>
+	<%@ include file="../memberHeader.jsp"%>
 	<main class="inventory-page">
 
 		<!-- 제목 -->
 		<div class="mb-4">
-			<h3 class="fw-bold mb-1">입고요청 목록 조회(관리자)</h3>
+			<h3 class="fw-bold mb-1">입고요청 목록 조회(조합원)</h3>
 		</div>
 
 		<!-- form 영역 시작 -->
 		<form action="${pageContext.request.contextPath }/controller" method="get">
-			<input type="hidden" name="cmd" value="getAdminFruitProductRequestLists">
+			<input type="hidden" name="cmd" value="getMyFruitProductRequestLists">
 			
 			<!-- 검색 영역 -->
 			<div class="input-group justify-content-center align-items-center">
@@ -49,7 +49,7 @@
 				</button>
 				
 				<!-- 전체보기 버튼 -->
-				<a href="${pageContext.request.contextPath }/controller?cmd=getAdminFruitProductRequestLists" class="btn btn-outline-secondary ms-2">전체보기</a>
+				<a href="${pageContext.request.contextPath }/controller?cmd=getMyFruitProductRequestLists" class="btn btn-outline-secondary ms-2">전체보기</a>
 			</div>	
 			<hr>
 			
@@ -67,11 +67,14 @@
 			<table class="table table-hover inventory-table">
 				<thead>
 					<tr>
-						<th>순번</th>						
+						<th>순번</th>
+						<th>입고요청일련번호</th>
 						<th>상품명</th>
 						<th>입고수량(box)</th>
 						<th>단가(1box)</th>
-						<th>총판매예상금액</th>						
+						<th>총판매예상금액</th>
+						<th>조합원명</th>
+						<th>이름</th>
 						<th>요청일자</th>
 						<th>처리일자</th>
 						<th>요청상태</th>	
@@ -81,9 +84,9 @@
 					<!-- JSTL 반복문 -->
 					<c:choose>
 						<c:when test="${empty requestList }">
-							<!-- 실데이터(컬럼수)가 현재 td로 8개라서 colspan11 -->
+							<!-- 실데이터가 현재 td로 11개라서 colspan11 -->
 							<tr>
-								<td colspan="8" class="text-center py-4">조회된 입고 요청 내역이 없습니다.</td>
+								<td colspan="11" class="text-center py-4">조회된 입고 요청 내역이 없습니다.</td>
 							</tr>
 						</c:when>
 						<c:otherwise>
@@ -95,7 +98,9 @@
 									<td>${req.name }</td>
 									<td>${req.quantity }</td>
 									<td>${req.price }원</td>
-									<td>${req.totalPrice }원</td>									
+									<td>${req.totalPrice }원</td>
+									<td>${req.member.memberName }</td>
+									<td>${req.member.name }</td>
 									<td>${req.requestDate }</td>
 									<td>${req.fruitProductDate }</td>
 									<td>${req.status }</td>
@@ -114,7 +119,7 @@
 			<ul class="pagination justify-content-center">
 				<!-- 이전 버튼 -->
  				<li class="page-item ${currentPage == 1 ? 'disabled' : '' }">
- 					<a class="page-link" href="${pageContext.request.contextPath }/controller?cmd=getAdminFruitProductRequestLists&page=${currentPage - 1}&startDate=${param.startDate}&endDate=${param.endDate}&onlyPending=${param.onlyPending}">
+ 					<a class="page-link" href="${pageContext.request.contextPath }/controller?cmd=getMyFruitProductRequestLists&page=${currentPage - 1}&startDate=${param.startDate}&endDate=${param.endDate}&onlyPending=${param.onlyPending}">
 						<i class="bi bi-chevron-left"></i>
 					</a>
 				</li>
@@ -122,7 +127,7 @@
 				<!-- 페이지 번호 동적 생성 -->
 				<c:forEach begin="1" end="${totalPages == 0 ? 1 : totalPages }" var="i">
 					<li class="page-item ${currentPage == i ? 'active' : '' }">
-						<a class="page-link" href="${pageContext.request.contextPath }/controller?cmd=getAdminFruitProductRequestLists&page=${i}&startDate=${param.startDate}&endDate=${param.endDate}&onlyPending=${param.onlyPending}">
+						<a class="page-link" href="${pageContext.request.contextPath }/controller?cmd=getMyFruitProductRequestLists&page=${i}&startDate=${param.startDate}&endDate=${param.endDate}&onlyPending=${param.onlyPending}">
 							${i }
 						</a>
 					</li>
@@ -131,7 +136,7 @@
 
 				<!-- 다음 버튼 -->
 				<li class="page-item ${currentPage == totalPages || totalPages == 0 ? 'disabled' : ''}">
-					<a class="page-link" href="${pageContext.request.contextPath }/controller?cmd=getAdminFruitProductRequestLists&page=${currentPage + 1}&startDate=${param.startDate}&endDate=${param.endDate}&onlyPending=${param.onlyPending}">
+					<a class="page-link" href="${pageContext.request.contextPath }/controller?cmd=getMyFruitProductRequestLists&page=${currentPage + 1}&startDate=${param.startDate}&endDate=${param.endDate}&onlyPending=${param.onlyPending}">
 					<i class="bi bi-chevron-right"></i>
 				</a></li>
 			</ul>

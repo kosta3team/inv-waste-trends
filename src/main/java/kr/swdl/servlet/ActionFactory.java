@@ -104,9 +104,9 @@ public class ActionFactory {
 			a = new GetAdminFruitProductRequestLists();
 			break;
 			
-		// 6. 조합원 기본 전체 입고요청목록 조회
-		case "getMyFruitProductRequests":
-			a = new GetMyFruitProductRequests();
+		// 3. 조합원 입고요청목록 조회
+		case "getMyFruitProductRequestLists":
+			a = new GetMyFruitProductRequestLists();
 			break;
 
 		// 7. 조합원 기간 전체 입고요청목록 조회
