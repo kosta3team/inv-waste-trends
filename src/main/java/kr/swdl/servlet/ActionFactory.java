@@ -6,6 +6,9 @@ public class ActionFactory {
 		Action a = null;
 		
 		switch(cmd) {
+		case "inventoryDetail":
+		    a = new InventoryDetail();
+		    break;
 		case "wasteTrends":
 			a=new WasteTrends();
 			break;

@@ -9,45 +9,61 @@ document.getElementById("currentDate").textContent = `${year}-${month}-${day}`;
 
 // 재고 상세정보 모달 채우기
 // tr의 data-* 속성값이 모달 내용 (추후 DB 연동 시 data-* 값만 실제 데이터로 교체하기)
-function showInventoryDetail(row) {
-	const d = row.dataset;
+function showInventoryDetail(fruitNo) {
 
-	document.getElementById("inventoryDetailModalTitle").textContent =
-		`과일상품일련번호(${d.serial}) 상세정보`;
-	document.getElementById("inventoryDetailStorageDeadline").textContent =
-		`보관 일자 : ${d.storageDeadline}`;
+    const contextPath =
+        document.getElementById('contextPath').value;
 
-	document.getElementById("detailItemCode").textContent = d.itemCode;
-	document.getElementById("detailCategory").textContent = d.category;
-	document.getElementById("detailVariety").textContent = d.variety;
-	document.getElementById("detailOrigin").textContent = d.origin;
-	document.getElementById("detailProductName").textContent = d.productName;
-	document.getElementById("detailUnitPrice").textContent = d.unitPrice;
-	document.getElementById("detailWeight").textContent = d.weight;
-	document.getElementById("detailQuantity").textContent = d.quantity;
-	document.getElementById("detailRemainQuantity").textContent = d.remainQuantity;
-	
+    const url =
+        contextPath
+        + '/controller?cmd=inventoryDetail'
+        + '&fruitNo='
+        + encodeURIComponent(fruitNo);
 
-	document.getElementById("detailCoopName").textContent = d.coopName;
-	document.getElementById("detailRequester").textContent = d.requester;
-	document.getElementById("detailRegistrant").textContent = d.registrant;
-	document.getElementById("detailReceivedDate").textContent = d.receivedDate;
+    console.log("상세조회 URL:", url);
 
-	document.getElementById("detailDisposeRegistrant").textContent = d.disposeRegistrant;
-	document.getElementById("detailDisposeRequester").textContent = d.disposeRequester;
-	document.getElementById("detailDisposeAmount").textContent = d.disposeAmount;
-	document.getElementById("detailRequestDate").textContent = d.requestDate;
-	document.getElementById("detailDisposeDate").textContent = d.disposeDate;
-	document.getElementById("detailDisposeReason").textContent = d.disposeReason;
-	document.getElementById("detailPrecipitation").textContent = d.precipitation;
-	document.getElementById("detailHighestTemp").textContent = d.highestTemp;
-	document.getElementById("detailAverageTemp").textContent = d.averageTemp;
-	document.getElementById("detailLowestTemp").textContent = d.lowestTemp;
+    fetch(url)
+        .then(response => {
 
+            if (!response.ok) {
+                throw new Error(
+                    '상세정보 조회 실패: ' + response.status
+                );
+            }
 
+            return response.text();
+        })
+        .then(html => {
 
+            document.body.insertAdjacentHTML(
+                'beforeend',
+                html
+            );
 
+            const modalElement =
+                document.getElementById(
+                    'inventoryDetailModal'
+                );
 
-	const modal = new bootstrap.Modal(document.getElementById("inventoryDetailModal"));
-	modal.show();
+            const modal =
+                new bootstrap.Modal(modalElement);
+
+            modal.show();
+
+            modalElement.addEventListener(
+                'hidden.bs.modal',
+                function () {
+                    modalElement.remove();
+                },
+                { once: true }
+            );
+        })
+        .catch(error => {
+
+            console.error(error);
+
+            alert(
+                '재고 상세정보를 불러오지 못했습니다.'
+            );
+        });
 }
