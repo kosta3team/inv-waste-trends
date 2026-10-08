@@ -4,11 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-
-import kr.swdl.model.Query;
 
 public class WasteCategoryDAO {
 	private Connection conn;
@@ -20,8 +15,12 @@ public class WasteCategoryDAO {
 	public WasteCategoryVO getWasteCategory(String wasteCategoryNo) {
 		WasteCategoryVO vo = null;
 
+		String sql = "SELECT waste_category_reason "
+				+ "FROM waste_category "
+				+ "WHERE waste_category_no = ?";
+
 		try {
-			PreparedStatement pstmt = conn.prepareStatement(Query.GET_WASTE_CATEGORY);
+			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, wasteCategoryNo);
 			ResultSet rs = pstmt.executeQuery();
 			rs.next(); 
@@ -33,24 +32,5 @@ public class WasteCategoryDAO {
 		}
 
 		return vo;
-	}
-	
-	public List<WasteCategoryVO> getWasteCategoryList() {
-		List<WasteCategoryVO> list = new ArrayList();
-
-
-		try {
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery(Query.GET_WASTE_CATEGORY_LIST);
-			while(rs.next()) {
-				list.add(new WasteCategoryVO(rs.getString(1), rs.getString(2)));
-			}
-			rs.close();
-			stmt.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return list;
 	}
 }

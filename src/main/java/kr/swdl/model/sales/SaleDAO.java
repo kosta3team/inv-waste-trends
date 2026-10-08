@@ -1,7 +1,6 @@
 package kr.swdl.model.sales;
 
-import java.sql.Date;
-import java.time.format.DateTimeFormatter;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,14 +19,8 @@ public class SaleDAO {
 		this.conn = conn;
 	}
 
-	private static final DateTimeFormatter DATE_FORMATTER =
-	        DateTimeFormatter.ofPattern("yyyy년 MM월 dd일");
-	
-	private String formatSaleDate(ResultSet rs) throws SQLException {
-	    Date sqlDate = rs.getDate("sales_date");
 
-	    return sqlDate.toLocalDate().format(DATE_FORMATTER);
-	}
+
 	/**
 	 * 조합원이 본인의 판매기록의 전체를 조회
 	 */
@@ -41,7 +34,6 @@ public class SaleDAO {
 			pstmt.setString(1, memberId);
 			ResultSet rs =  pstmt.executeQuery();
 			while (rs.next()) {
-				
 				list.add(new SaleVO(
 						rs.getString("fruit_no"), 
 						rs.getString("sale_no"),
@@ -49,7 +41,7 @@ public class SaleDAO {
 						rs.getInt("quantity"), 
 						rs.getInt("price"), 
 						rs.getInt("total_price"),
-						formatSaleDate(rs)));
+						rs.getString("sales_date")));
 			}
 			rs.close();
 			pstmt.close();
@@ -77,16 +69,14 @@ public class SaleDAO {
 
 			ResultSet rs =  pstmt.executeQuery();
 			while (rs.next()) {
-				
 				list.add(new SaleVO(
-						
 						rs.getString("fruit_no"), 
 						rs.getString("sale_no"),
 						rs.getString("name"),
 						rs.getInt("quantity"), 
 						rs.getInt("price"), 
 						rs.getInt("total_price"),
-						formatSaleDate(rs)));
+						rs.getString("sales_date")));
 			}
 			rs.close();
 			pstmt.close();
@@ -119,7 +109,7 @@ public class SaleDAO {
 						rs.getInt("quantity"), 
 						rs.getInt("price"), 
 						rs.getInt("total_price"),
-						formatSaleDate(rs)));
+						rs.getString("sales_date")));
 			}
 			rs.close();
 			stmt.close();
@@ -134,7 +124,7 @@ public class SaleDAO {
 	 * 관지자가 기간별 판매기록을 조회
 	 */
 	public List<SaleVO> findSalesByPeriod(String startDay, String endDay) {
-		List<SaleVO> saleList = new ArrayList<SaleVO>();
+		List<SaleVO> list = new ArrayList<SaleVO>();
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(Query.GET_ADMIN_SALES_BY_PERIOD);
@@ -143,16 +133,16 @@ public class SaleDAO {
 
 			ResultSet rs =  pstmt.executeQuery();
 			while (rs.next()) {
-				saleList.add(new SaleVO(
+				list.add(new SaleVO(
 						rs.getString("fruit_no"), 
 						rs.getString("sale_no"),
 						rs.getString("name"),
-						rs.getString("member_name"),
+						rs.getString("memberName"),
 						rs.getString("name"),
 						rs.getInt("quantity"), 
 						rs.getInt("price"), 
 						rs.getInt("total_price"),
-						formatSaleDate(rs)));
+						rs.getString("sales_date")));
 			}
 			rs.close();
 			pstmt.close();
@@ -160,7 +150,7 @@ public class SaleDAO {
 			e.printStackTrace();
 		}
 
-		return saleList;	
+		return list;	
 	}
 
 	/**
