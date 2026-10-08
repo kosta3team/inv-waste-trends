@@ -26,7 +26,18 @@ public class ActionFactory {
 		case "requestWaste":
 			a = new RequestWasteAction();
 			break;
-			
+		case "wasteLunarTrends":
+			a = new WasteLunarTrends();
+			break;
+		case "wasteYearlyList":
+			a = new WasteYearlyList();
+			break;
+		case "wasteYearlyCompare" :
+			a = new WasteYearlyCompare();
+			break;
+		case "wasteTemperatureCompare" :
+			a = new WasteTemperatureCompare();
+			break;
 			//
 		case "memberInventoryList":
 			a = new MemberInventoryList();

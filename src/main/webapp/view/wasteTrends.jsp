@@ -17,11 +17,11 @@
         <!-- aside -->
         <%@ include file="sidebar.jsp" %>
         
-        <main class="main flex-grow-1 container-fluid p-4">
+        <main class="main p-3">
 
             <div class="mb-4">
-                <h3 class="fw-bold">
-                    <i class="bi bi-sun-fill text-danger me-2"></i>폐기량 동향 
+                <h3 class="fw-bold ps-3">
+                    폐기량 동향 
                     <span class="fs-5 text-muted ms-2">(특정 양력 월 비교)</span>
                 </h3>             
             </div>
@@ -109,7 +109,7 @@
                             </select>
                         </div>
                         
-                        <div class="col-auto d-flex align-items-center ms-3">
+                        <div class="col-auto d-flex align-items-center">
                             <label class="form-label mb-0 fw-bold me-2">월</label>
                             <select class="form-select form-select-sm w-auto" id="month" name="month">
                                 <option value="ALL" ${selectedMonth == 'ALL' ? 'selected' : '' }>전체</option>
@@ -128,7 +128,7 @@
                             </select>
                         </div>
                         
-                        <div class="col-auto d-flex align-items-center ms-3">
+                        <div class="col-auto d-flex align-items-center">
                             <label class="form-label mb-0 fw-bold me-2">지역</label>
                             <select class="form-select form-select-sm w-auto" id="region" name="region">
                                 <option value="ALL" ${selectedRegion == 'ALL' ? 'selected' : '' }>전국</option>
@@ -145,7 +145,7 @@
                             </select>
                         </div>
                         
-                        <div class="col-auto ms-2">
+                        <div class="col-auto">
                             <button type="submit" class="btn btn-sm btn-primary px-4">조회</button>
                         </div>
                     </form>
@@ -153,7 +153,7 @@
                 
                 <!-- 하단: 차트 렌더링 영역 -->
                 <div class="card-body">
-                    <div class="chart-area" style="height: 350px">
+                    <div class="chart-area">
                         <canvas id="barChart"></canvas>
                     </div>
                 </div>
