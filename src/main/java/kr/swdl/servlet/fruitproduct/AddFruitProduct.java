@@ -27,8 +27,9 @@ public class AddFruitProduct implements Action {
 		// 1. LoginAction에서 저장한 로그인 유저의 ID
 		String memberId = (String) session.getAttribute("memberId");
 		
-		// 2. ID를 기반으로 MemberDAO를 통해서 주소, 연락처등 상세정보 가져옴.
+		// 2. ID를 기반으로 MemberDAO 없이 주소, 연락처등 상세정보 가져옴.
 		if (memberId != null) {
+			System.out.println("입고요청 진입: 로그인유저 "+memberId);
 			MemberVO actualUser = new MemberVO();
 			actualUser.setMemberId(memberId);
 			
@@ -38,34 +39,44 @@ public class AddFruitProduct implements Action {
 			
 			try {
 				conn = DBCP.getConnection();
-				String sql = "name, member_name, phone, email, address, detail_address FROM member WHERE member_id = ?";
+//				String sql = "name, member_name, phone, email, address, detail_address FROM member WHERE member_id = ?";
+				// MemberDAO에서 사용된 인자가 한글이라 불가피하게 *을 함. -> 추후 MemberDAO생성이 되면 그에 따라 조정예정
+				String sql = "SELECT * FROM member WHERE member_id = ?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, memberId);
 				rs = pstmt.executeQuery();
 				
 				if (rs.next()) {
-					actualUser.setName("member_name");
-					actualUser.setName("name");
-//					actualUser.set
+					System.out.println("DB조회 성공 데이터를 VO에 담음.");
+					actualUser.setMemberName(rs.getString("name"));
+					actualUser.setName(rs.getString("member_name"));
+					actualUser.setPhone(rs.getString("phone"));
+					actualUser.setEmail(rs.getString("email"));
+					actualUser.setAddress(rs.getString("address"));
+					actualUser.setDetailAddress(rs.getString("detail_address"));
+				} else {
+					System.out.println("DB에 해당 ID 정보가 없습니다.");
 				}
 			} catch (Exception e) {
+				System.out.println("DB조회중 에러발생");
 				e.printStackTrace();
+			} finally {
+				DBCP.close(conn, pstmt, rs);
 			}
-			
-			
+			request.setAttribute("loginUser", actualUser);
 		}
 		
 		String actionType = request.getParameter("actionType");
 		FruitCategoryDAO categoryDao = new FruitCategoryDAO();		
 		
-		// 1. 처음 화면 진입 시
+		// 3. 처음 화면 진입 시
 		if (actionType == null || !actionType.equals("submit")) {
 			// ★ JSTL 에러 방지를 위해, 여기서 반드시 데이터를 퍼서 보내줘야 합니다.
 			request.setAttribute("categoryList", categoryDao.getAllCategories());
 			return "view/fruitproduct/addFruitProduct.jsp";
 		}
 		
-		// 2. 폼 제출 시
+		// 4. 폼 제출 시
 		FruitProductVO vo = new FruitProductVO();
 		
 		vo.setName(request.getParameter("itemName"));
@@ -88,7 +99,7 @@ public class AddFruitProduct implements Action {
 		FruitProductService service = new FruitProductService();
 		request.setAttribute("result", service.addFruitProduct(vo));
 		
-		// ★ 화면 다시 그릴 때 JSTL 에러 방지용 리스트 다시 퍼오기
+		// 화면 다시 로드시 JSTL 에러 방지용 리스트 다시 퍼오기
 		request.setAttribute("categoryList", categoryDao.getAllCategories());
 		
 		return "view/fruitproduct/addFruitProduct.jsp";

@@ -119,7 +119,7 @@ function applyByCode(){
 	let rawValue = codeInput.value.replace(/[^0-9]/g, ''); // 숫자만 남기기
 	
 	if (!rawValue){
-		inputElement.value = '';
+		codeInput.value = '';
 		document.getElementById('itemName').value = '';
 		document.getElementById('fruitCategoryNo').value = '';
 		resetVarietyOriginAndCode(false);
