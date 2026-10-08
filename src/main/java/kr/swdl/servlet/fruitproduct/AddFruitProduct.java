@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import kr.swdl.model.DBCP;
 import kr.swdl.model.MemberDAO;
 import kr.swdl.model.fruitcategory.FruitCategoryDAO;
 import kr.swdl.model.fruitproduct.FruitProductService;
@@ -35,9 +36,21 @@ public class AddFruitProduct implements Action {
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			
-//			try {
-//				conn = DBCP
-//			}
+			try {
+				conn = DBCP.getConnection();
+				String sql = "name, member_name, phone, email, address, detail_address FROM member WHERE member_id = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, memberId);
+				rs = pstmt.executeQuery();
+				
+				if (rs.next()) {
+					actualUser.setName("member_name");
+					actualUser.setName("name");
+//					actualUser.set
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			
 			
 		}

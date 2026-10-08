@@ -1,3 +1,10 @@
+<%
+    if (session.getAttribute("memberId") == null) {
+        response.sendRedirect(request.getContextPath() + "/controller?cmd=loginUI");
+        return;
+    }
+%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -87,7 +94,6 @@
 
 							<i class="bi bi-person-circle me-1"></i>
 							${sessionScope.loginName}님
-
 						</button>
 
 						<a href="${pageContext.request.contextPath}/controller?cmd=logout"

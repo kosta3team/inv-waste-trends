@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/request.css">
 </head>
 <body>
-    <jsp:include page="/view/memberHeader.jsp"/>
+    <%@ include file="../memberHeader.jsp"%>
     
     <!-- 컨트롤러에서 넘겨준 result -->
     <c:if test="${result != null }">
