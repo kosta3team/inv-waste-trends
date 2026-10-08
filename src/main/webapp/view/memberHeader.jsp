@@ -94,7 +94,6 @@
 
 							<i class="bi bi-person-circle me-1"></i>
 							${sessionScope.loginName}님
-						<p>memberId = [${memberId}]</p>
 						</button>
 
 						<a href="${pageContext.request.contextPath}/controller?cmd=logout"
