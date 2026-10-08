@@ -2,6 +2,8 @@ package kr.swdl.model.waste;
 
 import java.util.Objects;
 
+import kr.swdl.util.DateFormatter;
+
 public class WasteVO {
 	private String wasteNo;
 	private String wasteDate;
@@ -36,13 +38,13 @@ public class WasteVO {
 		return wasteDate;
 	}
 	public void setWasteDate(String wasteDate) {
-		this.wasteDate = wasteDate;
+		this.wasteDate = DateFormatter.toYearMonthDay(wasteDate);
 	}
 	public String getWasteReqDate() {
 		return wasteReqDate;
 	}
 	public void setWasteReqDate(String wasteReqDate) {
-		this.wasteReqDate = wasteReqDate;
+		this.wasteReqDate = DateFormatter.toYearMonthDay(wasteReqDate);
 	}
 	public String getReasonDetail() {
 		return reasonDetail;

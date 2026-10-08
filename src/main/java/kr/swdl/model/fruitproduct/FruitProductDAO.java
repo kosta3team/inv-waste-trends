@@ -321,6 +321,7 @@ public class FruitProductDAO {
 				AdminVO av = new AdminVO();
 				av.setName(rs.getString("입고처리자"));
 				vo.setAdmin(av);
+				
 			}
 			
 		} catch (SQLException e) {

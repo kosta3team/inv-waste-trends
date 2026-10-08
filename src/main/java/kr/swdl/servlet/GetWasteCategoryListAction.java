@@ -5,13 +5,14 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
-public class WasteTrends implements Action {
+import kr.swdl.model.waste.WasteCategoryService;
+
+public class GetWasteCategoryListAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request) throws ServletException, IOException {
-		return "view/wasteTrends.jsp";
+		request.setAttribute("list", new WasteCategoryService().getWateCategoryList());
+		return "view/getWasteCategoryList.jsp";
 	}
-
-	
 
 }
