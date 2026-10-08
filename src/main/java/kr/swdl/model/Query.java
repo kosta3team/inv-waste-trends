@@ -7,12 +7,12 @@ public interface Query {
 	String GET_MEMBER_ID = "SELECT member_id FROM member WHERE member_id = ?";
 
 	String ADD_MEMBER = "INSERT INTO member(member_id, pw, name, birth, phone, email, member_file, is_company, zip_code, address, detail_address, status, request_date) "
-			+ "VALUES(?, ?, ?, ?, ?, ?, ?, 'F', ?, ?, ?, '대기', SYSDATE)";
+			+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '대기', SYSDATE)";
 
 	String ADD_COMPANY_MEMBER = "INSERT INTO member(member_id, pw, name, birth, phone, email, member_file, company_file, is_company, member_name, zip_code, address, detail_address, status, request_date) "
 			+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'T', ?, ?, ?, ?, '대기', SYSDATE)";
 
-	String GET_MEMBERS = "SELECT request_date, status, member_name, name FROM member";
+	String GET_MEMBERS = "SELECT member_id, request_date, status, member_name, name, is_company FROM member";
 
 	String GET_MEMBER = "SELECT request_date, name, birth, phone, email, address || ' ' || detail_address AS 주소, member_file FROM member WHERE member_id = ?";
 
@@ -22,7 +22,7 @@ public interface Query {
 
 	String DELETE_MEMBER = "DELETE FROM member WHERE member_id = ?";
 
-	String MEMBER_LOGIN = "SELECT name FROM member WHERE member_id=? AND pw=?";
+	String MEMBER_LOGIN = "SELECT name, member_name, is_company, status FROM member WHERE member_id=? AND pw=?";
 
 	String ADMIN_LOGIN = "SELECT name FROM admin WHERE admin_id=? AND pw=?";
 
@@ -241,9 +241,8 @@ public interface Query {
 	// 13. 관리자 입고 요청을 승인
 	String APPROVE_FRUIT_PRODUCT = "UPDATE fruit_product SET status='정상', admin_id = ?, fruit_product_date = SYSDATE WHERE  fruit_no = ?";
 
-		
-		// ==================== Sales ====================
-		public static final String GET_MEMBER_SALES = "SELECT fp.fruit_no, s.sale_no, fp.name, s.quantity, fp.price, s.quantity * fp.price AS total_price, s.sales_date "
+	// ==================== Sales ====================
+public static final String GET_MEMBER_SALES = "SELECT fp.fruit_no, s.sale_no, fp.name, s.quantity, fp.price, s.quantity * fp.price AS total_price, s.sales_date "
 				+ "FROM fruit_product fp JOIN sales s ON fp.fruit_no = s.fruit_no "
 				+ "WHERE fp.member_id = ? ORDER BY s.sales_date";
 		
@@ -316,8 +315,8 @@ public interface Query {
 				+ "FROM fruit_product fp JOIN sales s ON fp.fruit_no = s.fruit_no "
 				+ "WHERE fp.member_id = ? "
 				+ "AND s.sales_date >= ? "
-				+ "AND s.sales_date <= ?";
-		// // ==================== Waste ====================
+				+ "AND s.sales_date <= ?";	
+	// // ==================== Waste ====================
 		public static final String ADD_WASTE_REQ =  "INSERT INTO waste (waste_no, waste_date, waste_req_date, reason_detail, quantity, fruit_no, member_id, admin_id, waste_category_no) "
 					+ "VALUES ('wa' || LPAD(seq_waste_no.NEXTVAL, 4, '0'), NULL, SYSDATE, ?, ?, ?, ?, NULL, ?)";
 			
@@ -328,22 +327,26 @@ public interface Query {
 			
 			public static final String GET_MEMBER_WASTES = "SELECT  waste_no, waste_req_date, waste_date "
 					+ "FROM waste "
-					+ "WHERE member_id = ?";
+					+ "WHERE member_id = ?"
+					+ "ORDER BY waste_req_date DESC";
 			
 			public static final String GET_MEMBER_WASTES_BY_PERIOD = "SELECT waste_no, waste_req_date, waste_req_date, waste_date "
 					+ "FROM waste WHERE member_id = ? "
 					+ "AND waste_req_date IS NOT NULL "
-					+ "AND waste_date IS NULL";
+					+ "AND waste_date IS NULL"
+					+ "ORDER BY waste_req_date DESC";
 			
 			public static final String GET_ADMIN_WASTES = "SELECT w.waste_no, w.waste_req_date, w.waste_date, m.member_name, m.name "
 					+ "FROM waste w, member m "
-					+ "WHERE w.member_id = m.member_id";
+					+ "WHERE w.member_id = m.member_id "
+					+ "ORDER BY w.waste_req_date DESC";
 
 			public static final String GET_ADMIN_WASTES_ONLY_REQUEST = "SELECT w.waste_no, w.waste_req_date, w.waste_date, m.member_name, m.name "
 					+ "FROM waste w, member m "
 					+ "WHERE w.member_id = m.member_id "
 					+ "AND  w.waste_req_date IS NOT NULL "
-					+ "AND w.waste_date IS NULL";	
+					+ "AND w.waste_date IS NULL "
+					+ "ORDER BY w.waste_req_date DESC";	
 			
 			public static final String GET_WASTE_DETAIL = "SELECT "
 					+ "w.waste_req_date, "
@@ -360,7 +363,8 @@ public interface Query {
 					+ "fp.weight, "
 					+ "m.member_name, "
 					+ "m.name, "
-					+ "a.name "
+					+ "a.name, "
+					+ "fp.fruit_no "
 					+ "FROM "
 					+ "fruit_category fc, "
 					+ "fruit_product fp, "
@@ -387,8 +391,10 @@ public interface Query {
 					+ "FROM waste "
 					+ "WHERE waste_no = ?";
 
-	// ==================== WASTE ====================
 
+
+
+	// ==================== WASTE ====================
 	String ADD_WASTE = "INSERT INTO waste (waste_no, waste_date, waste_req_date, reason_detail, quantity, fruit_no, member_id, admin_id, waste_category_no) "
 			+ "VALUES ('wa' || LPAD(seq_waste_no.NEXTVAL, 4, '0'), NULL, 'sysdate', ?, ?, ?, ?, NULL, ?)";
 
@@ -420,116 +426,70 @@ public interface Query {
 
 	// ==================== INVENTORY ====================
 
-		String GET_REMAIN_QUANTITY = "SELECT fp.quantity - NVL((SELECT SUM(s.quantity) FROM sales s WHERE s.fruit_no = fp.fruit_no), 0) "
-				+ "- NVL((SELECT SUM(w.quantity) FROM waste w WHERE w.fruit_no = fp.fruit_no), 0) AS remain_quantity "
-				+ "FROM fruit_product fp WHERE fp.fruit_no = '?'";
+	String GET_REMAIN_QUANTITY = "SELECT fp.quantity - NVL((SELECT SUM(s.quantity) FROM sales s WHERE s.fruit_no = fp.fruit_no), 0) "
+			+ "- NVL((SELECT SUM(w.quantity) FROM waste w WHERE w.fruit_no = fp.fruit_no), 0) AS remain_quantity "
+			+ "FROM fruit_product fp WHERE fp.fruit_no = ?";
 
-		String GET_INVENTORY = "SELECT fp.fruit_no, fp.name, "
-				+ "fp.quantity "
-				+ "- NVL((SELECT SUM(s.quantity) FROM sales s WHERE s.fruit_no = fp.fruit_no), 0) "
-				+ "- NVL((SELECT SUM(w2.quantity) FROM waste w2 WHERE w2.fruit_no = fp.fruit_no), 0) AS remain_quantity, "
-				+ "fp.price, "
-				+ "m.member_name, "
-				+ "fp.storage_date, "
-				+ "w.waste_date, "
-				+ "wc.waste_category_reason, "
-				+ "fp.status "
-				+ "FROM FRUIT_PRODUCT fp "
-				+ "JOIN MEMBER m ON fp.member_id = m.member_id "
-				+ "LEFT JOIN WASTE w ON fp.fruit_no = w.fruit_no "
-				+ "LEFT JOIN WASTE_CATEGORY wc ON w.waste_category_no = wc.waste_category_no "
-				+ "WHERE fp.status IN ('정상', '폐기')";
+	String GET_INVENTORY = "SELECT fp.fruit_no, fp.name, " + "fp.quantity "
+			+ "- NVL((SELECT SUM(s.quantity) FROM sales s WHERE s.fruit_no = fp.fruit_no), 0) "
+			+ "- NVL((SELECT SUM(w2.quantity) FROM waste w2 WHERE w2.fruit_no = fp.fruit_no), 0) AS remain_quantity, "
+			+ "fp.price, " + "m.member_name, " + "fp.storage_date, " + "w.waste_date, " + "wc.waste_category_reason, "
+			+ "fp.status " + "FROM FRUIT_PRODUCT fp " + "JOIN MEMBER m ON fp.member_id = m.member_id "
+			+ "LEFT JOIN WASTE w ON fp.fruit_no = w.fruit_no "
+			+ "LEFT JOIN WASTE_CATEGORY wc ON w.waste_category_no = wc.waste_category_no "
+			+ "WHERE fp.status IN ('정상', '폐기')";
 
-		String GET_INVENTORY_BY_NAME = "SELECT fp.fruit_no, fp.name, fp.quantity - NVL((SELECT SUM(s.quantity) FROM sales s WHERE s.fruit_no = fp.fruit_no), 0) "
-				+ "- NVL((SELECT SUM(w.quantity) FROM waste w WHERE w.fruit_no = fp.fruit_no), 0) AS remain_quantity, "
-				+ "fp.price, m.member_name, fp.storage_date, w.waste_date, wc.waste_category_reason, fp.status "
-				+ "FROM fruit_product fp JOIN member m ON fp.member_id = m.member_id LEFT OUTER JOIN waste w ON fp.fruit_no = w.fruit_no "
-				+ "LEFT OUTER JOIN waste_category wc ON w.waste_category_no = wc.waste_category_no "
-				+ "WHERE fp.name LIKE '%' || ? || '%' AND fp.status IN ('정상', '폐기')";
-				
-		String GET_INVENTORY_BY_MEMBER = "SELECT fp.fruit_no, fp.name, "
-				+ "fp.quantity - NVL((SELECT SUM(s.quantity) FROM sales s WHERE s.fruit_no = fp.fruit_no), 0) "
-				+ "- NVL((SELECT SUM(w2.quantity) FROM waste w2 WHERE w2.fruit_no = fp.fruit_no), 0) AS remain_quantity, "
-				+ "fp.price, "
-				+ "m.member_name, "
-				+ "fp.storage_date, "
-				+ "w.waste_date, "
-				+ "wc.waste_category_reason, "
-				+ "fp.status "
-				+ "FROM FRUIT_PRODUCT fp "
-				+ "JOIN MEMBER m ON fp.member_id = m.member_id "
-				+ "LEFT JOIN WASTE w ON fp.fruit_no = w.fruit_no "
-				+ "LEFT JOIN WASTE_CATEGORY wc ON w.waste_category_no = wc.waste_category_no "
-				+ "WHERE fp.status IN ('정상', '폐기') "
-				+ "AND m.member_name LIKE '%' || ? || '%'";
+	String GET_INVENTORY_BY_NAME = "SELECT fp.fruit_no, fp.name, fp.quantity - NVL((SELECT SUM(s.quantity) FROM sales s WHERE s.fruit_no = fp.fruit_no), 0) "
+			+ "- NVL((SELECT SUM(w.quantity) FROM waste w WHERE w.fruit_no = fp.fruit_no), 0) AS remain_quantity, "
+			+ "fp.price, m.member_name, fp.storage_date, w.waste_date, wc.waste_category_reason, fp.status "
+			+ "FROM fruit_product fp JOIN member m ON fp.member_id = m.member_id LEFT OUTER JOIN waste w ON fp.fruit_no = w.fruit_no "
+			+ "LEFT OUTER JOIN waste_category wc ON w.waste_category_no = wc.waste_category_no "
+			+ "WHERE fp.name LIKE '%' || ? || '%' AND fp.status IN ('정상', '폐기')";
 
-	String GET_WASTED_PRODUCTS =  "SELECT fp.fruit_no, fp.name, "
-				+ "fp.quantity - NVL((SELECT SUM(s.quantity) FROM sales s WHERE s.fruit_no = fp.fruit_no), 0) "
-				+ "- NVL((SELECT SUM(w2.quantity) FROM waste w2 WHERE w2.fruit_no = fp.fruit_no), 0) AS remain_quantity, "
-				+ "fp.price, "
-				+ "m.member_name, "
-				+ "fp.storage_date, "
-				+ "w.waste_date, "
-				+ "wc.waste_category_reason, "
-				+ "fp.status "
-				+ "FROM FRUIT_PRODUCT fp "
-				+ "JOIN MEMBER m ON fp.member_id = m.member_id "
-				+ "LEFT JOIN WASTE w ON fp.fruit_no = w.fruit_no "
-				+ "LEFT JOIN WASTE_CATEGORY wc ON w.waste_category_no = wc.waste_category_no "
-				+ "WHERE fp.status = '폐기'";
+	String GET_INVENTORY_BY_MEMBER = "SELECT fp.fruit_no, fp.name, "
+			+ "fp.quantity - NVL((SELECT SUM(s.quantity) FROM sales s WHERE s.fruit_no = fp.fruit_no), 0) "
+			+ "- NVL((SELECT SUM(w2.quantity) FROM waste w2 WHERE w2.fruit_no = fp.fruit_no), 0) AS remain_quantity, "
+			+ "fp.price, " + "m.member_name, " + "fp.storage_date, " + "w.waste_date, " + "wc.waste_category_reason, "
+			+ "fp.status " + "FROM FRUIT_PRODUCT fp " + "JOIN MEMBER m ON fp.member_id = m.member_id "
+			+ "LEFT JOIN WASTE w ON fp.fruit_no = w.fruit_no "
+			+ "LEFT JOIN WASTE_CATEGORY wc ON w.waste_category_no = wc.waste_category_no "
+			+ "WHERE fp.status IN ('정상', '폐기') " + "AND m.member_name LIKE '%' || ? || '%'";
+
+	String GET_WASTED_PRODUCTS = "SELECT fp.fruit_no, fp.name, "
+			+ "fp.quantity - NVL((SELECT SUM(s.quantity) FROM sales s WHERE s.fruit_no = fp.fruit_no), 0) "
+			+ "- NVL((SELECT SUM(w2.quantity) FROM waste w2 WHERE w2.fruit_no = fp.fruit_no), 0) AS remain_quantity, "
+			+ "fp.price, " + "m.member_name, " + "fp.storage_date, " + "w.waste_date, " + "wc.waste_category_reason, "
+			+ "fp.status " + "FROM FRUIT_PRODUCT fp " + "JOIN MEMBER m ON fp.member_id = m.member_id "
+			+ "LEFT JOIN WASTE w ON fp.fruit_no = w.fruit_no "
+			+ "LEFT JOIN WASTE_CATEGORY wc ON w.waste_category_no = wc.waste_category_no " + "WHERE fp.status = '폐기'";
 
 	String GET_NORMAL_PRODUCTS = "SELECT fp.fruit_no, fp.name, fp.quantity - NVL((SELECT SUM(s.quantity) FROM sales s WHERE s.fruit_no = fp.fruit_no), 0) "
-				+ "- NVL((SELECT SUM(w2.quantity) FROM waste w2 WHERE w2.fruit_no = fp.fruit_no), 0) AS remain_quantity, "
-				+ "fp.price, m.member_name, fp.storage_date, w.waste_date, wc.waste_category_reason, fp.status "
-				+ "FROM fruit_product fp JOIN member m ON fp.member_id = m.member_id LEFT JOIN waste w ON fp.fruit_no = w.fruit_no "
-				+ "LEFT JOIN waste_category wc ON w.waste_category_no = wc.waste_category_no WHERE fp.status = '정상'";		
-				
-				
-				
-				
-	String GET_FRUIT_PRODUCT_DETAIL = "SELECT"
-				+ "    fc.fruit_category_no, fc.item_code, fc.kind_name, fc.origin, fc.item_name, fp.name, fp.price, fp.weight, fp.received_date, fp.quantity,"
-				+ "    fp.quantity"
-				+ "    - NVL(("
-				+ "        SELECT SUM(s.quantity)"
-				+ "        FROM sales s"
-				+ "        WHERE s.fruit_no = fp.fruit_no"
-				+ "    ), 0)"
-				+ "    - NVL(("
-				+ "        SELECT SUM(w.quantity)"
-				+ "        FROM waste w"
-				+ "        WHERE w.fruit_no = fp.fruit_no"
-				+ "    ), 0) AS remain_quantity,"
-				+ "    m.member_name,"
-				+ "    m.name AS member_name_detail,"
-				+ "    a.name AS admin_name,"
-				+ "    fp.storage_date,"
-				+ "    w.quantity AS waste_quantity,"
-				+ "    w.waste_req_date,"
-				+ "    w.waste_date,"
-				+ "    w.reason_detail,"
-				+ "    ww.daily_rainfall,"
-				+ "    ww.max_temp,"
-				+ "    ww.avg_temp,"
-				+ "    ww.min_temp,"
-				+ "    wm.name AS waste_member_name,   "
-				+ "    wa.name AS waste_admin_name     "
-				+ "FROM fruit_product fp"
-				+ "JOIN fruit_category fc"
-				+ "    ON fc.fruit_category_no = fp.fruit_category_no"
-				+ "JOIN member m"
-				+ "    ON fp.member_id = m.member_id"
-				+ "LEFT JOIN admin a"
-				+ "    ON fp.admin_id = a.admin_id"
-				+ "LEFT JOIN waste w"
-				+ "    ON fp.fruit_no = w.fruit_no"
-				+ "LEFT JOIN waste_weather ww"
-				+ "    ON w.waste_no = ww.waste_no"
-				+ "LEFT JOIN member wm"
-				+ "    ON w.member_id = wm.member_id"
-				+ "LEFT JOIN admin wa"
-				+ "    ON w.admin_id = wa.admin_id  "
-				+ "WHERE fp.fruit_no = ?";			
-				
-}
+			+ "- NVL((SELECT SUM(w2.quantity) FROM waste w2 WHERE w2.fruit_no = fp.fruit_no), 0) AS remain_quantity, "
+			+ "fp.price, m.member_name, fp.storage_date, w.waste_date, wc.waste_category_reason, fp.status "
+			+ "FROM fruit_product fp JOIN member m ON fp.member_id = m.member_id LEFT JOIN waste w ON fp.fruit_no = w.fruit_no "
+			+ "LEFT JOIN waste_category wc ON w.waste_category_no = wc.waste_category_no WHERE fp.status = '정상'";
 
+	String GET_FRUIT_PRODUCT_DETAIL = "SELECT"
+			+ "    fc.fruit_category_no, fc.item_code, fc.kind_name, fc.origin, fc.item_name, fp.name, fp.price, fp.weight, fp.received_date, fp.quantity,"
+			+ "    fp.quantity" + "    - NVL((" + "        SELECT SUM(s.quantity)" + "        FROM sales s"
+			+ "        WHERE s.fruit_no = fp.fruit_no" + "    ), 0)" + "    - NVL((" + "        SELECT SUM(w.quantity)"
+			+ "        FROM waste w" + "        WHERE w.fruit_no = fp.fruit_no" + "    ), 0) AS remain_quantity,"
+			+ "    m.member_name," + "    m.name AS member_name_detail," + "    a.name AS admin_name,"
+			+ "    fp.storage_date," + "    w.quantity AS waste_quantity," + "    w.waste_req_date,"
+			+ "    w.waste_date," + "    w.reason_detail," + "    ww.daily_rainfall," + "    ww.max_temp,"
+			+ "    ww.avg_temp," + "    ww.min_temp," + "    wm.name AS waste_member_name,   "
+			+ "    wa.name AS waste_admin_name     " + "FROM fruit_product fp" + "JOIN fruit_category fc"
+			+ "    ON fc.fruit_category_no = fp.fruit_category_no" + "JOIN member m"
+			+ "    ON fp.member_id = m.member_id" + "LEFT JOIN admin a" + "    ON fp.admin_id = a.admin_id"
+			+ "LEFT JOIN waste w" + "    ON fp.fruit_no = w.fruit_no" + "LEFT JOIN waste_weather ww"
+			+ "    ON w.waste_no = ww.waste_no" + "LEFT JOIN member wm" + "    ON w.member_id = wm.member_id"
+			+ "LEFT JOIN admin wa" + "    ON w.admin_id = wa.admin_id  " + "WHERE fp.fruit_no = ?";
+
+	// ============= waste category =============
+	String GET_WASTE_CATEGORY = "SELECT waste_category_reason "
+			+ "FROM waste_category "
+			+ "WHERE waste_category_no = ?";
+	
+	String GET_WASTE_CATEGORY_LIST = "SELECT waste_category_no, waste_category_reason "
+			+ "FROM waste_category";
+}

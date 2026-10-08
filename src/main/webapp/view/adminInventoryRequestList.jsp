@@ -10,7 +10,8 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
 	rel="stylesheet">
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
@@ -30,15 +31,15 @@
 		<!-- 검색 영역 -->
 		<div class="input-group justify-content-center align-items-center">
 
+		 
 			<!-- 검색 조건 -->
 			<!-- 검색 조건 -->
 <!-- HEAD -->
 			<label class="form-label mb-0 fw-bold">요청기간</label>
 
 			<!-- <label class="form-label mb-0 fw-bold">기간 : </label> -->
-<!-- origin/dev -->
 			<div class="d-flex align-items-center">
-				<select class="form-select" id="start" name="startYear" style="width: 100px";>
+				<select class="form-select" id="start" name="startYear" style="width: 100px">
 					<option >2026</option>
 					<option >2025</option>
 				</select> 
@@ -53,7 +54,7 @@
 					<option >23</option>
 				</select>
 				~
-				<select class="form-select" id="end" name="endYear" style="width: 100px";>
+				<select class="form-select" id="end" name="endYear" style="width: 100px">
 					<option >2026</option>
 					<option >2025</option>
 				</select> 
@@ -74,7 +75,7 @@
 			</button>
 
 		</div><hr>
-		<div style="text-align: right";>
+		<div style="text-align: right">
 			<input type="checkbox">대기만보기
 		</div>
 
@@ -157,11 +158,9 @@
 	<div class="pagination-area">
 
 		<nav>
-<<<<<<< HEAD
+
 			<ul class="pagination justify-content-center">
-=======
-			<ul class="pagination">
->>>>>>> origin/dev
+ 
 
 				<li class="page-item disabled"><a class="page-link" href="#">
 						<i class="bi bi-chevron-left"></i>
@@ -187,7 +186,6 @@
 
 
 	<%@ include file="footer.jsp"%>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet">
+
 </body>
 </html>
