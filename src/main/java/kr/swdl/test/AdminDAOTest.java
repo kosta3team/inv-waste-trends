@@ -9,9 +9,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import kr.swdl.model.AdminDAO;
+import kr.swdl.model.admin.AdminDAO;
 import kr.swdl.model.DBCP;
-import kr.swdl.model.MemberDAO;
+
 
 public class AdminDAOTest {
 

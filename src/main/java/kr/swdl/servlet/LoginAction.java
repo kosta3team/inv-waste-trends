@@ -35,7 +35,7 @@ public class LoginAction implements Action {
                     session.setAttribute("userType", "member");
                     session.setAttribute("memberId", userId);
 
-                    return "view/memberMain.jsp";
+                    return "controller?cmd=memberMain";
                 }
 
                 if ("대기".equals(member.getStatus())) {

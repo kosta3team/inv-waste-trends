@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>최강 ERP - 연도별 총량 비교</title>
+<title>그린매니저 - 연도별 총량 비교</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
@@ -13,9 +13,9 @@
     <%@ include file="adminHeader.jsp" %>
     <div class="d-flex">
         <%@ include file="sidebar.jsp" %>
-        <main class="main flex-grow-1 container-fluid p-4">
+        <main class="main p-3">
             <div class="mb-4">
-                <h3 class="fw-bold">연도별 총량 비교</h3>
+                <h3 class="fw-bold p-3">연도별 총량 비교</h3>
                 <p class="text-muted mb-0">여러 연도의 월별 폐기량 데이터를 한눈에 비교합니다.</p>
             </div>
             
@@ -41,7 +41,7 @@
                                     <label class="form-check-label">2024년</label>
                                 </div>
                             </div>
-                            <div class="col-auto ms-3">
+                            <div class="col-auto">
                                 <button type="button" class="btn btn-primary px-4" onclick="updateChart()"><i class="bi bi-bar-chart-line"></i> 비교 조회</button>
                             </div>
                         </form>
@@ -49,7 +49,7 @@
                     
                     <!-- 하단: 다중 선 그래프 영역 -->
                     <div class="chart-section">
-                        <div class="chart-area" style="height: 400px;">
+                        <div class="chart-area">
                             <canvas id="compareLineChart"></canvas>
                         </div>
                     </div>

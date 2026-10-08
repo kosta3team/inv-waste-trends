@@ -11,7 +11,7 @@ import org.junit.Test;
 
 
 import kr.swdl.model.DBCP;
-import kr.swdl.model.MemberDAO;
+import kr.swdl.model.member.MemberDAO;
 
 public class MemberDAOTest {
 

@@ -14,9 +14,9 @@
     <%@ include file="adminHeader.jsp" %>
     <div class="d-flex">
         <%@ include file="sidebar.jsp" %>
-        <main class="main flex-grow-1 container-fluid p-4">
+        <main class="main p-3">
             <div class="mb-4">
-                <h3 class="fw-bold">기온별 폐기량 비교</h3>
+                <h3 class="fw-bold ps-3">기온별 폐기량 비교</h3>
                 <p class="text-muted mb-0">온도 변화에 따른 폐기량 추이를 연도별로 비교 분석합니다.</p>
             </div>
             
@@ -77,7 +77,7 @@
                     </div>
                     
                     <div class="chart-section">
-                        <div class="chart-area" style="height: 400px;">
+                        <div class="chart-area">
                             <canvas id="tempLineChart"></canvas>
                         </div>
                     </div>
