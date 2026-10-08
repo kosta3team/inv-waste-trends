@@ -252,7 +252,7 @@
                     }
                     alert(msg)
                     // 목록페이지로 이동
-                    location.href = 'controller?cmd=adminWasteRequestList';
+                    location.href = "controller?cmd=adminWasteRequestList";
                 }
             };
             
@@ -278,7 +278,7 @@
 			}
 		}
 		filterEvent = function() {
-			const url = "controller?cmd=adminGetWasteRequestList&IsOnlyRequest="
+			const url = "controller?cmd=adminWasteRequestList&IsOnlyRequest="
 					+ onlyWait.checked;
 			xhr.open("get", url, true);
 			xhr.send();
