@@ -1,0 +1,18 @@
+@charset "UTF-8";
+.signupDetailPersonal-page {
+	padding:30px;
+}
+.signupDetail-page{
+	padding:30px;
+}
+.btn-approve{
+    background:grey !important;
+    color:white !important;
+}
+
+.btn-reject{
+    background:#eeeeee !important;
+    color:black !important;
+}
+
+
