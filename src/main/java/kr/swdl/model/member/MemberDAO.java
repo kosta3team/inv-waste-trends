@@ -1,4 +1,4 @@
-package kr.swdl.model;
+package kr.swdl.model.member;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.swdl.model.Query;
 import kr.swdl.model.member.MemberVO;
 
 public class MemberDAO {
