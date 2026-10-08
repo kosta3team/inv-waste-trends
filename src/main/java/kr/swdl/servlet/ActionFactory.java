@@ -5,6 +5,9 @@ public class ActionFactory {
 		if(cmd ==null) cmd="";
 		Action a = null;
 		switch(cmd) {
+		case "inventoryDetail":
+		    a = new InventoryDetail();
+		    break;
 		case "adminWasteRequestList":
 			a=new AdminWasteRequestListAction();
 			break;
