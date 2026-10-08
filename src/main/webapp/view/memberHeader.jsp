@@ -1,8 +1,9 @@
+
 <%
-    if (session.getAttribute("memberId") == null) {
-        response.sendRedirect(request.getContextPath() + "/controller?cmd=loginUI");
-        return;
-    }
+if (session.getAttribute("memberId") == null) {
+	response.sendRedirect(request.getContextPath() + "/controller?cmd=loginUI");
+	return;
+}
 %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -26,7 +27,8 @@
 
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/header.css">
 
 
 </head>
@@ -81,7 +83,6 @@
 								href="${pageContext.request.contextPath}/controller?cmd=menuMemberSaleInventoryList">
 									판매 기록 </a></li>
 						</ul></li>
-
 
 				</ul>
 

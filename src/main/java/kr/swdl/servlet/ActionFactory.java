@@ -6,13 +6,12 @@ public class ActionFactory {
 	public static Action getAction(String cmd) {
 		if(cmd ==null) cmd="";
 		Action a = null;
-		System.out.println(cmd);
 		switch(cmd) {
+		case "inventoryDetail":
+		    a = new InventoryDetail();
+		    break;
 		case "adminWasteRequestList":
 			a=new AdminWasteRequestListAction();
-			break;
-		case "adminGetWasteRequestList":
-			a=new AdminGetWasteRequestListAction ();
 			break;
 		case "adminGetWasteRequestDetail":
 			a=new AdminGetWasteRequestDetailAction();
@@ -29,7 +28,18 @@ public class ActionFactory {
 		case "requestWaste":
 			a = new RequestWasteAction();
 			break;
-			
+		case "wasteLunarTrends":
+			a = new WasteLunarTrends();
+			break;
+		case "wasteYearlyList":
+			a = new WasteYearlyList();
+			break;
+		case "wasteYearlyCompare" :
+			a = new WasteYearlyCompare();
+			break;
+		case "wasteTemperatureCompare" :
+			a = new WasteTemperatureCompare();
+			break;
 			//
 		case "memberInventoryList":
 			a = new MemberInventoryList();

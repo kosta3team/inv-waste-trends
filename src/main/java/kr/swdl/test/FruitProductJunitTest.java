@@ -11,21 +11,21 @@ import org.junit.Before;
 import org.junit.Test;
 
 import kr.swdl.model.fruitproduct.*;
-import kr.swdl.model.DBCPTest;
+//import kr.swdl.model.DBCPTest;
 
 public class FruitProductJunitTest {
 	
 	private kr.swdl.model.fruitproduct.FruitProductDAO dao = new FruitProductDAO();
 	
-	@Before
-	public void setUp() throws SQLException {
-		DBCPTest.beginTestTransaction();
-	}
-	
-	@After
-	public void testShutDown() {
-		DBCPTest.rollbackTestTransaction();
-	}
+//	@Before
+//	public void setUp() throws SQLException {
+//		DBCPTest.beginTestTransaction();
+//	}
+//	
+//	@After
+//	public void testShutDown() {
+//		DBCPTest.rollbackTestTransaction();
+//	}
 	
 	@Test
 	public void testAllDaoMethod() {

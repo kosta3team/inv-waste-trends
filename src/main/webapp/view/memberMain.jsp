@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +22,7 @@
 </head>
 
 <body>
+
 	<%@ include file="memberHeader.jsp"%>
 
 	<div class="container-fluid p-0 main-container">
@@ -46,57 +48,14 @@
 						</thead>
 
 						<tbody>
-
+						<c:forEach var="product" items="${FruitProductlists}" varStatus="status">
 							<tr>
-								<td>설향딸기</td>
-								<td>28</td>
-								<td><span class="badge bg-warning text-dark"> 대기 </span></td>
+								<td>${product.name}</td>
+								<td>${product.quantity}</td>
+								<td>${product.status}</td>
 							</tr>
-
-							<tr>
-								<td>쫀득복숭아</td>
-								<td>30</td>
-								<td><span class="badge bg-warning text-dark"> 대기 </span></td>
-							</tr>
-
-							<tr>
-								<td>샤인머스켓</td>
-								<td>35</td>
-								<td><span class="badge bg-warning text-dark"> 대기 </span></td>
-							</tr>
-
-							<td>설향딸기</td>
-							<td>28</td>
-							<td><span class="badge bg-warning text-dark"> 대기 </span></td>
-							</tr>
-
-							<tr>
-								<td>쫀득복숭아</td>
-								<td>30</td>
-								<td><span class="badge bg-warning text-dark"> 대기 </span></td>
-							</tr>
-
-							<tr>
-								<td>샤인머스켓</td>
-								<td>35</td>
-								<td><span class="badge bg-warning text-dark"> 대기 </span></td>
-							</tr>
-							<td>설향딸기</td>
-							<td>28</td>
-							<td><span class="badge bg-warning text-dark"> 대기 </span></td>
-							</tr>
-
-							<tr>
-								<td>쫀득복숭아</td>
-								<td>30</td>
-								<td><span class="badge bg-warning text-dark"> 대기 </span></td>
-							</tr>
-
-							<tr>
-								<td>샤인머스켓</td>
-								<td>35</td>
-								<td><span class="badge bg-warning text-dark"> 대기 </span></td>
-							</tr>
+						</c:forEach>
+							
 
 						</tbody>
 
@@ -125,50 +84,13 @@
 						</thead>
 
 						<tbody>
-
+						<c:forEach var="Inventory" items="${InventoryLists}" varStatus="status">
 							<tr>
-								<td>설향딸기</td>
-								<td>28</td>
+								<td>${Inventory.productName}</td>
+								<td>${Inventory.remainQuantity}</td>
 							</tr>
-
-							<tr>
-								<td>쫀득복숭아</td>
-								<td>30</td>
-							</tr>
-
-							<tr>
-								<td>샤인머스켓</td>
-								<td>35</td>
-							</tr>
-							<tr>
-								<td>설향딸기</td>
-								<td>28</td>
-							</tr>
-
-							<tr>
-								<td>쫀득복숭아</td>
-								<td>30</td>
-							</tr>
-
-							<tr>
-								<td>샤인머스켓</td>
-								<td>35</td>
-							</tr>
-							<tr>
-								<td>설향딸기</td>
-								<td>28</td>
-							</tr>
-
-							<tr>
-								<td>쫀득복숭아</td>
-								<td>30</td>
-							</tr>
-
-							<tr>
-								<td>샤인머스켓</td>
-								<td>35</td>
-							</tr>
-
+						</c:forEach>
+							
 						</tbody>
 
 					</table>
@@ -197,69 +119,20 @@
 								<th>상품명</th>
 								<th>수량(box)</th>
 								<th>단가</th>
-								<th>금액(원)</th>
+								<th>금액</th>
 							</tr>
 						</thead>
 
 						<tbody>
-
+						<c:forEach var="Sale" items="${SaleLists}" varStatus="status">
 							<tr>
-								<td>설향딸기</td>
-								<td>5</td>
-								<td>35,000</td>
-								<td>175,000</td>
+								<td>${Sale.productName}</td>
+								<td>${Sale.quantity}</td>
+								<td><fmt:formatNumber value="${Sale.price}" pattern="#,###원"/></td>
+							<td><fmt:formatNumber value="${Sale.totalPrice}" pattern="#,###원"/></td>
 							</tr>
-
-							<tr>
-								<td>쫀득복숭아</td>
-								<td>30</td>
-								<td>15,000</td>
-								<td>450,000</td>
-							</tr>
-
-							<tr>
-								<td>샤인머스켓</td>
-								<td>15</td>
-								<td>28,500</td>
-								<td>427,500</td>
-							</tr>
-							<tr>
-								<td>설향딸기</td>
-								<td>5</td>
-								<td>35,000</td>
-								<td>175,000</td>
-							</tr>
-							<tr>
-								<td>설향딸기</td>
-								<td>5</td>
-								<td>35,000</td>
-								<td>175,000</td>
-							</tr>
-
-							<tr>
-								<td>쫀득복숭아</td>
-								<td>30</td>
-								<td>15,000</td>
-								<td>450,000</td>
-							</tr>
-
-							<tr>
-								<td>샤인머스켓</td>
-								<td>15</td>
-								<td>28,500</td>
-								<td>427,500</td>
-							</tr>
-							<tr>
-								<td>설향딸기</td>
-								<td>5</td>
-								<td>35,000</td>
-								<td>175,000</td>
-							</tr>
-
-
-
-
-
+						</c:forEach>
+							
 						</tbody>
 
 					</table>
@@ -288,60 +161,15 @@
 						</thead>
 
 						<tbody>
-
+						<c:forEach var="Waste" items="${WasteLists}" varStatus="status">
 							<tr>
-								<td>설향딸기</td>
-								<td>5</td>
-								<td>짓무름</td>
+								<td>${Waste.wasteNo}</td>
+								<td>${Waste.wasteReqDate}</td>
+								<td>${Waste.wasteDate}</td>
 								<td><span class="badge bg-danger"> 폐기요청 </span></td>
 							</tr>
-
-							<tr>
-								<td>조생귤</td>
-								<td>12</td>
-								<td>기준초과농약검출</td>
-								<td><span class="badge bg-danger"> 폐기요청 </span></td>
-							</tr>
-							<tr>
-								<td>설향딸기</td>
-								<td>5</td>
-								<td>짓무름</td>
-								<td><span class="badge bg-danger"> 폐기요청 </span></td>
-							</tr>
-
-							<tr>
-								<td>조생귤</td>
-								<td>12</td>
-								<td>기준초과농약검출</td>
-								<td><span class="badge bg-danger"> 폐기요청 </span></td>
-							</tr>
-							<tr>
-								<td>설향딸기</td>
-								<td>5</td>
-								<td>짓무름</td>
-								<td><span class="badge bg-danger"> 폐기요청 </span></td>
-							</tr>
-
-							<tr>
-								<td>조생귤</td>
-								<td>12</td>
-								<td>기준초과농약검출</td>
-								<td><span class="badge bg-danger"> 폐기요청 </span></td>
-							</tr>
-							<tr>
-								<td>설향딸기</td>
-								<td>5</td>
-								<td>짓무름</td>
-								<td><span class="badge bg-danger"> 폐기요청 </span></td>
-							</tr>
-
-							<tr>
-								<td>조생귤</td>
-								<td>12</td>
-								<td>기준초과농약검출</td>
-								<td><span class="badge bg-danger"> 폐기요청 </span></td>
-							</tr>
-
+						</c:forEach>
+							
 						</tbody>
 
 					</table>
