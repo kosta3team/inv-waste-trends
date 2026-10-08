@@ -5,13 +5,11 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
-public class WasteTrends implements Action {
+public class SignupMemberUIAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request) throws ServletException, IOException {
-		return "view/wasteTrends.jsp";
+		return "view/signupMember.jsp";
 	}
-
-	
 
 }

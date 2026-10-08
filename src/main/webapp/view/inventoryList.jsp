@@ -118,6 +118,7 @@
 
 				<tbody>
 
+
 					<c:if test="${empty inventoryList}">
 
 						<tr>
@@ -215,6 +216,9 @@
 		</div>
 
 	</main>
+
+	<%@ include file="inventoryDetailModal.jsp" %>
+	
 
 	<%@ include file="footer.jsp"%>
 

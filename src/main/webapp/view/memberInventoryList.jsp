@@ -23,6 +23,7 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 <link rel="stylesheet" href="css/inventoryList.css">
 
+
 </head>
 
 <body>
@@ -84,7 +85,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="inventory-table-area">
 			<table class="table table-hover inventory-table">
 				<thead>
@@ -108,6 +109,7 @@
 							<td colspan="9" class="text-center">조회된 재고가 없습니다.</td>
 						</tr>
 
+
 					</c:if>
 					<c:forEach var="inventory" items="${inventoryList}"
 						varStatus="status">
@@ -126,6 +128,7 @@
 									<c:otherwise>${fn:substring(inventory.wasteDate, 0, 10)}</c:otherwise>
 								</c:choose></td>
 
+
 							<td><c:choose>
 									<c:when test="${empty inventory.wasteCategoryReason}">-</c:when>
 									<c:otherwise>${inventory.wasteCategoryReason}</c:otherwise>
@@ -140,7 +143,12 @@
 									</c:otherwise>
 								</c:choose></td>
 
-						</tr>
+							<td>
+								<!-- TODO: 목록 마지막에 버튼 추가 해야함 !!!!!! --> <!-- 앞에서 얻어지는 상태에 따라 요청 버튼 활성/비활성 추가가 필요함 -->
+								<button type="button" class="btn btn-sm btn-outline-danger"
+									data-bs-toggle="modal" data-bs-target="#disposeRequestModal"
+									data-fruit-no="fd0001">폐기요청</button>
+							</td>
 					</c:forEach>
 				</tbody>
 			</table>
@@ -185,12 +193,20 @@
 
 	</main>
 
+	<%@ include file="inventoryDetailModal.jsp"%>
+
+	<%@ include file="wasteRequestModal.jsp"%>
 	<%@ include file="footer.jsp"%>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/modal.js"></script>
 	<script src="${pageContext.request.contextPath}/js/memberInventory.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/js/wasteRequestModal.js"></script>
+
+
+
 
 </body>
 

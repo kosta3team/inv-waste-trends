@@ -66,4 +66,5 @@ function showInventoryDetail(fruitNo) {
                 '재고 상세정보를 불러오지 못했습니다.'
             );
         });
+
 }

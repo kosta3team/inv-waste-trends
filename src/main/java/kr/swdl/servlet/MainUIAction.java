@@ -9,8 +9,6 @@ public class MainUIAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request) throws ServletException, IOException {
-		return "index.html";
+		return "index.jsp";
 	}
- 
-
 }
