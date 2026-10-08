@@ -36,10 +36,19 @@
 						href="${pageContext.request.contextPath }/controller?cmd=wasteTrends"
 						role="button">폐기량 동향</a></li>
 					<li class="nav-item dropdown flex-fill text-center"><a
-						class="nav-link dropdown-toggle"
-						href="${pageContext.request.contextPath}/controller?cmd=signupListUI"
-						role="button">회원가입 요청 조회</a></li>
-
+						class="nav-link dropdown-toggle" href="#" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false"> 요청 조회 </a>
+						<ul class="dropdown-menu start-50 translate-middle-x text-center">
+							<li><a class="dropdown-item"
+								href="${pageContext.request.contextPath}/controller?cmd=signupListUI">
+									회원가입 요청 조회 </a></li>
+							<li><a class="dropdown-item"
+								href="${pageContext.request.contextPath}/view/inventoryRequest.jsp">
+									입고 요청 조회 </a></li>
+							<li><a class="dropdown-item"
+								href="${pageContext.request.contextPath}/controller?cmd=adminWasteRequestList">
+									폐기 요청 조회 </a></li>
+						</ul></li>	
 					<li class="nav-item dropdown flex-fill text-center"><a
 						class="nav-link dropdown-toggle"
 						href="${pageContext.request.contextPath}/controller?cmd=adminInventoryRequestListUI"
