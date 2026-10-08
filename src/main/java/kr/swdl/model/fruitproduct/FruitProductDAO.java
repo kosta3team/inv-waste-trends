@@ -378,6 +378,7 @@ public class FruitProductDAO {
 			while (rs.next()) {
 				
 				vo = new FruitProductVO();
+				vo.setFruitNo(rs.getString("상품번호"));
 				vo.setRequestDate(rs.getDate("요청일자"));
 				
 				FruitCategoryVO fc = new FruitCategoryVO();
