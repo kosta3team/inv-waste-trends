@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,50 +28,72 @@
 		</div>
 
 
-		<!-- 검색 영역 -->
+			<!-- 검색 영역 -->
 		<div class="input-group justify-content-center align-items-center">
 
 			<!-- 검색 조건 -->
-			<!-- 검색 조건 -->
-			<label class="form-label mb-0 fw-bold">기간 : </label>
-			<div class="d-flex align-items-center">
-				<select class="form-select" id="start" name="startYear" style="width: 100px";>
-					<option >2026</option>
-					<option >2025</option>
-				</select> 
-				<select class="form-select"
-					id="month" name="startmonth">
-					<option  selected>09</option>
-					<option >08</option>
-				</select>
-				<select class="form-select"
-					id="date" name="startdate">
-					<option  selected>22</option>
-					<option >23</option>
-				</select>
-				~
-				<select class="form-select" id="end" name="endYear" style="width: 100px";>
-					<option >2026</option>
-					<option >2025</option>
-				</select> 
-				<select class="form-select"
-					id="month" name="endmonth">
-					<option selected>10</option>
-					<option >09</option>
-				</select>
-				<select class="form-select"
-					id="date" name="enddate">
-					<option  selected>15</option>
-					<option >14</option>
-				</select>
-			</div>
-			<!-- 검색 버튼 -->
-			<button class="btn btn-dark">
-				<i class="bi bi-search"></i>
-			</button>
+			<form action="${pageContext.request.contextPath}/controller"
+				method="get" class="d-flex align-items-center gap-2">
+
+				<input type="hidden" name="cmd" value="memberSaleInventoryList"> <label
+					class="form-label mb-0 fw-bold"> 판매기간 : </label>
+
+				<!-- 시작일 -->
+				<div class="d-flex align-items-center gap-1">
+
+					<select class="form-select" id="startYear" name="startYear"
+						style="width: 100px;">
+
+						<option value="2026" selected>2026</option>
+						<option value="2025">2025</option>
+
+					</select> <select class="form-select" id="startMonth" name="startMonth">
+
+						<option value="08" selected>08</option>
+						<option value="07">07</option>
+
+					</select> <select class="form-select" id="startDate" name="startDate">
+
+						<option value="10" selected>10</option>
+						<option value="9">9</option>
+
+					</select>
+
+				</div>
+
+				<span>~</span>
+
+				<!-- 종료일 -->
+				<div class="d-flex align-items-center gap-1">
+
+					<select class="form-select" id="endYear" name="endYear"
+						style="width: 100px;">
+
+						<option value="2026" selected>2026</option>
+						<option value="2025">2025</option>
+
+					</select> <select class="form-select" id="endMonth" name="endMonth">
+
+						<option value="08" selected>08</option>
+						<option value="09">09</option>
+
+					</select> <select class="form-select" id="endDate" name="endDate">
+
+						<option value="15" selected>15</option>
+						<option value="14">14</option>
+
+					</select>
+
+				</div>
+
+				<!-- 검색 버튼 -->
+				<button type="submit" class="btn btn-dark">
+					<i class="bi bi-search"></i>
+				</button>
+
+			</form>
 
 		</div>
-
 
 
 		<!-- 재고 목록 나중에 db에서 불러오는 값 넣을겁니다~ -->
@@ -93,44 +116,25 @@
 
 				<tbody>
 
-					<tr>
-						<td>1</td>
-						<td>아오리사과</td>
-						<td>10</td>
-						<td>16,000원</td>
-						<td>160,000원</td>
-						<td>2026-09-22</td>
-					</tr>
+					<c:forEach var="sale" items="${saleList}" varStatus="status">
+						<tr>
+							<td>${status.count}</td>
+							<td>${sale.productName}</td>
+							<td>${sale.quantity}</td>
+							<td>${sale.price}</td>
+							<td>${sale.totalPrice}</td>
+							<td>${sale.saleDate}</td>
 
+						</tr>
+					</c:forEach>
 
-					<tr>
-						<td>2</td>
-						<td>꿀수박</td>
-						<td>6</td>
-						<td>32,000원</td>
-						<td>192,000원</td>
-						<td>2026-10-15</td>
-					</tr>
-
-
-
-					<tr>
-						<td>3</td>
-						<td>복숭아</td>
-						<td>16</td>
-						<td>16,000원</td>
-						<td>265,000원</td>
-						<td>2026-10-03</td>
-					</tr>
+					
 					
 					<tr>
-						<td><td>
+						<td colspan="4"></td>
+						<td>총판매금액 : ${sumTotalPrice}원</td>
 						<td></td>
-						<td></td>
-						<td>총판매금액 : 2,226,000원</td>
-						<td></td>
-						<td></td>
-					
+
 					</tr>
 
 

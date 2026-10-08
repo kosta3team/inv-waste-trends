@@ -29,9 +29,9 @@ public class SaleVO {
 		setSaleDate(saleDate);
 	}
 	
-	public SaleVO(String fruitNo, String saleNo, String productName, int quantity,
+	public SaleVO(String fruitNo, String saleNo, String name, int quantity,
 			int price, int totalPrice, String saleDate) {
-		this(fruitNo, saleNo, productName, null, null, quantity, price, totalPrice, saleDate);
+		this(fruitNo, saleNo, name, null, null, quantity, price, totalPrice, saleDate);
 	}
 	
 	

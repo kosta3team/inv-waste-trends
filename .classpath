@@ -13,8 +13,6 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/nojon/Downloads/설치프로그램/eGovFrameDev-4.3.1-64bit/eclipse/plugins/org.springframework.tooling.boot.ls_1.54.0.202405011602/servers/spring-boot-language-server/BOOT-INF/lib/junit-4.13.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/nojon/Downloads/설치프로그램/eGovFrameDev-4.3.1-64bit/eclipse/plugins/org.springframework.tooling.boot.ls_1.54.0.202405011602/servers/spring-boot-language-server/BOOT-INF/lib/hamcrest-core-2.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/nojon/Downloads/설치프로그램/eGovFrameDev-4.3.1-64bit/eclipse/plugins/org.springframework.tooling.boot.ls_1.54.0.202405011602/servers/spring-boot-language-server/BOOT-INF/lib/hamcrest-2.2.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
