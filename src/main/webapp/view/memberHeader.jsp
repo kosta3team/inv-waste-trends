@@ -1,8 +1,9 @@
+
 <%
-    if (session.getAttribute("memberId") == null) {
-        response.sendRedirect(request.getContextPath() + "/controller?cmd=loginUI");
-        return;
-    }
+if (session.getAttribute("memberId") == null) {
+	response.sendRedirect(request.getContextPath() + "/controller?cmd=loginUI");
+	return;
+}
 %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -26,7 +27,8 @@
 
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/header.css">
 
 
 </head>
@@ -80,6 +82,19 @@
 							<li><a class="dropdown-item"
 								href="${pageContext.request.contextPath}/controller?cmd=menuMemberSaleInventoryList">
 									판매 기록 </a></li>
+						</ul></li>
+
+					<li class="nav-item dropdown flex-fill text-center"><a
+						class="nav-link dropdown-toggle" href="#" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false"> 폐기확인 </a>
+
+						<ul class="dropdown-menu start-50 translate-middle-x text-center">
+							<li><a class="dropdown-item"
+								href="${pageContext.request.contextPath}/view/memberInventoryRequestList.jsp">
+									폐기 요청 내역 </a></li>
+							<li><a class="dropdown-item"
+								href="${pageContext.request.contextPath}/view/fruitproduct/addFruitProduct.jsp">
+									폐기 요청 </a></li>
 						</ul></li>
 
 
