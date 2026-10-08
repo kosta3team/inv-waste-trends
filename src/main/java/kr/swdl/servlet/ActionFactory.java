@@ -109,40 +109,16 @@ public class ActionFactory {
 			a = new GetMyFruitProductRequestLists();
 			break;
 
-		// 7. 조합원 기간 전체 입고요청목록 조회
-		case "getMyFruitProductRequestsPeriod":
-			a = new GetMyFruitProductRequestsPeriod();
-			break;
-
-		// 8. 조합원 기본 입고요청상태만 목록 조회
-		case "getMyPendingFruitProducts":
-			a = new GetMyFruitProductRequests();
+		// 4. 관리자 입고요청 상세 - 모달
+		case "getDetailFruitProduct":
+			a = new GetDetailFruitProduct();
 			break;
 			
-		// 9. 조합원 기간 입고 요청만 기본 목록 조회
-		case "getMyPendingFruitProductsPeriod":
-			a = new GetMyPendingFruitProductsPeriod();
-			break;
-				
-		// 10. 관리자 입고 요청한 상품정보 상세조회
-		case "getFruitProduct":
-			a = new GetFruitProduct();
-			break;
-
-		//11. 조합원 입고 요청한 상품정보 상세조회
-		case "getMyFruitProduct":
-			a = new GetMyFruitProduct();
+		// 5. 조합원 입고요청 상세 - 모달
+		case "getDetailMyFruitProduct":
+			a = new GetDetailMyFruitProduct();
 			break;
 			
-		// 12. 관리자 입고 요청을 거절
-		case "rejectFruitProduct":
-			a = new RejectFruitProduct();
-			break;
-				
-		// 13. 관리자 입고 요청을 승인
-		case "approveFruitProduct":
-			a = new ApproveFruitProduct();
-			break;
 		//	입고요청 업무 - 다니엘 종료
 		case "logout":
 			a=new LogoutAction();

@@ -89,7 +89,7 @@
 						</c:when>
 						<c:otherwise>
 							<c:forEach var="req" items="${requestList}" varStatus="status">
-								<tr>
+								<tr style="cursor: pointer;" onclick="openDetailModalMember('${req.fruitNo}')">
 									<!-- 페이지 이동시 매 페이지의 순번이 1~15가 아니라, 누적으로 1~15, 16~30으로 -->
 									<td>${(currentPage - 1) * 15 + status.count }</td>
 									<td>${req.fruitNo }</td>
@@ -109,7 +109,7 @@
 		</div>
 		<!-- 입고요청 목록 끝 -->
 
-	<!-- 페이지네이션 -->
+	<!-- 페이지네이션 시작 -->
 	<div class="pagination-area mt-4">
 		<nav>
 			<ul class="pagination justify-content-center">
@@ -138,9 +138,30 @@
 			</ul>
 		</nav>
 	</div>
+	<!-- 페이지네이션 종료 -->
+	
+	<!-- 모달영역 시작-->
+	<div class="modal fade" id="requestDetailModal" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog modal-xl modal-dialog-scrollable">
+			<div class="modal-content" id="modalContentArea">
+				<div class="modal-body text-center p-5">
+					<div class="spinner-border text-primary" role="status">
+						<span class="visually-hidden">Loading...</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 모달영역 끝-->
 
 
 	<%@ include file="../footer.jsp"%>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script>
+		const contextPath = '${pageContext.request.contextPath}';
+	</script>
+	<script src="${pageContext.request.contextPath }/js/requestDetailModal.js"></script>
+	
 
 </body>
 </html>
