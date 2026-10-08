@@ -12,6 +12,7 @@ import kr.swdl.model.inventory.InventoryVO;
 import kr.swdl.model.sales.SaleService;
 import kr.swdl.model.sales.SaleVO;
 import kr.swdl.model.waste.WasteRequestListVO;
+import kr.swdl.model.waste.WasteService;
 
 public class MemberMainUIAction implements Action {
 
@@ -43,11 +44,11 @@ public class MemberMainUIAction implements Action {
       	request.setAttribute("SaleLists", SaleLists);
       	
       	//조합원 폐기요청현황
-      	//WasteService ws = new WasteServie();
+      	WasteService ws = new WasteService();
       	   	
-      	//List<WasteRequestListVO> WasteLists = ws.getMemberWasteList(memberId);
-		
-      	//request.setAttribute("WasteLists", WasteLists);
+      	List<WasteRequestListVO> WasteLists = ws.getMemberWasteList(memberId);
+     
+      	request.setAttribute("WasteLists", WasteLists);
       	
 		
 		return "view/memberMain.jsp";

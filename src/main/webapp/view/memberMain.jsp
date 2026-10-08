@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -118,7 +119,7 @@
 								<th>상품명</th>
 								<th>수량(box)</th>
 								<th>단가</th>
-								<th>금액(원)</th>
+								<th>금액</th>
 							</tr>
 						</thead>
 
@@ -127,8 +128,8 @@
 							<tr>
 								<td>${Sale.productName}</td>
 								<td>${Sale.quantity}</td>
-								<td>${Sale.price}</td>
-								<td>${Sale.totalPrice}</td>
+								<td><fmt:formatNumber value="${Sale.price}" pattern="#,###원"/></td>
+							<td><fmt:formatNumber value="${Sale.totalPrice}" pattern="#,###원"/></td>
 							</tr>
 						</c:forEach>
 							
