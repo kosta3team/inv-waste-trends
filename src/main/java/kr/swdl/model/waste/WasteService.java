@@ -17,9 +17,9 @@ public class WasteService {
 		return 0;
 	}
 
-	public boolean addWaste(String reasonDeatil, int quantity, String fruitNo, String memberId, String wasteCategoryNo) {
+	public boolean addWaste(String reasonDeatil, int quantity, String fruitNo, String wasteCategoryNo) {
 		try {
-			return new WasteDAO(DBCP.getConnection()).addWaste(reasonDeatil, quantity, fruitNo, memberId, wasteCategoryNo);
+			return new WasteDAO(DBCP.getConnection()).addWaste(reasonDeatil, quantity, fruitNo, "member001", wasteCategoryNo);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
