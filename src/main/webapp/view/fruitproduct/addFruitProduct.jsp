@@ -30,7 +30,7 @@
     		<input type="hidden" name="cmd" value="addFruitProduct">    		    		
     		<input type="hidden" name="actionType" value="submit">
     		
-    		<input type="hidden" name="memberId" value="${empty sessionScope.loginUser.memberId ? 'member001' : sessionScope.loginUser.memberId }">
+    		<input type="hidden" name="memberId" value="${sessionScope.loginUser.memberId }">
     		
     		<!-- 실제 서버에 올라갈 식별자. -->
     		<input type="hidden" id="fruitCategoryNo" name="fruitCategoryNo">

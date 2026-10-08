@@ -51,7 +51,7 @@
 								href="${pageContext.request.contextPath}/view/memberInventoryRequestList.jsp">
 									입고 내역 </a></li>
 							<li><a class="dropdown-item"
-								href="${pageContext.request.contextPath}/view/inventoryRequest.jsp">
+								href="${pageContext.request.contextPath}/view/fruitproduct/addFruitProduct.jsp">
 									입고 요청 </a></li>
 						</ul></li>
 
@@ -61,7 +61,7 @@
 
 						<ul class="dropdown-menu start-50 translate-middle-x text-center">
 							<li><a class="dropdown-item"
-								href="${pageContext.request.contextPath}/view/memberInventoryList.jsp">
+								href="${pageContext.request.contextPath}/controller?cmd=memberInventoryList">
 									재고 확인 </a></li>
 						</ul></li>
 

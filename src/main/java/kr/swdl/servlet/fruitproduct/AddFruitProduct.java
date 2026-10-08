@@ -1,11 +1,13 @@
 package kr.swdl.servlet.fruitproduct;
 
 import java.io.IOException;
+import java.sql.Connection;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import kr.swdl.model.MemberDAO;
 import kr.swdl.model.fruitcategory.FruitCategoryDAO;
 import kr.swdl.model.fruitproduct.FruitProductService;
 import kr.swdl.model.fruitproduct.FruitProductVO;
@@ -16,23 +18,18 @@ public class AddFruitProduct implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request) throws ServletException, IOException {
-		
-		// 로그인 연동 전까지 사용될 가짜 더미 데이터 영역 시작
+				
 		HttpSession session = request.getSession();
 		
-		if (session.getAttribute("loginUser") == null) {
-			MemberVO devUser = new MemberVO();
-			devUser.setMemberId("member001");
-			devUser.setMemberName("종현과수원");
-			devUser.setName("김종현");
-			devUser.setPhone("010-1111-1111");
-			devUser.setEmail("member001@gmail.com");
-			devUser.setAddress("경기도 포천시");
-			
-			session.setAttribute("loginUser", devUser);
-		}
-		// 로그인 연동 전까지 사용될 가짜 더미 데이터 영역 끝
+		// 1. LoginAction에서 저장한 로그인 유저의 ID
+		String memberId = (String) session.getAttribute("memberId");
 		
+		// 2. ID를 기반으로 MemberDAO를 통해서 주소, 연락처등 상세정보 가져옴.
+		if (memberId != null) {
+			Connection conn = null;
+			MemberDAO memberDao = new MemberDAO(conn);
+//			MemberVO actualUser
+		}
 		
 		String actionType = request.getParameter("actionType");
 		FruitCategoryDAO categoryDao = new FruitCategoryDAO();		
