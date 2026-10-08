@@ -67,11 +67,13 @@
 			<table class="table table-hover inventory-table">
 				<thead>
 					<tr>
-						<th>순번</th>						
+						<th>순번</th>					
 						<th>상품명</th>
 						<th>입고수량(box)</th>
 						<th>단가(1box)</th>
-						<th>총판매예상금액</th>						
+						<th>총판매예상금액</th>		
+						<th>조합원명</th>
+						<th>이름</th>				
 						<th>요청일자</th>
 						<th>처리일자</th>
 						<th>요청상태</th>	
@@ -81,21 +83,22 @@
 					<!-- JSTL 반복문 -->
 					<c:choose>
 						<c:when test="${empty requestList }">
-							<!-- 실데이터(컬럼수)가 현재 td로 8개라서 colspan11 -->
+							<!-- 실데이터(컬럼수)가 현재 td로 11개라서 colspan11 -->
 							<tr>
-								<td colspan="8" class="text-center py-4">조회된 입고 요청 내역이 없습니다.</td>
+								<td colspan="10" class="text-center py-4">조회된 입고 요청 내역이 없습니다.</td>
 							</tr>
 						</c:when>
 						<c:otherwise>
 							<c:forEach var="req" items="${requestList}" varStatus="status">
 								<tr>
 									<!-- 페이지 이동시 매 페이지의 순번이 1~15가 아니라, 누적으로 1~15, 16~30으로 -->
-									<td>${(currentPage - 1) * 15 + status.count }</td>
-									<td>${req.fruitNo }</td>
+									<td>${(currentPage - 1) * 15 + status.count }</td>									
 									<td>${req.name }</td>
 									<td>${req.quantity }</td>
 									<td>${req.price }원</td>
-									<td>${req.totalPrice }원</td>									
+									<td>${req.totalPrice }원</td>	
+									<td>${req.member.memberName }</td>
+									<td>${req.member.name }</td>								
 									<td>${req.requestDate }</td>
 									<td>${req.fruitProductDate }</td>
 									<td>${req.status }</td>
@@ -107,6 +110,7 @@
 			</table>
 		</div>
 		<!-- 입고요청 목록 끝 -->
+		
 
 	<!-- 페이지네이션 -->
 	<div class="pagination-area mt-4">

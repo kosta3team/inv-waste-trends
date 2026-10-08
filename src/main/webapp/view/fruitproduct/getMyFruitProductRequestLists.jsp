@@ -72,9 +72,7 @@
 						<th>상품명</th>
 						<th>입고수량(box)</th>
 						<th>단가(1box)</th>
-						<th>총판매예상금액</th>
-						<th>조합원명</th>
-						<th>이름</th>
+						<th>총판매예상금액</th>						
 						<th>요청일자</th>
 						<th>처리일자</th>
 						<th>요청상태</th>	
@@ -84,9 +82,9 @@
 					<!-- JSTL 반복문 -->
 					<c:choose>
 						<c:when test="${empty requestList }">
-							<!-- 실데이터가 현재 td로 11개라서 colspan11 -->
+							<!-- 실데이터가 현재 td로 9개라서 colspan11 -->
 							<tr>
-								<td colspan="11" class="text-center py-4">조회된 입고 요청 내역이 없습니다.</td>
+								<td colspan="9" class="text-center py-4">조회된 입고 요청 내역이 없습니다.</td>
 							</tr>
 						</c:when>
 						<c:otherwise>
@@ -98,9 +96,7 @@
 									<td>${req.name }</td>
 									<td>${req.quantity }</td>
 									<td>${req.price }원</td>
-									<td>${req.totalPrice }원</td>
-									<td>${req.member.memberName }</td>
-									<td>${req.member.name }</td>
+									<td>${req.totalPrice }원</td>									
 									<td>${req.requestDate }</td>
 									<td>${req.fruitProductDate }</td>
 									<td>${req.status }</td>
