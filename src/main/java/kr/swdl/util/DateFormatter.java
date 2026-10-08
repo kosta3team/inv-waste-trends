@@ -2,6 +2,7 @@ package kr.swdl.util;
 
 public class DateFormatter {
 	public static String toYearMonthDay(String date){
+		// 
 		if (null == date)
 			return null;
 		
