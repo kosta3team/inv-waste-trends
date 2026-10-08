@@ -20,7 +20,7 @@ public class MemberMainUIAction implements Action {
 		HttpSession session = request.getSession();
 
         String memberId = (String) session.getAttribute("memberId");
-        String coopName = (String) session.getAttribute("coopName");
+        String coopName = (String) session.getAttribute("loginName");
          //조합원 입고요청목록
       	//FruitProductService fps = new FruitProductService();
       	
