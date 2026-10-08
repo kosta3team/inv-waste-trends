@@ -99,6 +99,7 @@
 						<th>폐기일자</th>
 						<th>폐기사유</th>
 						<th>상태</th>
+						<th>폐기요청</th>
 					</tr>
 				</thead>
 
@@ -144,10 +145,13 @@
 								</c:choose></td>
 
 							<td>
-								<!-- TODO: 목록 마지막에 버튼 추가 해야함 !!!!!! --> <!-- 앞에서 얻어지는 상태에 따라 요청 버튼 활성/비활성 추가가 필요함 -->
-								<button type="button" class="btn btn-sm btn-outline-danger"
+								<button type="button"
+									class="btn btn-sm ${inventory.remainQuantity <= 0 ? 'btn-light text-muted border' : 'btn-outline-danger'}"
 									data-bs-toggle="modal" data-bs-target="#disposeRequestModal"
-									data-fruit-no=${inventory.fruitNo}>폐기요청</button>
+									data-fruit-no="${inventory.fruitNo}"
+									onclick="event.stopPropagation();"
+									${inventory.remainQuantity <= 0 ? 'disabled' : ''}>요청
+								</button>
 							</td>
 					</c:forEach>
 				</tbody>
