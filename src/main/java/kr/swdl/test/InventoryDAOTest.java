@@ -29,13 +29,13 @@ public class InventoryDAOTest {
 
 
 
-//	// 과일상품일련번호 상세조회
+	// 과일상품일련번호 상세조회
 //	@Test
 //	public void 과일상품일련번호_상세조회_관리자_조합원() throws SQLException {
 //
 //		InventoryDAO dao = new InventoryDAO(conn);
 //
-//		InventoryVO inventory  = dao.getFruitProductDetail("fc0001");
+//		InventoryVO inventory  = dao.getFruitProductDetail("fd0001");
 //
 //        assertNotNull(inventory);
 //
@@ -71,10 +71,10 @@ public class InventoryDAOTest {
 //
 //					);
 //		}
-//	
-//
-//
-//
+	
+
+
+
 
 //	@Test
 //	public void 판매중재고_선택조회_관리자() throws SQLException {
@@ -109,33 +109,33 @@ public class InventoryDAOTest {
 
 
 
-	//	@Test
-	//	public void 폐기재고_선택조회_관리자() throws SQLException {
-	//
-	//		InventoryDAO dao = new InventoryDAO(conn);
-	//
-	//		List<InventoryVO> list = dao.getWastedProducts();
-	//
-	//		assertNotNull(list);
-	//		assertTrue(list.size() > 0);
-	//
-	//		for (InventoryVO inventory : list) {
-	//
-	//			System.out.println(
-	//					inventory.getFruitNo() + " / "
-	//							+ inventory.getProductName() + " / "
-	//							+ inventory.getRemainQuantity() + " / "
-	//							+ inventory.getPrice() + " / "
-	//							+ inventory.getCoopName() + " / "
-	//							+ inventory.getStorageDate() + " / "
-	//							+ inventory.getWasteDate() + " / "
-	//							+ inventory.getWasteCategoryReason() + " / "
-	//							+ inventory.getStatus()
-	//
-	//
-	//					);
-	//		}
-	//	}
+//		@Test
+//		public void 폐기재고_선택조회_관리자() throws SQLException {
+//	
+//			InventoryDAO dao = new InventoryDAO(conn);
+//	
+//			List<InventoryVO> list = dao.getWastedProducts();
+//	
+//			assertNotNull(list);
+//			assertTrue(list.size() > 0);
+//	
+//			for (InventoryVO inventory : list) {
+//	
+//				System.out.println(
+//						inventory.getFruitNo() + " / "
+//								+ inventory.getProductName() + " / "
+//								+ inventory.getRemainQuantity() + " / "
+//								+ inventory.getPrice() + " / "
+//								+ inventory.getCoopName() + " / "
+//								+ inventory.getStorageDate() + " / "
+//								+ inventory.getWasteDate() + " / "
+//								+ inventory.getWasteCategoryReason() + " / "
+//								+ inventory.getStatus()
+//	
+//	
+//						);
+//			}
+//		}
 
 
 	//	@Test
@@ -169,91 +169,87 @@ public class InventoryDAOTest {
 	//	
 
 
-	//	@Test
-	//	public void 상품명을_조회_관리자() throws SQLException {
-	//
-	//		InventoryDAO dao = new InventoryDAO(conn);
-	//
-	//		List<InventoryVO> list = dao.getInventoryByName("");
-	//
-	//		assertNotNull(list);
-	//		assertTrue(list.size() > 0);
-	//
-	//		for (InventoryVO inventory : list) {
-	//
-	//			System.out.println(
-	//					inventory.getFruitNo() + " / "
-	//							+ inventory.getProductName() + " / "
-	//							+ inventory.getRemainQuantity() + " / "
-	//							+ inventory.getPrice() + " / "
-	//							+ inventory.getCoopName() + " / "
-	//							+ inventory.getStorageDate() + " / "
-	//							+ inventory.getWasteDate() + " / "
-	//							+ inventory.getWasteCategoryReason() + " / "
-	//							+ inventory.getStatus()
-	//
-	//
-	//					);
-	//		}
-	//	}
-	//	
-	//	
-	//	
-	//	@Test
-	//	public void 상품명을_조회() throws SQLException {
-	//
-	//		InventoryDAO dao = new InventoryDAO(conn);
-	//
-	//		List<InventoryVO> list = dao.getInventoryByName("");
-	//
-	//		assertNotNull(list);
-	//		assertTrue(list.size() > 0);
-	//
-	//		for (InventoryVO inventory : list) {
-	//
-	//			System.out.println(
-	//					inventory.getFruitNo() + " / "
-	//							+ inventory.getProductName() + " / "
-	//							+ inventory.getRemainQuantity() + " / "
-	//							+ inventory.getPrice() + " / "
-	//							+ inventory.getCoopName() + " / "
-	//							+ inventory.getStorageDate() + " / "
-	//							+ inventory.getWasteDate() + " / "
-	//							+ inventory.getWasteCategoryReason() + " / "
-	//							+ inventory.getStatus()
-	//
-	//
-	//					);
-	//		}
-	//	}
-	//	
-	//		
-	//	
-	//	@Test
-	//	public void 전체_재고목록을_조회() throws SQLException {
-	//
-	//		InventoryDAO dao = new InventoryDAO(conn);
-	//
-	//		List<InventoryVO> list = dao.getInventory();
-	//
-	//		assertNotNull(list);
-	//		assertTrue(list.size() > 0);
-	//
-	//		for (InventoryVO inventory : list) {
-	//
-	//			System.out.println(
-	//					inventory.getFruitNo() + " / "
-	//							+ inventory.getProductName() + " / "
-	//							+ inventory.getRemainQuantity() + " / "
-	//							+ inventory.getPrice() + " / "
-	//							+ inventory.getCoopName() + " / "
-	//							+ inventory.getStorageDate() + " / "
-	//							+ inventory.getWasteDate() + " / "
-	//							+ inventory.getWasteCategoryReason() + " / "
-	//							+ inventory.getStatus()
-	//
-	//
-	//					);
-	//		}
-	//	}
+//		@Test
+//		public void 상품명을_조회_관리자() throws SQLException {
+//	
+//			InventoryDAO dao = new InventoryDAO(conn);
+//	
+//			List<InventoryVO> list = dao.getInventoryByName("수박");
+//	
+//			assertNotNull(list);
+//			assertTrue(list.size() > 0);
+//	
+//			for (InventoryVO inventory : list) {
+//	
+//				System.out.println(
+//						inventory.getFruitNo() + " / "
+//								+ inventory.getProductName() + " / "
+//								+ inventory.getRemainQuantity() + " / "
+//								+ inventory.getPrice() + " / "
+//								+ inventory.getCoopName() + " / "
+//								+ inventory.getStorageDate() + " / "
+//								+ inventory.getWasteDate() + " / "
+//								+ inventory.getWasteCategoryReason() + " / "
+//								+ inventory.getStatus()
+//	
+//	
+//						);
+//			}
+//		}
+	
+//		@Test
+//		public void 상품명을_조회() throws SQLException {
+//	
+//			InventoryDAO dao = new InventoryDAO(conn);
+//	
+//			List<InventoryVO> list = dao.getInventoryByName("");
+//	
+//			assertNotNull(list);
+//			assertTrue(list.size() > 0);
+//	
+//			for (InventoryVO inventory : list) {
+//	
+//				System.out.println(
+//						inventory.getFruitNo() + " / "
+//								+ inventory.getProductName() + " / "
+//								+ inventory.getRemainQuantity() + " / "
+//								+ inventory.getPrice() + " / "
+//								+ inventory.getCoopName() + " / "
+//								+ inventory.getStorageDate() + " / "
+//								+ inventory.getWasteDate() + " / "
+//								+ inventory.getWasteCategoryReason() + " / "
+//								+ inventory.getStatus()
+//	
+//	
+//						);
+//			}
+//		}
+	
+		@Test
+		public void 전체_재고목록을_조회() throws SQLException {
+	
+			InventoryDAO dao = new InventoryDAO(conn);
+	
+			List<InventoryVO> list = dao.getInventory();
+	
+			assertNotNull(list);
+			assertTrue(list.size() > 0);
+	
+			for (InventoryVO inventory : list) {
+	
+				System.out.println(
+						inventory.getFruitNo() + " / "
+								+ inventory.getProductName() + " / "
+								+ inventory.getRemainQuantity() + " / "
+								+ inventory.getPrice() + " / "
+								+ inventory.getCoopName() + " / "
+								+ inventory.getStorageDate() + " / "
+								+ inventory.getWasteDate() + " / "
+								+ inventory.getWasteCategoryReason() + " / "
+								+ inventory.getStatus()
+	
+	
+						);
+			}
+		}
 }
