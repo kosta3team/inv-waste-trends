@@ -2,6 +2,8 @@ package kr.swdl.servlet.fruitproduct;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -26,9 +28,18 @@ public class AddFruitProduct implements Action {
 		
 		// 2. ID를 기반으로 MemberDAO를 통해서 주소, 연락처등 상세정보 가져옴.
 		if (memberId != null) {
+			MemberVO actualUser = new MemberVO();
+			actualUser.setMemberId(memberId);
+			
 			Connection conn = null;
-			MemberDAO memberDao = new MemberDAO(conn);
-//			MemberVO actualUser
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+//			try {
+//				conn = DBCP
+//			}
+			
+			
 		}
 		
 		String actionType = request.getParameter("actionType");
