@@ -4,7 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -38,62 +37,45 @@
 
 		<!-- 검색 영역 -->
 		<div class="d-flex justify-content-center align-items-center">
-			<div class="search-area">
-				<div class="search-box">
-					<form action="${pageContext.request.contextPath}/controller"
-						method="get">
+			<form action="${pageContext.request.contextPath}/controller"
+				method="get" id="searchForm">
 
-						<input type="hidden" name="cmd" value="inventoryList"> <input
-							type="hidden" id="contextPath"
-							value="${pageContext.request.contextPath}">
+				<input type="hidden" name="cmd" value="inventoryListUI">
 
+				<div class="search-area">
+					<div class="search-box">
 						<div class="input-group">
 
-							<!-- 검색 조건 -->
 							<select name="searchType" class="form-select"
 								style="max-width: 130px;">
+								<option value="product"
+									${param.searchType eq 'product' ? 'selected' : ''}>상품명</option>
+								<option value="coop"
+									${param.searchType eq 'coop'    ? 'selected' : ''}>협동조합원명</option>
+							</select> <input type="text" name="keyword" class="form-control"
+								placeholder="검색어 입력" value="${fn:escapeXml(param.keyword)}">
 
-								<option value="product">상품명</option>
-								<option value="coop">협동조합원명</option>
-
-							</select>
-
-							<!-- 검색어 -->
-							<input type="text" name="keyword" class="form-control"
-								placeholder="검색어 입력">
-
-							<!-- 검색 버튼 -->
 							<button type="submit" class="btn btn-dark">
 								<i class="bi bi-search"></i>
 							</button>
 						</div>
-					</form>
+					</div>
+
+					<div class="stock-status fw-bold">
+						<label class="text-danger"> <input type="checkbox"
+							class="form-check-input me-1 stockType" name="stockType"
+							value="waste" id="disposed"
+							${param.stockType eq 'waste' ? 'checked' : ''}> 폐기재고
+						</label> <label class="text-primary"> <input type="checkbox"
+							class="form-check-input me-1 stockType" name="stockType"
+							value="normal" id="selling"
+							${param.stockType eq 'normal' ? 'checked' : ''}> 판매중인재고
+						</label>
+					</div>
 				</div>
-
-				<!-- 재고 상태 -->
-				<div class="stock-status fw-bold">
-
-					<label class="text-danger"> <input type="checkbox"
-						class="form-check-input me-1 stockType" name="stockType"
-						value="waste" id="disposed"
-						<c:if test="${param.stockType eq 'waste'}">checked</c:if>>
-
-						폐기재고
-
-					</label> <label class="text-primary"> <input type="checkbox"
-						class="form-check-input me-1 stockType" name="stockType"
-						value="normal" id="selling"
-						<c:if test="${param.stockType eq 'normal'}">checked</c:if>>
-
-						판매중인재고
-
-					</label>
-
-				</div>
-
-			</div>
-
+			</form>
 		</div>
+
 
 		<div class="inventory-table-area">
 
@@ -117,66 +99,36 @@
 				</thead>
 
 				<tbody>
+					<c:choose>
+						<c:when test="${empty inventoryList}">
+							<tr>
+								<td colspan="10" class="text-center">조회된 재고가 없습니다.</td>
+							</tr>
+						</c:when>
 
+						<c:otherwise>
+							<c:forEach var="inventory" items="${inventoryList}"
+								varStatus="status">
+								<tr style="cursor: pointer;"
+									onclick="showInventoryDetail('${inventory.fruitNo}')">
 
-					<c:if test="${empty inventoryList}">
-
-						<tr>
-							<td colspan="10" class="text-center">조회된 재고가 없습니다.</td>
-						</tr>
-
-					</c:if>
-
-					<c:forEach var="inventory" items="${inventoryList}"
-						varStatus="status">
-
-						<tr style="cursor: pointer;"
-							onclick="showInventoryDetail('${inventory.fruitNo}')">
-
-							<td>${status.count}</td>
-
-							<td>${inventory.fruitNo}</td>
-
-							<td>${inventory.productName}</td>
-
-							<td>${inventory.remainQuantity}</td>
-
-							<td><fmt:formatNumber value="${inventory.price}"
-									pattern="#,###" /> 원</td>
-
-							<td>${inventory.coopName}</td>
-
-							<td>${fn:substring(inventory.storageDate, 0, 10)}</td>
-							<td><c:choose>
-									<c:when test="${empty inventory.wasteDate}">-</c:when>
-									<c:otherwise>${fn:substring(inventory.wasteDate, 0, 10)}</c:otherwise>
-								</c:choose></td>
-
-							<td><c:choose>
-
-									<c:when test="${empty inventory.wasteCategoryReason}">
-                                        -
-                                    </c:when>
-
-									<c:otherwise>
-                                        ${inventory.wasteCategoryReason}
-                                    </c:otherwise>
-
-								</c:choose></td>
-
-							<td><c:choose>
-									<c:when test="${inventory.status eq '폐기'}">
-										<span class="badge bg-danger">${inventory.status}</span>
-									</c:when>
-									<c:otherwise>
-										<span class="badge bg-success">${inventory.status}</span>
-									</c:otherwise>
-								</c:choose></td>
-
-						</tr>
-
-					</c:forEach>
-
+									<td>${status.count}</td>
+									<td>${inventory.fruitNo}</td>
+									<td>${inventory.productName}</td>
+									<td>${inventory.remainQuantity}</td>
+									<td><fmt:formatNumber value="${inventory.price}"
+											pattern="#,###" /> 원</td>
+									<td>${inventory.coopName}</td>
+									<td>${fn:substring(inventory.storageDate, 0, 10)}</td>
+									<td>${empty inventory.wasteDate ? '-' : fn:substring(inventory.wasteDate, 0, 10)}</td>
+									<td>${empty inventory.wasteCategoryReason ? '-' : inventory.wasteCategoryReason}</td>
+									<td><span
+										class="badge ${inventory.status eq '폐기' ? 'bg-danger' : 'bg-success'}">
+											${inventory.status} </span></td>
+								</tr>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
 				</tbody>
 
 			</table>
@@ -217,9 +169,6 @@
 
 	</main>
 
-	<%@ include file="inventoryDetailModal.jsp" %>
-	
-
 	<%@ include file="footer.jsp"%>
 
 	<script
@@ -236,5 +185,4 @@
 	</script>
 
 </body>
-
 </html>

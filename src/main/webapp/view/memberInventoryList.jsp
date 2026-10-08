@@ -147,7 +147,7 @@
 								<!-- TODO: 목록 마지막에 버튼 추가 해야함 !!!!!! --> <!-- 앞에서 얻어지는 상태에 따라 요청 버튼 활성/비활성 추가가 필요함 -->
 								<button type="button" class="btn btn-sm btn-outline-danger"
 									data-bs-toggle="modal" data-bs-target="#disposeRequestModal"
-									data-fruit-no="fd0001">폐기요청</button>
+									data-fruit-no=${inventory.fruitNo}>폐기요청</button>
 							</td>
 					</c:forEach>
 				</tbody>
@@ -193,7 +193,6 @@
 
 	</main>
 
-	<%@ include file="inventoryDetailModal.jsp"%>
 
 	<%@ include file="wasteRequestModal.jsp"%>
 	<%@ include file="footer.jsp"%>
@@ -204,8 +203,6 @@
 	<script src="${pageContext.request.contextPath}/js/memberInventory.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/js/wasteRequestModal.js"></script>
-
-
 
 
 </body>

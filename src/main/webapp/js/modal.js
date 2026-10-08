@@ -1,14 +1,4 @@
-// 현재 날짜 표시
-const today = new Date();
 
-const year = today.getFullYear();
-const month = String(today.getMonth() + 1).padStart(2, '0');
-const day = String(today.getDate()).padStart(2, '0');
-
-document.getElementById("currentDate").textContent = `${year}-${month}-${day}`;
-
-// 재고 상세정보 모달 채우기
-// tr의 data-* 속성값이 모달 내용 (추후 DB 연동 시 data-* 값만 실제 데이터로 교체하기)
 function showInventoryDetail(fruitNo) {
 
     const contextPath =
