@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import kr.swdl.model.DBCP;
-import kr.swdl.model.MemberDAO;
 
 public class MemberService {
 
