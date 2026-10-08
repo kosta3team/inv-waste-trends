@@ -49,7 +49,7 @@
 								href="${pageContext.request.contextPath}/controller?cmd=signupListUI">
 									회원가입 요청 조회 </a></li>
 							<li><a class="dropdown-item"
-								href="${pageContext.request.contextPath}/view/inventoryRequest.jsp">
+								href="${pageContext.request.contextPath}/controller?cmd=getAdminFruitProductRequestLists">
 									입고 요청 조회 </a></li>
 							<li><a class="dropdown-item"
 								href="${pageContext.request.contextPath}/controller?cmd=adminWasteRequestList">

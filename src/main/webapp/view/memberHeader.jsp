@@ -58,7 +58,7 @@
 								href="${pageContext.request.contextPath}/view/memberInventoryRequestList.jsp">
 									입고 내역 </a></li>
 							<li><a class="dropdown-item"
-								href="${pageContext.request.contextPath}/view/fruitproduct/addFruitProduct.jsp">
+								href="${pageContext.request.contextPath}/controller?cmd=addFruitProduct">
 									입고 요청 </a></li>
 						</ul></li>
 

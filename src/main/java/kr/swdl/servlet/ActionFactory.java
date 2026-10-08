@@ -99,26 +99,11 @@ public class ActionFactory {
 			a = new AddFruitProduct();
 			break;
 				
-		// 2. 관리자 기본 전체 입고요청목록 조회
-		case "getFruitProductRequests":
-			a = new GetFruitProductRequests();
+		// 2. 관리자 입고요청목록 조회
+		case "getAdminFruitProductRequestLists":
+			a = new GetAdminFruitProductRequestLists();
 			break;
 			
-		// 3. 관리자 기간 전체 입고요청목록 조회
-		case "getFruitProductRequestsPeriod":
-			a = new GetFruitProductRequestsPeriod();
-			break;
-			
-		// 4. 관리자 기본 입고요청상태만 목록 조회
-		case "getPendingFruitProducts":
-			a = new GetPendingFruitProducts();
-			break;
-			
-		// 5. 관리자 기간 입고요청상태만 목록 조회
-		case "getPendingFruitProductsPeriod":
-			a = new GetPendingFruitProductsPeriod();
-			break;
-
 		// 6. 조합원 기본 전체 입고요청목록 조회
 		case "getMyFruitProductRequests":
 			a = new GetMyFruitProductRequests();

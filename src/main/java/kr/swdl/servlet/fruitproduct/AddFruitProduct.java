@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import kr.swdl.model.DBCP;
+import kr.swdl.model.DBCPTest;
 import kr.swdl.model.MemberDAO;
 import kr.swdl.model.fruitcategory.FruitCategoryDAO;
 import kr.swdl.model.fruitproduct.FruitProductService;
@@ -61,7 +62,7 @@ public class AddFruitProduct implements Action {
 				System.out.println("DB조회중 에러발생");
 				e.printStackTrace();
 			} finally {
-				DBCP.close(conn, pstmt, rs);
+				DBCPTest.close(conn, pstmt, rs);
 			}
 			request.setAttribute("loginUser", actualUser);
 		}
