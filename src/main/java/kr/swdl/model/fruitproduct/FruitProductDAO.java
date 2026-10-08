@@ -425,6 +425,12 @@ public class FruitProductDAO {
 		
 		try {
 			conn = DBCPTest.getConnection();
+			
+			System.out.println("=== GET_MY_FRUIT_PRODUCT ===");
+			System.out.println(Query.GET_MY_FRUIT_PRODUCT);
+			System.out.println("fruitNo = " + fruitNo);
+			System.out.println("memberId = " + memberId);
+			
 			pstmt = conn.prepareStatement(Query.GET_MY_FRUIT_PRODUCT);
 			pstmt.setString(1, fruitNo);
 			pstmt.setString(2, memberId);
