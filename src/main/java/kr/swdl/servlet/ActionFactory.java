@@ -4,37 +4,8 @@ public class ActionFactory {
 	public static Action getAction(String cmd) {
 		if(cmd ==null) cmd="";
 		Action a = null;
-		System.out.println(cmd);
+		
 		switch(cmd) {
-		case "adminWasteRequestList":
-			a=new AdminWasteRequestListAction();
-			break;
-		case "adminGetWasteRequestList":
-			a=new AdminGetWasteRequestListAction ();
-			break;
-		case "adminGetWasteRequestDetail":
-			a=new AdminGetWasteRequestDetailAction();
-			break;
-		case "adminApproveWaste":
-			a=new AdminApproveWasteAction();
-			break;
-		case "getWasteRequestQuantity":
-			a = new GetWasteRequestQuantityAction();
-			break;
-		case "getWasteCategoryList":
-			a = new GetWasteCategoryListAction();
-			break;
-		case "requestWaste":
-			a = new RequestWasteAction();
-			break;
-			
-			//
-		case "memberInventoryList":
-			a = new MemberInventoryList();
-			break;
-			//
-			
-			
 		case "idCheck":
 			a = new IdCheckAction();
 			break;
@@ -68,17 +39,11 @@ public class ActionFactory {
 		case "adminInventoryRequestListUI":
 			a=new AdminInventoryRequestListUIAction();
 			break;
-		case "saleInventoryList":
-			a=new SaleInventoryList();
+		case "saleInventoryListUI":
+			a = new SaleInventoryListUIAction();
 			break;
-		case "menuSaleInventoryList":
-			a=new MenuSaleInventoryList();
-			break;
-		case "memberSaleInventoryList":
-			a=new MemberSaleInventoryList();
-			break;
-		case "menuMemberSaleInventoryList":
-			a=new MenuMemberSaleInventoryList();
+		case "memberInventoryListUI":
+			a=new MemberInventoryList();
 			break;
 		case "memberMain":
 		    a = new MemberMainUIAction();

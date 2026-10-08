@@ -119,7 +119,6 @@
 						<td>-</td>
 						<td>-</td>
 						<td>정상</td>
-					
 					</tr>
 
 					<tr>
@@ -132,6 +131,7 @@
 						<td>2026-10-08</td>
 						<td>-</td>
 						<td>-</td>
+						<td>정상</td>
 					</tr>
 
 					<tr>
@@ -243,7 +243,8 @@
 			</table>
 
 		</div>
-		
+
+
 		<!-- 페이지네이션 -->
 		<div class="pagination-area">
 
@@ -276,7 +277,6 @@
 
 	</main>
 	<%@ include file="inventoryDetailModal.jsp" %>
-	
 	
 	<%@ include file="footer.jsp" %>
 

@@ -68,7 +68,7 @@
 
 						<ul class="dropdown-menu start-50 translate-middle-x text-center">
 							<li><a class="dropdown-item"
-								href="${pageContext.request.contextPath}/controller?cmd=memberInventoryList">
+								href="${pageContext.request.contextPath}/view/memberInventoryList.jsp">
 									재고 확인 </a></li>
 						</ul></li>
 
@@ -78,7 +78,7 @@
 
 						<ul class="dropdown-menu start-50 translate-middle-x text-center">
 							<li><a class="dropdown-item"
-								href="${pageContext.request.contextPath}/controller?cmd=menuMemberSaleInventoryList">
+								href="${pageContext.request.contextPath}/view/memberSaleInventoryList.jsp">
 									판매 기록 </a></li>
 						</ul></li>
 
@@ -94,6 +94,7 @@
 
 							<i class="bi bi-person-circle me-1"></i>
 							${sessionScope.loginName}님
+						<p>memberId = [${memberId}]</p>
 						</button>
 
 						<a href="${pageContext.request.contextPath}/controller?cmd=logout"
