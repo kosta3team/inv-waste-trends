@@ -30,7 +30,7 @@
     		<input type="hidden" name="cmd" value="addFruitProduct">    		    		
     		<input type="hidden" name="actionType" value="submit">
     		
-    		<input type="hidden" name="memberId" value="${sessionScope.loginUser.memberId }">
+    		<input type="hidden" name="memberId" value="${loginUser.memberId }">
     		
     		<!-- 실제 서버에 올라갈 식별자. -->
     		<input type="hidden" id="fruitCategoryNo" name="fruitCategoryNo">
@@ -122,12 +122,12 @@
     				<div class="row align-items-center mb-3">
     					<label class="col-sm-2 col-form-label fw-bold">조합원명</label>
     					<div class="col-sm-4">
-    						${sessionScope.loginUser.memberName }
+    						${loginUser.memberName }
     					</div>
     					
     					<label class="col-sm-2 col-form-label fw-bold text-end">이름</label>
     					<div class="col-sm-4">
-    						${sessionScope.loginUser.name }
+    						${loginUser.name }
     					</div>
     				</div>
     				
@@ -135,21 +135,21 @@
     				<div class="row align-items-center mb-3">
     					<label class="col-sm-2 col-form-label fw-bold">주소</label>
     					<div class="col-sm-10">
-    						${sessionScope.loginUser.address } ${sessionScope.loginUser.detailAddress }
+    						${loginUser.address } ${loginUser.detailAddress }
     					</div>
     				</div>
     				
     				<div class="row align-items-center mb-3">
     					<label class="col-sm-2 col-form-label fw-bold">휴대폰번호</label>
     					<div class="col-sm-10">
-    						${sessionScope.loginUser.phone }
+    						${loginUser.phone }
     					</div>
     				</div>
     				
     				<div class="row align-items-center">
     					<label class="col-sm-2 col-form-label fw-bold">이메일</label>
     					<div class="col-sm-10">
-    						${sessionScope.loginUser.email }
+    						${loginUser.email }
     					</div>
     				</div>
     			</div>

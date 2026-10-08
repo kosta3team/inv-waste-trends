@@ -39,12 +39,12 @@ public class FruitProductService {
 	
 	// 6. 조합원 기본 전체 입고요청목록 조회
 	public List<FruitProductVO> getMyFruitProductRequests (String memberId){
-		return dao.getMyPendingFruitProducts(memberId);
+		return dao.getMyFruitProductRequests(memberId);
 	}
 	
 	// 7. 조합원 기간 전체 입고요청목록 조회
 	public List<FruitProductVO> getMyFruitProductRequestsPeriod (String memberId, String startDate, String endDate){
-		return dao.getMyPendingFruitProductsPeriod(memberId, startDate, endDate);
+		return dao.getMyFruitProductRequestsPeriod(memberId, startDate, endDate);
 	}
 	
 	// 8. 조합원 기본 전체 입고요청목록 조회

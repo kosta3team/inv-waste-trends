@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import kr.swdl.model.DBCP;
+import kr.swdl.model.DBCPTest;
 
 public class FruitCategoryDAO {
 	// 전체 카테고리 목록 메서드
@@ -18,7 +18,7 @@ public class FruitCategoryDAO {
 		ResultSet rs = null;
 		
 		try {
-			conn = DBCP.getConnection();
+			conn = DBCPTest.getConnection();
 			// 전체를 가져오는거라 하드코딩함
 			String sql = "SELECT fruit_category_no, item_code, item_name, kind_name, origin, storage_date FROM fruit_category";
 			pstmt = conn.prepareStatement(sql);
@@ -37,7 +37,7 @@ public class FruitCategoryDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBCP.close(conn, pstmt, rs);
+			DBCPTest.close(conn, pstmt, rs);
 		} return lists;
 	}
 }
