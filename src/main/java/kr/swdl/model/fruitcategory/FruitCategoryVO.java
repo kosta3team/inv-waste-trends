@@ -2,10 +2,11 @@ package kr.swdl.model.fruitcategory;
 
 public class FruitCategoryVO {
 	private String fruitCategoryNo;
-	private String itemCode;
+	private int itemCode;
 	private String itemName;
 	private String kindName;
 	private String origin;
+	private int storageDate; 
 	
 	// 기본 생성자
 	public FruitCategoryVO() {}
@@ -19,11 +20,11 @@ public class FruitCategoryVO {
 		this.fruitCategoryNo = fruitCategoryNo;
 	}
 
-	public String getItemCode() {
+	public int getItemCode() {
 		return itemCode;
 	}
 
-	public void setItemCode(String itemCode) {
+	public void setItemCode(int itemCode) {
 		this.itemCode = itemCode;
 	}
 
@@ -49,6 +50,14 @@ public class FruitCategoryVO {
 
 	public void setOrigin(String origin) {
 		this.origin = origin;
+	}
+
+	public int getStorageDate() {
+		return storageDate;
+	}
+
+	public void setStorageDate(int storageDate) {
+		this.storageDate = storageDate;
 	}
 	
 	
