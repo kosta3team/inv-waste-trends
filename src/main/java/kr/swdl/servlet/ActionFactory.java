@@ -19,11 +19,8 @@ public class ActionFactory {
 		case "adminApproveWaste":
 			a=new AdminApproveWasteAction();
 			break;
-		case "getWasteRequestQuantity":
-			a = new GetWasteRequestQuantityAction();
-			break;
-		case "getWasteCategoryList":
-			a = new GetWasteCategoryListAction();
+		case "getWasteRequestData":
+			a = new GetWasteRequestDataAction();
 			break;
 		case "requestWaste":
 			a = new RequestWasteAction();

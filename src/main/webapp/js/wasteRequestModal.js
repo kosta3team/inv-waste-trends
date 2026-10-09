@@ -12,8 +12,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const fruitNo = button.getAttribute('data-fruit-no');
 
         // XHR 요청 실행 (필요한 경우 cmd 파라미터나 경로를 조합)
-        getWasteRequestQuantity(fruitNo, modalElement);
-        getWasteCategoryList(modalElement);        
+        //getWasteRequestQuantity(fruitNo, modalElement);
+        //getWasteCategoryList(modalElement);        
+        getWasteRequestData(fruitNo, modalElement);
     });
 });
 
@@ -71,6 +72,38 @@ function getWasteCategoryList(modalElement) {
     };
 
  	const url = "controller?cmd=getWasteCategoryList";
+    xhr.open("get", url, true);
+    xhr.send();
+}
+
+function getWasteRequestData(fruitNo, modalElement) {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+		
+			var data = xhr.responseText.trim();
+			const parts = data.split(',');
+			
+			const maxQuantityInput = modalElement.querySelector('#disposeQuantity')
+			if (maxQuantityInput) {
+				const maxQuantity = parts[0].split('=')[1];
+                maxQuantityInput.setAttribute('max', maxQuantity);
+                maxQuantityInput.placeholder = `최대 ${maxQuantity}개 가능`;
+            }
+            
+            const reasonSelect = modalElement.querySelector('#disposeReason');
+             if (reasonSelect) {			
+					reasonSelect.innerHTML = '<option value="">선택</option>';
+					for (let i = 1; i < parts.length; i+=2) {
+						const option = document.createElement('option');
+            	    	option.value = parts[i].split('=')[1];           // value에 PK(_NO) 설정
+                		option.textContent = parts[i+1].split('=')[1]; // 화면에 노출될 텍스트
+    		            reasonSelect.appendChild(option);
+					}
+			 }
+        }
+	}
+ 	const url = "controller?cmd=getWasteRequestData&fruitNo=" + fruitNo;
     xhr.open("get", url, true);
     xhr.send();
 }

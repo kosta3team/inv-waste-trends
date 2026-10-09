@@ -15,6 +15,7 @@ import kr.swdl.model.DBCP;
 import kr.swdl.model.waste.WasteDAO;
 import kr.swdl.model.waste.WasteDetailVO;
 import kr.swdl.model.waste.WasteRequestListVO;
+import kr.swdl.model.waste.WasteService;
 import kr.swdl.model.waste.WasteVO;
 
 public class WasteServiceTest {
@@ -107,6 +108,11 @@ public class WasteServiceTest {
 		WasteVO v1 = new WasteDAO(conn).getWaste("wa0001");
 		WasteVO v2 =  new WasteVO("wa0001", null, "2026-08-21 00:00:00", "보관 중 부분 무름", 10, "fd0001", "member001", null, "wc0005");
 		assertEquals(v1, v2); 
+	}
+	
+	@Test
+	public void 과일_폐기요청_상세_페이지_데이터_조회() {
+		new WasteService().getWasteRequestData("fd0001");
 	}
 	
 }
