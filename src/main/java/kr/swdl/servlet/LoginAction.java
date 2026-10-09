@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.swdl.model.member.MemberService;
@@ -36,7 +35,7 @@ public class LoginAction implements Action {
                     session.setAttribute("userType", "member");
                     session.setAttribute("memberId", userId);
 
-                    return "view/memberMain.jsp";
+                    return "controller?cmd=memberMain";
                 }
 
                 if ("대기".equals(member.getStatus())) {

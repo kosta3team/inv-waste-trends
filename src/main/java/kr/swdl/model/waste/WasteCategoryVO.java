@@ -27,8 +27,7 @@ public class WasteCategoryVO {
 	
 	@Override
 	public String toString() {
-		return "WasteCategoryVO [wasteCategoryNo=" + wasteCategoryNo + ", wasteCategoryReason=" + wasteCategoryReason
-				+ "]";
+		return "wasteCategoryNo=" + wasteCategoryNo + ", wasteCategoryReason=" + wasteCategoryReason;
 	}
 
 	@Override

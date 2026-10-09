@@ -13,8 +13,22 @@ public class AdminWasteRequestListAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request) throws ServletException, IOException {
-		request.setAttribute("WasteRequestList",  new WasteService().getWasteList());	
-		return "view/adminWasteRequestList.jsp";
+		List<WasteRequestListVO> list = null;
+		String url = null;
+		String isOnlyRequest = request.getParameter("IsOnlyRequest");
+		if (null == isOnlyRequest) { 
+			list = new WasteService().getWasteList();
+			url = "view/adminWasteRequestList.jsp";
+		} else {
+			if (isOnlyRequest.equals("true")) {
+				list = new WasteService().getWasteListOnlyRequest();
+			} else {
+				list = new WasteService().getWasteList();
+			}
+			url = "view/adminGetWasteList.jsp";
+		}
+		request.setAttribute("WasteRequestList",  list);	
+		return url;
 	}
 
 }

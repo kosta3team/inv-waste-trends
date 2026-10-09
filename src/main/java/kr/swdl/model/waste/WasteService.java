@@ -114,4 +114,15 @@ public class WasteService {
 		}
 		return null;
 	}
+
+	public WasteRequestDataDTO getWasteRequestData(String fruitNo) {
+		try {
+			return new WasteRequestDataDTO(
+					new WasteDAO(DBCP.getConnection()).getRemainQuantity(fruitNo),
+					new WasteCategoryDAO(DBCP.getConnection()).getWasteCategoryList());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

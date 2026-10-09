@@ -192,12 +192,12 @@
                     const match = response.match(regex);
                     return match ? match[1].trim() : '';
                 }
-
+             
                 const wasteDate = getValue('wasteDate');
-                
+
                 // VO 필드명에 맞춰 모달에 데이터 바인딩
                 document.getElementById('modalReqDate').textContent = getValue('wasteReqDate');
-                document.getElementById('modalApproveDate').textContent = wasteDate;
+                document.getElementById('modalApproveDate').textContent = (wasteDate == null || wasteDate === "null") ? "-" : wasteDate;
                 document.getElementById('modalStockNo').textContent = getValue('fruitPorductNo');
                 document.getElementById('modalItemCode').textContent = getValue('itemCode');
                 document.getElementById('modalItemName').textContent = getValue('itemName');
@@ -252,7 +252,7 @@
                     }
                     alert(msg)
                     // 목록페이지로 이동
-                    location.href = 'controller?cmd=adminWasteRequestList';
+                    location.href = "controller?cmd=adminWasteRequestList";
                 }
             };
             
@@ -278,7 +278,7 @@
 			}
 		}
 		filterEvent = function() {
-			const url = "controller?cmd=adminGetWasteRequestList&IsOnlyRequest="
+			const url = "controller?cmd=adminWasteRequestList&IsOnlyRequest="
 					+ onlyWait.checked;
 			xhr.open("get", url, true);
 			xhr.send();
