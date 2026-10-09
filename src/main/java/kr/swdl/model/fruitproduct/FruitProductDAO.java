@@ -378,6 +378,7 @@ public class FruitProductDAO {
 			while (rs.next()) {
 				
 				vo = new FruitProductVO();
+				vo.setFruitNo(rs.getString("상품번호"));
 				vo.setRequestDate(rs.getDate("요청일자"));
 				
 				FruitCategoryVO fc = new FruitCategoryVO();
@@ -425,6 +426,12 @@ public class FruitProductDAO {
 		
 		try {
 			conn = DBCPTest.getConnection();
+			
+			System.out.println("=== GET_MY_FRUIT_PRODUCT ===");
+			System.out.println(Query.GET_MY_FRUIT_PRODUCT);
+			System.out.println("fruitNo = " + fruitNo);
+			System.out.println("memberId = " + memberId);
+			
 			pstmt = conn.prepareStatement(Query.GET_MY_FRUIT_PRODUCT);
 			pstmt.setString(1, fruitNo);
 			pstmt.setString(2, memberId);
