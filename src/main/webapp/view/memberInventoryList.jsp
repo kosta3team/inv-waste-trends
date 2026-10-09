@@ -35,22 +35,22 @@
 	<main class="inventory-page">
 
 		<!-- 제목 -->
-
 		<div class="mb-4">
 			<h3 class="fw-bold mb-1">과일상품정보 목록 조회</h3>
 		</div>
 
-		<!-- 검색 영역 -->
 
+		<!-- 검색 -->
 		<div class="d-flex justify-content-center align-items-center">
-			<div class="search-area">
-				<div class="search-box">
-					<form action="${pageContext.request.contextPath}/controller"
-						method="get">
-						<input type="hidden" name="cmd" value="memberInventoryList">
+			<form action="${pageContext.request.contextPath}/controller"
+				method="get" id="searchForm">
+				<input type="hidden" name="cmd" value="memberInventoryList">
+
+				<div class="search-area">
+					<div class="search-box">
 						<div class="input-group">
 
-							<!-- 검색 조건 -->
+							<!-- 조건 -->
 							<select name="searchType" class="form-select"
 								style="max-width: 130px;">
 								<option value="product">상품명</option>
@@ -58,32 +58,31 @@
 
 							<!-- 검색어 -->
 							<input type="text" name="keyword" class="form-control"
-								placeholder="검색어 입력" value="${param.keyword}">
+								placeholder="검색어 입력" value="${fn:escapeXml(param.keyword)}">
 
 							<!-- 검색 버튼 -->
 							<button type="submit" class="btn btn-dark">
 								<i class="bi bi-search"></i>
 							</button>
 						</div>
-					</form>
-				</div>
+					</div>
 
-				<!-- 재고 상태 -->
-
-				<div class="stock-status fw-bold">
-					<label class="text-danger"> <input type="checkbox"
-						class="form-check-input me-1 stockType" name="stockType"
-						value="waste" id="disposed"
-						<c:if test="${param.stockType eq 'waste'}">checked</c:if>>
-						폐기재고
-					</label> <label class="text-primary"> <input type="checkbox"
-						class="form-check-input me-1 stockType" name="stockType"
-						value="normal" id="selling"
-						<c:if test="${param.stockType eq 'normal'}">checked</c:if>>
-						판매중인재고
-					</label>
+					<!-- 재고 상태 -->
+					<div class="stock-status fw-bold">
+						<label class="text-danger"> <input type="checkbox"
+							class="form-check-input me-1 stockType" name="stockType"
+							value="waste" id="disposed"
+							<c:if test="${param.stockType eq 'waste'}">checked</c:if>>
+							폐기재고
+						</label> <label class="text-primary"> <input type="checkbox"
+							class="form-check-input me-1 stockType" name="stockType"
+							value="normal" id="selling"
+							<c:if test="${param.stockType eq 'normal'}">checked</c:if>>
+							판매중인재고
+						</label>
+					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 
 		<div class="inventory-table-area">
