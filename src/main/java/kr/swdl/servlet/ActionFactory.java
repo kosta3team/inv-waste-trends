@@ -19,11 +19,8 @@ public class ActionFactory {
 		case "adminApproveWaste":
 			a=new AdminApproveWasteAction();
 			break;
-		case "getWasteRequestQuantity":
-			a = new GetWasteRequestQuantityAction();
-			break;
-		case "getWasteCategoryList":
-			a = new GetWasteCategoryListAction();
+		case "getWasteRequestData":
+			a = new GetWasteRequestDataAction();
 			break;
 		case "requestWaste":
 			a = new RequestWasteAction();
@@ -106,7 +103,7 @@ public class ActionFactory {
 		
 		// 1. 조합원 입고 요청
 		case "addFruitProduct":
-			a = new kr.swdl.servlet.fruitproduct.AddFruitProduct();
+			a = new AddFruitProduct();
 			break;
 				
 		// 2. 관리자 입고요청목록 조회
