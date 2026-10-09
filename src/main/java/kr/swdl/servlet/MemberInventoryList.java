@@ -1,6 +1,7 @@
 package kr.swdl.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -21,22 +22,40 @@ public class MemberInventoryList implements Action {
 		String stockType = request.getParameter("stockType");
 		String searchType = request.getParameter("searchType");
 		String keyword = request.getParameter("keyword");
+		
+		boolean hasKeyword = keyword != null && !keyword.trim().isEmpty();
+		if (hasKeyword) {
+			keyword = keyword.trim();
+		}
 
 		List<InventoryVO> inventoryList;
 
-		if ("waste".equals(stockType)) {
-			inventoryList = service.getWastedProducts(memberId);
+		if ("waste".equals(stockType) || "normal".equals(stockType)) {
 
-		} else if ("normal".equals(stockType)) {
-			inventoryList = service.getNormalProducts(memberId);
+			List<InventoryVO> stockList = "waste".equals(stockType)
+					? service.getWastedProducts(memberId)
+					: service.getNormalProducts(memberId);
 
-		} else if ("product".equals(searchType)
-				&& keyword != null
-				&& !keyword.trim().isEmpty()) {
-			inventoryList = service.getInventoryByName(memberId, keyword.trim());
+			if (hasKeyword && stockList != null) {
+				inventoryList = new ArrayList<>();
+				for (InventoryVO inv : stockList) {
+					String productName = inv.getProductName();
+					if (productName != null && productName.contains(keyword)) {
+						inventoryList.add(inv);
+					}
+				}
+			} else {
+				inventoryList = stockList;
+			}
+
+		} else if (hasKeyword) {
+
+			inventoryList = service.getInventoryByName(memberId, keyword);
 
 		} else {
+
 			inventoryList = service.getInventory(memberId, 1);
+
 		}
 
 		request.setAttribute("inventoryList", inventoryList);

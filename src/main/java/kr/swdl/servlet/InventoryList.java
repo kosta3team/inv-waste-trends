@@ -1,6 +1,7 @@
 package kr.swdl.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -20,25 +21,39 @@ public class InventoryList implements Action {
 		String searchType = request.getParameter("searchType");
 		String keyword = request.getParameter("keyword");
 
+		boolean hasKeyword = keyword != null && !keyword.trim().isEmpty();
+		if (hasKeyword) {
+			keyword = keyword.trim();
+		}
+
+
 		List<InventoryVO> inventoryList;
 
-		if ("waste".equals(stockType)) {
+		if ("waste".equals(stockType) || "normal".equals(stockType)) {
 
-			inventoryList = service.getWastedProducts();
+			List<InventoryVO> stockList = "waste".equals(stockType)
+					? service.getWastedProducts()
+							: service.getNormalProducts();
 
-		} else if ("normal".equals(stockType)) {
+			if (hasKeyword && stockList != null) {
+				inventoryList = new ArrayList<>();
+				for (InventoryVO inv : stockList) {
+					String target = "coop".equals(searchType)
+							? inv.getCoopName()      // 협동조합원명
+									: inv.getProductName();  // 상품명
+					if (target != null && target.contains(keyword)) {
+						inventoryList.add(inv);
+					}
+				}
+			} else {
+				inventoryList = stockList;
+			}
 
-			inventoryList = service.getNormalProducts();
-
-		} else if (keyword != null && !keyword.trim().isEmpty()) {
-
-			keyword = keyword.trim();
+		} else if (hasKeyword) {
 
 			if ("coop".equals(searchType)) {
-				// 협동조합원명 
 				inventoryList = service.getInventoryByMemberName(keyword);
 			} else {
-				// 상품명 
 				inventoryList = service.getInventoryByName(keyword);
 			}
 
@@ -52,5 +67,4 @@ public class InventoryList implements Action {
 
 		return "view/inventoryList.jsp";
 	}
-
 }

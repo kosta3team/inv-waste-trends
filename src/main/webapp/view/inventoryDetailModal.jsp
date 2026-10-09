@@ -41,6 +41,8 @@
 									<th>중량(1box)</th>
 									<th>입고수량(box)</th>
 									<th>재고수량(box)</th>
+									<th>판매수량(box)</th>
+
 								</tr>
 							</thead>
 							<tbody>
@@ -55,6 +57,8 @@
 									<td>${inventory.weight}kg</td>
 									<td>${inventory.inventoryQuantity}</td>
 									<td>${inventory.remainQuantity}</td>
+									<td>${saleQuantity}</td>
+
 								</tr>
 							</tbody>
 						</table>
