@@ -192,12 +192,12 @@
                     const match = response.match(regex);
                     return match ? match[1].trim() : '';
                 }
-
+             
                 const wasteDate = getValue('wasteDate');
-                
+
                 // VO 필드명에 맞춰 모달에 데이터 바인딩
                 document.getElementById('modalReqDate').textContent = getValue('wasteReqDate');
-                document.getElementById('modalApproveDate').textContent = wasteDate;
+                document.getElementById('modalApproveDate').textContent = (wasteDate == null || wasteDate === "null") ? "-" : wasteDate;
                 document.getElementById('modalStockNo').textContent = getValue('fruitPorductNo');
                 document.getElementById('modalItemCode').textContent = getValue('itemCode');
                 document.getElementById('modalItemName').textContent = getValue('itemName');

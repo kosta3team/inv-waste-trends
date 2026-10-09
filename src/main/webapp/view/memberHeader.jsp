@@ -1,8 +1,9 @@
+
 <%
-    if (session.getAttribute("memberId") == null) {
-        response.sendRedirect(request.getContextPath() + "/controller?cmd=loginUI");
-        return;
-    }
+if (session.getAttribute("memberId") == null) {
+	response.sendRedirect(request.getContextPath() + "/controller?cmd=loginUI");
+	return;
+}
 %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -26,7 +27,8 @@
 
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/header.css">
 
 
 </head>
@@ -55,10 +57,10 @@
 
 						<ul class="dropdown-menu start-50 translate-middle-x text-center">
 							<li><a class="dropdown-item"
-								href="${pageContext.request.contextPath}/view/memberInventoryRequestList.jsp">
-									입고 내역 </a></li>
+								href="${pageContext.request.contextPath}/controller?cmd=getMyFruitProductRequestLists">
+									입고 요청 내역 </a></li>
 							<li><a class="dropdown-item"
-								href="${pageContext.request.contextPath}/view/inventoryRequest.jsp">
+								href="${pageContext.request.contextPath}/controller?cmd=addFruitProduct">
 									입고 요청 </a></li>
 						</ul></li>
 
@@ -81,7 +83,6 @@
 								href="${pageContext.request.contextPath}/controller?cmd=menuMemberSaleInventoryList">
 									판매 기록 </a></li>
 						</ul></li>
-
 
 				</ul>
 
