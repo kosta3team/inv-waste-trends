@@ -10,20 +10,30 @@ import kr.swdl.model.fruitproduct.FruitProductService;
 import kr.swdl.servlet.Action;
 
 public class RejectFruitProduct implements Action {
+
     @Override
-    public String execute(HttpServletRequest request) throws ServletException, IOException {
-        // 1. 모달 폼에서 넘겨준 파라미터(fruitNo) 받기
+    public String execute(HttpServletRequest request)
+            throws ServletException, IOException {
+
+        // 1. 요청한 상품번호
         String fruitNo = request.getParameter("fruitNo");
-        
-        // 2. 세션에서 현재 로그인한 관리자의 아이디(adminId) 꺼내기
+
+        // 2. 로그인한 관리자 정보
         HttpSession session = request.getSession();
         String adminId = (String) session.getAttribute("adminId");
-        
-        // 3. Service 호출하여 DB 거절 업데이트 진행
+
+        // 3. 거절 처리
         FruitProductService service = new FruitProductService();
-        service.rejectFruitProduct(adminId, fruitNo);
-        
-        // 4. 업데이트가 완료되면, 다시 '관리자 입고요청 목록 조회' 컨트롤러로 이동
+        boolean result = service.rejectFruitProduct(adminId, fruitNo);
+
+        // 4. 처리 결과 확인
+        if (result) {
+            System.out.println("입고 요청 거절 성공");
+        } else {
+            System.out.println("입고 요청 거절 실패");
+        }
+
+        // 5. 처리 후 관리자 입고요청 목록으로 이동
         return "controller?cmd=getAdminFruitProductRequestLists";
     }
 }

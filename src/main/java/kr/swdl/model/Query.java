@@ -181,7 +181,8 @@ public interface Query {
 	// 10. 관리자 입고 요청한 상품정보 상세조회
 	String GET_FRUIT_PRODUCT = 
 			"SELECT "
-			+ "fp.request_date AS 요청일자, "
+			+ "fp.fruit_no AS 상품번호,"
+			+ "        fp.request_date AS 요청일자, "
 			+ "        fc.item_code AS 품목코드, "
 			+ "        fc.item_name AS 품목, "
 			+ "        fc.kind_name AS 품종, "
@@ -196,8 +197,8 @@ public interface Query {
 			+ "        m.address || ' ' || m.detail_address AS 주소, "
 			+ "        m.phone AS 전화번호, "
 			+ "        m.email AS 이메일, "
-			+ "        a.name AS 입고처리자 "
-			+ "        fp.status AS 요청상태"
+			+ "        a.name AS 입고처리자, "
+			+ "        fp.status AS 요청상태 "
 			+ "FROM fruit_product fp "			
 			+ "LEFT JOIN fruit_category fc "
 			+ "ON fp.fruit_category_no = fc.fruit_category_no "
@@ -225,10 +226,10 @@ public interface Query {
 			+ "        m.address || ' ' || m.detail_address AS 주소, "
 			+ "        m.phone AS 전화번호, "
 			+ "        m.email AS 이메일, "
-			+ "        a.name AS 입고처리자 "
-			+ "        fp.status AS 요청상태"
+			+ "        a.name AS 입고처리자, "
+			+ "        fp.status AS 요청상태 "
 			+ "FROM fruit_product fp "
-			+ "LEFT JOIN fruit_category fc "
+			+ "JOIN fruit_category fc "
 			+ "ON fp.fruit_category_no = fc.fruit_category_no "
 			+ "LEFT JOIN admin a "
 			+ "ON fp.admin_id = a.admin_id "
@@ -238,10 +239,10 @@ public interface Query {
 			+ "AND fp.member_id = ?";
 	
 	// 12. 관리자 입고 요청을 거절
-	String REJECT_FRUIT_PRODUCT = "UPDATE fruit_product SET status='거절', admin_id = ?, fruit_product_date = SYSDATE WHERE  fruit_no = ?";
+	String REJECT_FRUIT_PRODUCT = "UPDATE fruit_product SET status='거절', admin_id = ?, fruit_product_date = SYSDATE WHERE  fruit_no = ? AND status = '입고요청'";
 	
 	// 13. 관리자 입고 요청을 승인
-	String APPROVE_FRUIT_PRODUCT = "UPDATE fruit_product SET status='정상', admin_id = ?, fruit_product_date = SYSDATE WHERE  fruit_no = ?";
+	String APPROVE_FRUIT_PRODUCT = "UPDATE fruit_product SET status='입고대기', admin_id = ?, fruit_product_date = SYSDATE WHERE  fruit_no = ? AND status = '입고요청'";
 
 	// ==================== Sales ====================
 public static final String GET_MEMBER_SALES = "SELECT fp.fruit_no, s.sale_no, fp.name, s.quantity, fp.price, s.quantity * fp.price AS total_price, s.sales_date "
