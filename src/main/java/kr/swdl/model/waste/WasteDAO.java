@@ -26,8 +26,8 @@ public class WasteDAO {
 			PreparedStatement pstmt = conn.prepareStatement(Query.GET_REMAIN_QUANTITY);
 			pstmt.setString(1, fruitNo);
 			ResultSet rs = pstmt.executeQuery();
-			rs.next(); 
-			quantity = rs.getInt(1);
+			if (rs.next()) 
+				quantity = rs.getInt(1);
 			rs.close();
 			pstmt.close();
 		} catch (SQLException e) {
@@ -114,7 +114,7 @@ public class WasteDAO {
 		List<WasteRequestListVO> list = new ArrayList();
 
 		try {
-			PreparedStatement pstmt = conn.prepareStatement(Query.GET_MEMBER_WASTES_BY_PERIOD);
+			PreparedStatement pstmt = conn.prepareStatement(Query.GET_MEMBER_WASTES_ONLY_REQUEST);
 			pstmt.setString(1, memberId);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -225,6 +225,7 @@ public class WasteDAO {
 
 	public boolean updateWasteDate(String adminId, String wasteNo) {
 		boolean result = false;
+		if (null == adminId) return result;
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(Query.SET_WASTE_REQUEST_APPROVE);

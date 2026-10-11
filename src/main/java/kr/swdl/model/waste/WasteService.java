@@ -90,6 +90,7 @@ public class WasteService {
 
 	public boolean updateWasteDate(String adminId, String wasteNo) {
 		try {
+			
 			return new WasteDAO(DBCP.getConnection()).updateWasteDate(adminId, wasteNo);
 		} catch (SQLException e) {
 			e.printStackTrace();

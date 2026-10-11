@@ -10,7 +10,7 @@ public class AdminInventoryRequestListUIAction implements Action {
 	@Override
 	public String execute(HttpServletRequest request) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		return "view/adminInventoryRequestList.jsp";
+		return "view/fruitproduct/adminInventoryRequestList.jsp";
 	}
 
 }

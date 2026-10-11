@@ -1,6 +1,7 @@
 package kr.swdl.model.waste;
 
 import java.util.List;
+import java.util.Objects;
 
 public class WasteRequestDataDTO {
 	private int remainQuantity;
@@ -38,6 +39,23 @@ public class WasteRequestDataDTO {
 		}
 		
 		return str.toString();
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(remainQuantity, wasteCategoryList);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		WasteRequestDataDTO other = (WasteRequestDataDTO) obj;
+		return remainQuantity == other.remainQuantity && Objects.equals(wasteCategoryList, other.wasteCategoryList);
 	}
 
 	
