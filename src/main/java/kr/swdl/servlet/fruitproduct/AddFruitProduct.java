@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import kr.swdl.model.DBCP;
-import kr.swdl.model.MemberDAO;
 import kr.swdl.model.fruitcategory.FruitCategoryDAO;
 import kr.swdl.model.fruitproduct.FruitProductService;
 import kr.swdl.model.fruitproduct.FruitProductVO;
