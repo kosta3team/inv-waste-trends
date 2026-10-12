@@ -34,6 +34,6 @@ public class RejectFruitProduct implements Action {
         }
 
         // 5. 처리 후 관리자 입고요청 목록으로 이동
-        return "controller?cmd=getAdminFruitProductRequestLists";
+        return new GetAdminFruitProductRequestLists().execute(request);
     }
 }
