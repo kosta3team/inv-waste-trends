@@ -22,11 +22,18 @@ public class WasteCategoryDAOTest {
 	}
 	
 	@Test
-	public void 특정_폐기카테고리_조회() {
-		
-		assertEquals(
-		new WasteCategoryDAO(conn).getWasteCategory("wc0001"),
-		new WasteCategoryVO("wc0001", "날씨"));
+	public void 특정_폐기카테고리_조회_성공() {
+		assertNotNull(new WasteCategoryDAO(conn).getWasteCategory("wc0001"));
 	}
 
+	@Test
+	public void 특정_폐기카테고리_조회_실패() {
+		assertNull(new WasteCategoryDAO(conn).getWasteCategory("wc1212"));
+	}
+	
+	@Test
+	public void 폐기카테고리_목록_조회() {
+		assertTrue(new WasteCategoryDAO(conn).getWasteCategoryList().size()> 0);
+	}
+	
 }

@@ -28,37 +28,23 @@ public class SaleDAOTest {
 
 	@Test
 	public void 특정조합원_전체_판매기록_조회() throws SQLException {
-		//assertEquals(new SaleDAO(conn).findAllSalesByMember("member001"), )
-		List<SaleVO> list = new SaleDAO(conn).findAllSalesByMember("member001");
-		for (SaleVO VO : list) {
-			System.out.println(VO);
-		}
+		assertTrue(new SaleDAO(conn).findAllSalesByMember("member001").size() > 0);
 	}
 
 	@Test
 	public void 특정조합원_기간내_판매기록_조회() throws SQLException {
-		List<SaleVO> list = new SaleDAO(conn).findSalesPeriodMember("member001", "2026-08-01", "2026-08-01");
-		for (SaleVO VO : list) {
-			System.out.println(VO);
-		}
+		assertTrue(new SaleDAO(conn).findSalesPeriodMember("member001", "2026-08-01", "2026-08-01").size() > 0);
 	}
 	
 	@Test
 	public void 관리자_전체_판매기록_조회() throws SQLException {
-		List<SaleVO> list  = new SaleDAO(conn).findSalesPeriodAdmin();
-		for (SaleVO VO : list) {
-			System.out.println(VO);
-		}
+		assertTrue(new SaleDAO(conn).findSalesPeriodAdmin().size() > 0);
 	}
 	
 	@Test
 	public void 관리자_기간내_판매기록_조회() throws SQLException {
-		List<SaleVO> list  = new SaleDAO(conn).findSalesByPeriod("2026-08-01", "2026-08-01");
-		for (SaleVO VO : list) {
-			System.out.println(VO);
-		}
+		assertTrue(new SaleDAO(conn).findSalesByPeriod("2026-08-01", "2026-08-01").size() > 0);
 	}
-
 	
 	@Test
 	public void 관리자_판매기록_금액_총합() throws SQLException {

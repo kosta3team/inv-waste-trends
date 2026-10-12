@@ -333,10 +333,10 @@ public static final String GET_MEMBER_SALES = "SELECT fp.fruit_no, s.sale_no, fp
 					+ "WHERE member_id = ?"
 					+ "ORDER BY waste_req_date DESC";
 			
-			public static final String GET_MEMBER_WASTES_BY_PERIOD = "SELECT waste_no, waste_req_date, waste_req_date, waste_date "
+			public static final String GET_MEMBER_WASTES_ONLY_REQUEST = "SELECT waste_no, waste_req_date, waste_date "
 					+ "FROM waste WHERE member_id = ? "
 					+ "AND waste_req_date IS NOT NULL "
-					+ "AND waste_date IS NULL"
+					+ "AND waste_date IS NULL "
 					+ "ORDER BY waste_req_date DESC";
 			
 			public static final String GET_ADMIN_WASTES = "SELECT w.waste_no, w.waste_req_date, w.waste_date, m.member_name, m.name "

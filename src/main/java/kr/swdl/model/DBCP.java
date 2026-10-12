@@ -26,7 +26,7 @@ public class DBCP {
 		
 		if (null == dbcp)
 			dbcp = new DBCP();
-		String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe"; // -> throws
+		String url = "jdbc:oracle:thin:@192.168.0.34:1521:xe"; // -> throws
 		return DriverManager.getConnection(url, "hr", "hr");
 	}
 }
